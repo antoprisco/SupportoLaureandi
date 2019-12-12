@@ -1,0 +1,39 @@
+.viewRequestAdmin{
+	#adminTable{
+
+	}
+	
+	.btn-action.generateExcel{
+		width: auto !important;
+		height: 35px !important;
+		display: inline-block !important;
+	}
+	
+	.btn-action.verifyCertificate{
+		background-color: #ffd700 !important;
+		border-color: #ffd700 !important;
+	}
+
+	.btn-action.accept{
+		background-color: #149414 !important;
+		border-color: #149414 !important;
+	}
+	
+	.btn-action.refuse{
+		background-color: #DC483E !important;
+		border-color: #DC483E !important;
+	}
+
+	.inputCFU{
+		width: 80%;
+		height: 30%;
+		margin-left: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		margin-right: 10px;
+		border : 1px solid black;
+	}
+	.radio{
+		margin-left: 60px;
+	}
+}

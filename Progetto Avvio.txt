@@ -1,0 +1,34 @@
+TODO
+prerequisiti: Java 8
+
+-scarica mysql-server e workbench
+-prenditi il db da github
+-modifica riga 162 mettendo la path del tuo progetto scaricato e della cartella upload
+-carica il db su mysql creando uno schema con nome "englishvalidation" (segui il manuale)
+
+-scarica eclipse ee
+-installa tomcat9 (cercati una guida in base al sistema operativo)
+-importa il progetto su eclipse
+-nella view "project explorer" tasto destro su "Deployment Descriptor" e seleziona "Generate Deployment Descriptor Stub"
+
+-Vai su Window->ShowView->Navigator
+-Apri WEB-INF e apr web.xml
+-sotto <display-name> aggiungici <absolute-ordering /> se non è già presente
+
+-apri Servers e seleziona "crea un nuovo server"
+-seleziona Tomcat9, la directory in cui hai installato tomcat e fai next
+-ti dovresti trovare EnglishValidation, fai add
+-finish
+
+-fai run
+-se ti da problemi, cambia la porta HTTP/1.1 con 8000
+-tasto destro su index.jsp -> run as -> run on server
+
+
+Se ti da ancora problemi, tasto destro sulla directory del progetto, properties -> project facets 
+-runtimes in alto a destra e vedi se è selezionato apache tomcat9
+-per sicurezza, seleziona apache tomcat e vedi cosa ti esce in runtime composition. (se non visualizzi JRE 1.8, hai sbagliato e torna al via)
+-torna al punto "fai run"
+
+
+

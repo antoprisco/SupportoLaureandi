@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+a, .theme_color, .main-header .header-top .top-left .trend, .main-header .header-top .top-right .top-nav li a:hover,
+	.main-header .header-top .top-right .social-nav li a:hover,
+	.category-tabs-box .prod-tabs .tab-btns .tab-btn:hover, .widget-post a,
+	.widget-post a:hover, .cat-list li a:hover, .widget-post-two a,
+	.widget-post-two a:hover, .news-block-five .inner-box .lower-box h3 a:hover,
+	.news-block-four .inner-box .content-box h3 a:hover, .news-block-three .inner-box .image .overlay-box .play-btn:hover,
+	.news-block-two .inner-box .lower-box h3 a:hover, .review-block .inner-box .text a:hover,
+	.news-info .inner-box .text a:hover, .list-style-one li:before,
+	.hidden-bar .side-menu ul li a:hover, .hidden-bar .side-menu ul>li.current>a,
+	.social-icon-two li a:hover, .hidden-bar .side-menu ul.navigation>li>ul>li>a:hover,
+	.breadcrumb-bar li a:hover, .shop-page .basic-details .item-price,
+	.shop-item .inner-box .lower-box .upper-box h4 a:hover, .shop-item .inner-box .lower-box .lower-content .price,
+	.author-box .author-comment .inner-box h4, .shop-comment-form .rating-box .rating a:hover,
+	.blog-single .inner-box .new-article li a:hover, .demo-banner .btns-box .purchase-btn:hover,
+	.info-tabs .tab-btns .tab-btn:hover, .info-tabs .tab-btns .tab-btn.active-btn,
+	.news-block-seven .inner-box .lower-box h3 a:hover,
+	.widget-comment-post a, .widget-comment-post a:hover,
+	.category-tabs-box .prod-tabs .tab-btns .tab-btn.active-btn,
+	.main-footer .footer-bottom .copyright-section .footer-nav li a:hover,
+	.main-menu .navigation>li.mega-menu>.mega-menu-bar .owl-nav .owl-prev:hover,
+	.main-menu .navigation>li.mega-menu>.mega-menu-bar .owl-nav .owl-next:hover
+	{
+	color: #e73f43;
+}
+
+/*Background Color*/
+.main-header .header-top .top-right .english-nav li a:hover,
+	.main-header .header-top .top-right .english-nav li.active a,
+	.main-menu .navigation>li>a:before, .main-menu .navigation>li>ul>li:hover>a,
+	.main-menu .navigation>li>ul>li>ul>li>a:hover, .scroll-to-top:hover,
+	.main-slider .slide .overlay-box .overlay-inner .content .category,
+	.main-slider .owl-nav .owl-prev:hover, .main-slider .owl-nav .owl-next:hover,
+	.main-slider .owl-dots .owl-dot.active span, .main-slider .owl-dots .owl-dot:hover span,
+	.main-slider-two .owl-dots .owl-dot.active span, .main-slider-two .owl-dots .owl-dot:hover span,
+	.main-slider-three .owl-dots .owl-dot.active span, .main-slider-three .owl-dots .owl-dot:hover span,
+	.main-slider-four .owl-dots .owl-dot.active span, .main-slider-four .owl-dots .owl-dot:hover span,
+	.category-tabs-box .prod-tabs .tab-btns .category, .sidebar-title h2,
+	.sec-title h2, .btn-style-one:hover, .tag-title li, .popular-tags a:hover,
+	.tweet-block .inner-box .text:after, .tweet-widget .owl-dots .owl-dot.active span,
+	.tweet-widget .owl-dots .owl-dot:hover span, .category-tabs-box .owl-nav .owl-next:hover,
+	.category-tabs-box .owl-nav .owl-prev:hover, .product-widget-tabs .prod-tabs .tab-btns .tab-btn:hover,
+	.product-widget-tabs .prod-tabs .tab-btns .tab-btn.active-btn,
+	.news-block-three .inner-box .image .overlay-box .content .tag,
+	.blog-carousel-section .owl-nav .owl-prev:hover, .blog-carousel-section .owl-nav .owl-next:hover,
+	.blog-carousel-section .owl-dots .owl-dot.active span,
+	.blog-carousel-section .owl-dots .owl-dot:hover span,
+	.styled-pagination li a:hover, .styled-pagination li a.active,
+	.featured-block-section .owl-dots .owl-dot.active span,
+	.featured-block-section .owl-dots .owl-dot:hover span,
+	.featured-block-section .owl-nav .owl-prev:hover,
+	.featured-block-section .owl-nav .owl-next:hover, .btn-style-two:hover,
+	.newsletter-widget .inner-box, .popular-tags-two a:hover, .comment-form button:hover,
+	.shop-item .inner-box .off-price, .social-icon-three li a:hover,
+	.related-item-carousel .owl-nav .owl-next:hover, .related-item-carousel .owl-nav .owl-prev:hover,
+	.news-block-nine .inner-box .image .category, .skill-progress .progress-box .bar .bar-fill,
+	.main-slider-three .owl-nav .owl-prev:hover, .main-slider-three .owl-nav .owl-next:hover,
+	.blog-single-slider .owl-nav .owl-prev:hover, .blog-single-slider .owl-nav .owl-next:hover,
+	.comment-box .comment .comment-inner .reply-btn:hover,
+	.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+	.default-portfolio-item .overlay-inner .option-btn:hover,
+	.news-block-eight .inner-box .image .overlay-box .content .tag,
+	.main-slider-four .owl-nav .owl-prev:hover, .main-slider-four .owl-nav .owl-next:hover,
+	.news-block-six .inner-box .image-box .image .overlay-box .overlay-inner .content .category,
+	.economics-category .owl-nav .owl-next:hover, .economics-category .owl-nav .owl-prev:hover,
+	.category-tabs-box .prod-tabs .tab-btns .dropdown-category .more-category li a:hover,
+	.main-slider-five .product-details .image-column .owl-nav .owl-prev:hover,
+	.main-slider-five .product-details .image-column .owl-nav .owl-next:hover,
+	.galley-section .owl-nav .owl-prev:hover, .galley-section .owl-nav .owl-next:hover,
+	.main-slider-six .default-tab-box .tab-btns .tab-btn:hover::before,
+	.header-style-two .header-top, .main-slider-six .default-tab-box .tab-btns .tab-btn.active-btn:before,
+	.blog-single .inner-box .rating-box .inner .raing-info .rating-detail .rating-block,
+	.related-items .owl-nav .owl-prev:hover, .related-items .owl-nav .owl-next:hover,
+	.demo-banner .btns-box .purchase-btn, .demo-banner .btns-box .demo-btn:hover
+	{
+	background-color: #e73f43;
+}
+
+/*Border Color*/
+.btn-style-two:hover, .btn-style-one:hover, .main-header .header-lower .search-box-outer .dropdown-menu,
+	.category-tabs-box .owl-nav .owl-next:hover, .category-tabs-box .owl-nav .owl-prev:hover,
+	.news-block-three .inner-box .image .overlay-box .play-btn:hover,
+	.main-header .header-top .top-right .top-nav li a:hover, .sidebar .search-box .form-group input[type="text"]:focus,
+	.sidebar .search-box .form-group input[type="search"]:focus,
+	.styled-pagination li a:hover, .styled-pagination li a.active,
+	.main-header .header-lower .search-panel input:focus, .main-header .header-lower .search-panel select:focus,
+	.economics-category .owl-nav .owl-next:hover, .economics-category .owl-nav .owl-prev:hover,
+	.main-slider-three .owl-nav .owl-prev:hover, .main-slider-three .owl-nav .owl-next:hover,
+	.blog-single .inner-box .text blockquote, .related-item-carousel .owl-nav .owl-next:hover,
+	.related-item-carousel .owl-nav .owl-prev:hover, .comment-box .comment .comment-inner .reply-btn:hover,
+	.main-slider-five .product-details .image-column .owl-nav .owl-prev:hover,
+	.main-slider-five .product-details .image-column .owl-nav .owl-next:hover,
+	.main-menu .navigation>li.mega-menu>.mega-menu-bar .owl-nav .owl-prev:hover,
+	.main-menu .navigation>li.mega-menu>.mega-menu-bar .owl-nav .owl-next:hover,
+	.comment-form .form-group input[type="text"]:focus, .comment-form .form-group input[type="email"]:focus,
+	.comment-form .form-group textarea:focus, .shop-comment-form .form-group input[type="text"]:focus,
+	.shop-comment-form .form-group input[type="password"]:focus,
+	.shop-comment-form .form-group input[type="tel"]:focus,
+	.shop-comment-form .form-group input[type="email"]:focus,
+	.shop-comment-form .form-group select:focus, .shop-comment-form .form-group textarea:focus,
+	.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus
+	{
+	border-color: #e73f43;
+}
+
+.main-slider-six .default-tab-box .tab-btns .tab-btn:hover::after,
+	.main-slider-six .default-tab-box .tab-btns .tab-btn.active-btn:after {
+	border-right-color: #e73f43;
+}
+
+/*RGBA Color Light*/
+.default-portfolio-item .overlay-inner {
+	background-color: rgba(231, 63, 68, 0.80);
+}
+
+/*RGBA Color Dark*/
+@media only screen and (max-width: 767px) {
+	.main-menu .navbar-header .navbar-toggle {
+		border-color: #ffffff;
+	}
+	.main-menu .navbar-header .navbar-toggle, .main-menu .navbar-collapse>.navigation,
+		.main-menu .navbar-collapse>.navigation>li>ul, .main-menu .navbar-collapse>.navigation>li>ul>li>ul,
+		.main-menu .navbar-collapse>.navigation>li>a, .main-menu .navbar-collapse>.navigation>li>ul>li>a,
+		.main-menu .navbar-collapse>.navigation>li>ul>li>ul>li>a, .main-menu .navbar-collapse>.navigation>li>a:hover,
+		.main-menu .navbar-collapse>.navigation>li>a:active, .main-menu .navbar-collapse>.navigation>li>a:focus,
+		.main-menu .navbar-collapse>.navigation>li:hover>a, .main-menu .navbar-collapse>.navigation>li>ul>li:hover>a,
+		.main-menu .navbar-collapse>.navigation>li>ul>li>ul>li:hover>a,
+		.main-menu .navbar-collapse>.navigation>li.current>a, .main-menu .navbar-collapse>.navigation>li.current-menu-item>a,
+		.header-style-two.inner-header .main-menu .navigation>li>a {
+		background-color: #e73f43;
+	}
+}

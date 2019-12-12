@@ -1,0 +1,48 @@
+.uploadAttachedPage{
+	h1, h2{
+		text-align: center;
+		margin-bottom: 20px;	
+	}
+	.dropzoneUploader{
+		cursor: pointer;
+		min-height: 200px;
+		background: #FF9900;
+		border-radius: 15px;
+		margin-bottom: 20px;
+		text-align: center;
+		line-height: 100px;
+		padding: 15px;		
+		span{
+			color: #FFF;
+		}
+		.dz-preview{
+			max-width: 120px;
+			display: inline-block;
+			margin-left: 20px;
+			position: relative;
+			overflow: hidden;
+			.dz-image, .dz-error-message, .dz-error-mark{
+				display: none;
+			}
+			.dz-remove{
+				color: #FFF;
+				position: absolute;
+				top: 80px;
+				left: 0;
+				text-align: center;
+				width: 100%;				
+			}
+			.dz-details{
+				.dz-size{
+					line-height: 20px;
+				}
+				.dz-filename{
+					line-height: 20px;
+				}
+			}
+			.dz-success-mark{
+				line-height: 60px;
+			}
+		}
+	}
+}

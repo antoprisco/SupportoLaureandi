@@ -1,0 +1,24 @@
+.page-wrapper{
+    .main-footer{
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+        width: 100%;        
+        background-color: #666666;
+        .footer-bottom{
+            background-color: #666666;
+            padding: 0;
+            .copyright-section{
+                padding: 5px 0px;
+                margin-top: 0;
+                .copyright{
+                    @include media("<tablet") {
+                        font-size: 12px;
+                        margin-top: 0;
+                    }
+                }    
+
+            }
+        }
+    }
+}

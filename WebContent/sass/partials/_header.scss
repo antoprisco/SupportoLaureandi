@@ -1,0 +1,119 @@
+.page-wrapper{
+
+    .hidden-bar, .main-header{
+        .logo{
+            background: url("/EnglishValidation/imagesEV/logo_unisa.png") left center no-repeat;
+            background-size: contain; 
+        }
+    }   
+
+    .hidden-bar{
+        @include media("<tablet") {
+            background: #FF9900;
+        }
+        .mCustomScrollBox {
+            .mCSB_container {
+                .side-menu{
+                    .navigation {
+                        li.current{
+                            a {
+                                color: #656565;
+                            }                            
+                        }
+                        li{
+                            a{
+                                &:hover{
+                                    color: #656565;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main-header{
+        position: fixed;
+        z-index: 1000;
+        .nav-toggler{
+            @include media("<tablet") {        
+                right: 10px;
+                top: -65px;
+            }        
+        }
+        .header-upper{
+            background-color: #FF9900;
+            overflow: hidden;
+            border: 1px solid #fff;
+            .auto-container{
+                @include media("<tablet") {
+                    padding: 0;
+                }
+                .logo-outer{
+                    padding: 5px 0 5px 0;
+                    @include media("<tablet") {
+                        width: calc(100% - 60px);
+                    }
+                    .logo{
+                        @include media("<tablet") {
+                            top: 0;
+                        }
+                        img{
+                            @include media("<tablet") {
+                                max-height: 70px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .header-lower{
+            background-color: #666666;
+            color: #fff;            
+            border: 0;
+            margin: 0;
+            .auto-container{
+                padding: 0;
+                max-width: 100%;                
+                .nav-outer{
+                    .nav-toggler{
+                        .hidden-bar-opener{
+                            color: #fff;
+                            border: 1px solid #fff;
+                        }
+                    }
+                    .main-menu{
+                        .navbar-header{
+                        }
+                        .navbar-collapse{
+                            .navigation {
+                                li.current{
+                                    background-color: #444444;
+                                    text-decoration: none;
+                                    &:hover{
+                                        text-decoration: none;
+                                    }
+                                }
+                                li{
+                                    border: 0;
+                                    border-right: 1px solid #e0e0e0;
+                                    &:hover{
+                                        background-color: #444444;
+                                        a{
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                    a{
+                                        padding: 4px 24px;
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

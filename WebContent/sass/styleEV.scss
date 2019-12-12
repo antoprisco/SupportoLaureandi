@@ -1,0 +1,173 @@
+
+@import 'vendor/_include-media.scss';
+$breakpoints: (phone: 468px, tablet: 768px, desktop: 1366);
+@import 'partials/header';
+@import 'partials/footer';
+@import 'pages/viewRequestAdmin';
+@import 'pages/viewRequestSecretary';
+@import 'pages/viewRequestStudent';
+@import 'pages/login';
+@import 'pages/logout';
+@import 'pages/signUp';
+@import 'pages/firstForm';
+@import 'pages/uploadAttached';
+@import 'pages/index';
+
+body .scroll-to-top {
+    bottom: 50px;
+    background: #FF9900;    
+    &:hover{
+        background: #666666;    
+    }
+}
+
+.page-wrapper{
+    .sidebar-page-container.basePage{
+        padding: 140px 0px 80px;
+        @include media("<tablet") {
+            padding: 102px 0px 80px;
+        }
+        .auto-container{
+        	max-width: 1920px;
+            .row {
+                .content-side{
+                    .content{
+                        .sec-title{
+                            h2{
+                                background-color: #FF9900;
+                            }
+                        }
+                        .news-block-seven{
+							.btn-action{
+								padding: 6px;
+								margin: 6px;
+								width: 30px;
+								height: 30px;
+								text-align: center;
+								vertical-align: middle;
+								background-color: #FF9900;
+								border-color: #FF9900;
+							}                                                
+                        	.btn-block{
+                        		background-color: #FF9900;
+								border-color: #FF9900;
+                        	}
+							.form-group{
+								text-align: center;
+								.form-control{
+									color: #666;
+								}
+								.btn-submit{
+									background-color: #FF9900;
+									border-color: #FF9900;
+								}                        
+							}
+                        
+                            .dataTables_wrapper {
+                                .dataTables_length{
+                                    width: 50%;
+                                    float: left;
+                                    text-align: left; 
+                                    font-weight: bold;
+                                    @include media("<tablet") {
+                                        width: 100%;
+                                        text-align: center;
+                                    }        
+                                }
+                                .dataTables_filter{
+                                    width: 50%;
+                                    float: left;      
+                                    text-align: right; 
+                                    font-weight: bold;
+                                    @include media("<tablet") {
+                                        width: 100%;
+                                        text-align: center;
+                                    }        
+                                    label{
+                                        input{
+                                            margin-left: 5px;
+                                            background-color: #f3f3f3;
+                                        }
+                                    } 
+                                }
+                                .dataTable{
+                                    border: 1px solid #FF9900;
+                                    color: #fff;
+                                    width: 100%;
+                                    overflow-x: auto;                                    
+                                    @include media("<tablet") {                                    
+                                    	display: block;
+                                    }                                    
+                                    thead{
+                                        background: #FF9900; 
+                                        tr{
+                                            th{        
+                                                padding: 5px 0 5px 0;
+                                            }
+                                        } 
+                                    }
+                                    tbody{
+                                        tr{
+                                            td{
+                                                color: #666666;
+                                                padding: 5px 0 5px 0;
+                                                border: 1px solid #FF9900;
+                                                &::before, &::after {
+                                                    display: none;
+                                                }
+                                            }
+                                        } 
+                                    }       
+                                                                    
+                                }
+                                .dataTables_info {
+                                    margin-top: 5px;
+                                    width: 50%;
+                                    float: left;
+                                    text-align: left; 
+                                    font-weight: bold;
+                                    @include media("<tablet") {
+                                        width: 100%;
+                                        text-align: center;
+                                    }        
+                                }
+                                .dataTables_paginate {
+                                    margin-top: 5px;
+                                    width: 50%;
+                                    float: left;      
+                                    text-align: right; 
+                                    font-weight: bold;
+                                    @include media("<tablet") {
+                                        width: 100%;
+                                        text-align: center;
+                                    }   
+                                    .paginate_button.current {
+                                        font-weight: bold;
+                                    }
+                                    .paginate_button {
+                                        font-weight: normal;
+                                        color: #666666;
+                                        margin-left: 5px;
+                                    }
+                                    .previous, .next {
+                                        background-color: #FF9900;
+                                        padding: 5px 12px 5px 12px;                                        
+                                        color: #FFF;                                        
+                                    }
+                                }                                
+                            }
+                        }                        
+                    }
+                }
+            }
+        }
+    }  
+}
+
+@include media(">=tablet", "<desktop") {
+
+}
+
+@include media("<tablet") {
+
+}
