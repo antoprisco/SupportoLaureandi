@@ -18,7 +18,6 @@ $(document).ready(function() {
 						
 					} else {
 						showAlert(1, "SUCCESSO");
-						$("#graficoBello").destroy();
 						new Chart(
 								  $("#graficoBello"),
 								  {
