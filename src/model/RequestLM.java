@@ -4,18 +4,32 @@ import java.time.Year;
 import java.util.ArrayList;
 
 public class RequestLM {
-	private int id, idcurr;
+	private int id;
 	private int year;
 	private String email;
 	private String curr;
+	private int count;
 	
 	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public RequestLM(int id,String curr, int year, String email) {
 		this.id=id;
 		this.year=year;
 		this.email=email;
 		this.curr=curr;
 	
+	}
+	
+	public RequestLM(String curr, int count) {
+		this.curr=curr;
+		this.count=count;
 	}
 
 

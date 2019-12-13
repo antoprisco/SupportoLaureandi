@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import interfacce.UserInterface;
+import model.Student;
 import model.RequestLM;
 import model.RequestlmDAO;
 
@@ -45,9 +48,11 @@ public class ServletFormLM extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+	    Integer result = 0;
+	    String error = "";
+	    String content = "";
+	    String redirect = "";
 		
-		PrintWriter pw= response.getWriter();
-		pw.append("ccc");
 		UserInterface user = (UserInterface) request.getSession().getAttribute("user");
 	    String idUser = user.getEmail();
 	      
@@ -57,22 +62,32 @@ public class ServletFormLM extends HttpServlet {
 	    	
 	     		try {
 	    		RequestlmDAO rd= new RequestlmDAO();
-	    		rd.doSave(r);
-	    		RequestDispatcher red=request.getRequestDispatcher("FormLM.jsp");
-			    red.forward(request, response);
+	    		int idRequest=rd.doSave(r);
+			    if(idRequest>0) {
+			    	content = "Richiesta effettuata correttamente.";
+			    	result=1;
+			    }else
+			    	error = "Richiesta non effettuata errore salvataggio";
+			    redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+			    
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				error = e.getMessage();
 			}
 	    }
-	}
-	    	
-	 
-	   
-		
-	
-	      
-	}
+	    
+	    JSONObject res = new JSONObject();
+	    res.put("result", result);
+	    res.put("error", error);
+	    res.put("content", content);
+	    res.put("redirect", redirect);
+	    PrintWriter out = response.getWriter();
+	    out.println(res);
+	    response.setContentType("json");
+	    System.err.println(res.toString());
+	}      
+}
 	
 
 

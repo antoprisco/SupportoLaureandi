@@ -53,7 +53,9 @@
 											
 											<select class="form-control" id="curriculum" name="curriculum" required>
 											
-											<%ArrayList<String> listaC= new ArrayList<String>();
+											<%
+											//antonio. non so se va bene così io così l'ho trovato
+												ArrayList<String> listaC= new ArrayList<String>();
 												listaC.add("DATA SCIENCE");
 												listaC.add("CLOUD COMPUTING");
 												listaC.add("SICUREZZA INFORMATICA");

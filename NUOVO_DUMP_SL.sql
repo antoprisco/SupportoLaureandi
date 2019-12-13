@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `supportolaureandi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `supportolaureandi`;
 -- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
 --
--- Host: localhost    Database: englishvalidation
+-- Host: localhost    Database: supportolaureandi
 -- ------------------------------------------------------
 -- Server version	8.0.13
 
@@ -113,6 +115,34 @@ INSERT INTO `request` VALUES (1,'B.6.56546','A1','2017-05-25','2018-05-25',2018,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `requestlm`
+--
+
+DROP TABLE IF EXISTS `requestlm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `requestlm` (
+  `id_req` int(20) NOT NULL AUTO_INCREMENT,
+  `curriculum` varchar(20) NOT NULL,
+  `anno` int(20) NOT NULL,
+  `FK_USER` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_req`),
+  KEY `FK_USER` (`FK_USER`),
+  CONSTRAINT `requestlm_ibfk_1` FOREIGN KEY (`FK_USER`) REFERENCES `user` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `requestlm`
+--
+
+LOCK TABLES `requestlm` WRITE;
+/*!40000 ALTER TABLE `requestlm` DISABLE KEYS */;
+INSERT INTO `requestlm` VALUES (115,'SICUREZZA',2024,'a.napoli94@studenti.unisa.it'),(116,'INTERNET',2022,'a.napoli94@studenti.unisa.it'),(117,'INTERNET',2021,'a.napoli94@studenti.unisa.it'),(118,'CLOUD',2024,'a.napoli94@studenti.unisa.it'),(119,'SISTEMI',2021,'a.napoli94@studenti.unisa.it');
+/*!40000 ALTER TABLE `requestlm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `state`
 --
 
@@ -187,7 +217,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('04wmljf0wy.@studenti.unisa.it','Giuseppe','Cirino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('fferrucci@unisa.it','Luigia','Melchionno','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',2),('segreteria@unisa.it','Segreteria','Studenti','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',1);
+INSERT INTO `user` VALUES ('04wmljf0wy.@studenti.unisa.it','Giuseppe','Cirino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('a.napoli94@studenti.unisa.it','Antonio','Napoli','M','77d5477c94bf3a33e53c6bb08ad720c7072b0fee',0),('fferrucci@unisa.it','Luigia','Melchionno','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',2),('segreteria@unisa.it','Segreteria','Studenti','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-22 11:29:19
+-- Dump completed on 2019-12-13 17:15:31

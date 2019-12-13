@@ -15,16 +15,27 @@ public class RequestlmDAO {
 	
 	static final String TABLE_NAME = "requestlm";
 	
-	public synchronized void doSave(RequestLM r) throws SQLException {
+	public synchronized int doSave(RequestLM r) throws SQLException {
 
 		Connection connection = new DbConnection().getInstance().getConn();
 		PreparedStatement preparedStatement = null;
-
+		Integer idRequest = 0;
 		String insertSQL = "insert into " + RequestlmDAO.TABLE_NAME
 				+ " (curriculum, anno, fk_user) values (?, ?, ?)";
 
 		try {
-			//connection = DbConnection.getInstance().getConn();
+			/*
+			 *                 Integer idRequest = 0;
+
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                  idRequest = rs.getInt(1);
+                }
+                result = 1;
+                rs.close();
+              } else {
+                error = "Impossibile presentare la richiesta.";
+              }*/
 			preparedStatement = connection.prepareStatement(insertSQL,preparedStatement.RETURN_GENERATED_KEYS);
 			
 			preparedStatement.setString(1, r.getCurr());
@@ -33,24 +44,30 @@ public class RequestlmDAO {
 			
 			
 			preparedStatement.executeUpdate();
-
-			connection.commit();
+			ResultSet rs = preparedStatement.getGeneratedKeys();
+            if (rs.next()) {
+              idRequest = rs.getInt(1);
+            }
+			
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();
 			} finally {
-			//	if (connection != null)
-				//	connection.commit();;
+				if (connection != null)
+					connection.commit();;
 			}
 		}
-		this.doSaveSelection(r);
+		return idRequest;
 	}
 	
 	
 	  public void doSaveSelection(RequestLM r) {
 	  }
 	
+	  
+	  // commento da antonio non l'ho modificata quindi non funziona ma non serve :: da eliminare
 	  public synchronized ArrayList<RequestLM> doRetrieveAll() throws SQLException {
 		  Connection connection = new DbConnection().getInstance().getConn();
 			PreparedStatement preparedStatement = null;
@@ -93,6 +110,44 @@ public class RequestlmDAO {
 		}
 
 	  
+	  public synchronized ArrayList<RequestLM> doCountByYear(int anno) throws SQLException {
+		ArrayList<RequestLM> listbean = new ArrayList<RequestLM>();
+	  	Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "select curriculum, COUNT(*) as count FROM " ;
+		selectSQL+= RequestlmDAO.TABLE_NAME + " where anno = ? group by curriculum";
+		
+
+		try {
+			//connection = DbConnection.getInstance().getConn();
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, anno);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestLM bean = new RequestLM();
+				bean.setCurr(rs.getString("curriculum"));
+				bean.setCount(rs.getInt("count"));
+				
+				listbean.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+		
+		return listbean;  
+	  }
+	  
+	  
 	  public synchronized ArrayList<RequestLM> doRetrieveByYear(int anno) throws SQLException {
 		  	Connection conn = new DbConnection().getInstance().getConn();
 			PreparedStatement preparedStatement = null;
@@ -125,8 +180,8 @@ public class RequestlmDAO {
 					if (preparedStatement != null)
 						preparedStatement.close();
 				} finally {
-					//if (conn != null)
-						//conn.close();
+					if (conn != null)
+						conn.commit();
 				}
 			}
 			return listbean;

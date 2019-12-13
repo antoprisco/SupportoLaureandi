@@ -15,6 +15,7 @@
 <html>
 <head>
 <jsp:include page="/partials/head.jsp" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">  </script>
 </head>
 
 <body onLoad="showData()">
@@ -64,65 +65,7 @@
 							
 							<button type="submit"  class="btn btn-primary btn-submit">Search</button>
 							</form>
-							
-							
-											
-							
-							
-								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered">
-									<thead>
-										<tr>
-											<th class="text-center">CURRICULUM</th><th class="text-center">ANNO</th>
-								
-										</tr>
-											
-										<%
-										Boolean d= (Boolean) request.getAttribute("denied");
-									
-										if(d!=null){
-											ArrayList<RequestLM> list= (ArrayList<RequestLM>) request.getAttribute("list");
-											
-											for (int i=0; i<list.size(); i++){
-												%>
-												<tr><td><%=list.get(i).getCurr()%> </td> <td> <%=list.get(i).getYear()%></td></tr>
-												<%
-												
-											}
-										
-										}
-										else{
-										
-											
-										RequestLM req= new RequestLM();
-										RequestlmDAO rd= new RequestlmDAO();
-									
-									    ArrayList<RequestLM> ar= new ArrayList<RequestLM>();
-									    
-									    try {
-									    	
-									    	ar=rd.doRetrieveAll();
-											for (int i=0; i<ar.size();i++) {
-										
-											
-											%>
-											<tr><td><%=ar.get(i).getCurr()%> </td> <td> <%=ar.get(i).getYear()%></td></tr>
-											<%
-										
-											}
-									    } catch (SQLException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-										}
-										%>
-									
-										
-									</thead>
-									<tbody id="bodyAdminTable">
-
-									</tbody>
-								</table>
-								
+							<canvas id="graficoBello"></canvas>
 							</div>
 						</div>
 					</div>

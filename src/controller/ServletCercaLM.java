@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import model.RequestLM;
 import model.RequestlmDAO;
@@ -42,31 +45,41 @@ public class ServletCercaLM extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.err.println("ciaoooo");
-		
+		Integer result = 0;
+	    String error = "";
+	    String content = "";
+	    String redirect = "";
+	    ArrayList<String> curriculum = new ArrayList<String>();
+		ArrayList<Integer> count = new ArrayList<Integer>();
 		if(Integer.parseInt(request.getParameter("flag"))==7){
-			System.err.println("ciaoooo2");
-			request.setAttribute("denied", true);
-			System.err.println("ciaoooo3");
 			RequestlmDAO rd= new RequestlmDAO();
-			System.err.println("ciaoooo4");
 			ArrayList<RequestLM> list= new ArrayList<RequestLM>();
-			System.err.println("ciaoooo5");
 			try {
-				
-				list= rd.doRetrieveByYear(Integer.parseInt(request.getParameter("anno")));	
-				System.err.println("ciaoooo6");
-				request.setAttribute("list", list);
-				System.err.println("ciaoooo7");
-					
-				
+				list= rd.doCountByYear(Integer.parseInt(request.getParameter("anno")));	
+				if(!list.isEmpty()) {
+					result=1;
+					for (RequestLM req : list) {
+						curriculum.add(req.getCurr());
+						count.add(req.getCount());
+					}
+				}
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				error= "errore database";
 				e.printStackTrace();
 			}
 		}
+		JSONObject res = new JSONObject();
+		res.put("result", result);
+	    res.put("error", error);
+	    res.put("content", content);
+	    res.put("redirect", redirect);
+	    res.put("curriculum", curriculum);
+	    res.put("count",count);
+	    PrintWriter out = response.getWriter();
+	    out.println(res);
+	    response.setContentType("json");
+	    System.err.println(res.toString());
 
 	}
 
