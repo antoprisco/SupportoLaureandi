@@ -5,6 +5,8 @@
 	Salerno</title>
 
 <!-- Stylesheets -->
+<link href="<%= request.getContextPath() %>/css/bootstrap-grid.css"
+	rel="stylesheet">
 <link href="<%= request.getContextPath() %>/css/bootstrap.css"
 	rel="stylesheet">
 <link href="<%= request.getContextPath() %>/css/style.css"
@@ -31,6 +33,7 @@
 	rel="stylesheet">
 <link href="<%= request.getContextPath() %>/css/styleEV.css"
 	rel="stylesheet">
+	
 
 <!--Color Themes-->
 <link id="theme-color-file"

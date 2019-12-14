@@ -18,6 +18,8 @@ $(document).ready(function() {
 						
 					} else {
 						showAlert(1, "SUCCESSO");
+						 $('#graficoBello').remove();
+						  $('#graph-container').append('<canvas id="graficoBello"><canvas>');
 						new Chart(
 								  $("#graficoBello"),
 								  {

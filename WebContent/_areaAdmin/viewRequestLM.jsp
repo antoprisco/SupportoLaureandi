@@ -16,6 +16,7 @@
 <head>
 <jsp:include page="/partials/head.jsp" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">  </script>
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/newCss.css">
 </head>
 
 <body onLoad="showData()">
@@ -31,48 +32,45 @@
 		</jsp:include>
 
 
+
 		<div class="sidebar-page-container basePage viewRequestAdmin">
 			<div class="auto-container">
-				<div class="row clearfix">
-					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="content ">
+				<div class="clearfix">
+					<div class="content-side">
+						<div class="content contentSL">
 							<div class="news-block-seven">
-							
-					
-							
-							
-							<form id="formRLM">
-							<div class="form-group">
-										
-											<!-- ANNO -->
-											
-											<label> Scegli l'anno </label> 
-											
-											
-											
-											<select class="form-control" id="anno"  name="anno" required>
-												
-												<option value="2020">2020</option>
+
+
+		
+								<div class="row pl-2">
+						            <div class="col-md-4 pt-5">
+						                <form id="formRLM" class="ml-5">
+						                    <label for="scegliAnno">Iscritti per anno:</label>
+						                    <select class="custom-select" id="anno" name="anno" required>
+						                        <option selected>Open this select menu</option>
+						                        <option value="2020">2020</option>
 												<option value="2021">2021</option>
 												<option value="2022">2022</option>
 												<option value="2023">2023</option>
 												<option value="2024">2024</option>
-												<%
-											    	
-											    %>
-											</select>
-										</div>
-							
-							<button type="submit"  class="btn btn-primary btn-submit">Search</button>
-							</form>
-							<canvas id="graficoBello"></canvas>
+						                    </select>
+						                    <button type="submit"  class="btn btn-primary btn-action generateExcel">Search</button>
+						                </form>
+						            </div>
+						            <div class="col-md-8" id="graph-container">
+						                <canvas id="graficoBello"></canvas>
+						            </div>
+								</div>
+
+
+
+
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>			
 			</div>
-		</div>
-
+		</div>	
 		<jsp:include page="/partials/footer.jsp" />
 	</div>
 	<!--End pagewrapper-->
