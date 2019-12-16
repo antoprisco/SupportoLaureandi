@@ -32,6 +32,8 @@
     if (pageName.equals("viewRequest.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Richieste</a></li>";
+          menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+                  + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
