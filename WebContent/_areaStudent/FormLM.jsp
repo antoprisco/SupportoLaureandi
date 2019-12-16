@@ -53,25 +53,13 @@
 											
 											<select class="form-control" id="curriculum" name="curriculum" required>
 											
-											<%
-											//antonio. non so se va bene così io così l'ho trovato
-												ArrayList<String> listaC= new ArrayList<String>();
-												listaC.add("DATA SCIENCE");
-												listaC.add("CLOUD COMPUTING");
-												listaC.add("SICUREZZA INFORMATICA");
-												listaC.add("INTERNET OF THINGS");
-												listaC.add("SISTEMI INFORMATICI E TECNOLOGIE DEL SOFTWARE");
+										
 												
-																					
-												
-												for(int i=0; i<listaC.size();i++){
-													String c= listaC.get(i);
-													%>
-													<option value=<%=c%>><%=c%></option>
-													<%
-												}
-											%>
-												
+												<option value="DATA SCIENCE">DATA SCIENCE</option>
+												<option value="CLOUD COMPUTING">CLOUD COMPUTING</option>
+												<option value="SICUREZZA INFORMATICA">SICUREZZA INFORMATICA</option>
+												<option value="INTERNET OF THINGS">INTERNET OF THINGS</option>
+												<option value="SISTEMI INFORMATICI E TECNOLOGIE DEL SOFTWARE">SISTEMI INFORMATICI E TECNOLOGIE DEL SOFTWARE</option>
 											
 												
 											</select>
@@ -88,15 +76,17 @@
 											
 											
 											<select class="form-control" id="anno"  name="anno" required>
-												
-												<option value="2020">2020</option>
-												<option value="2021">2021</option>
-												<option value="2022">2022</option>
-												<option value="2023">2023</option>
-												<option value="2024">2024</option>
 												<%
-											    	
+											    	Integer range = Integer.parseInt(new SystemAttribute().getValueByKey("request-matriculation-year-range"));
+											    	for(int i = (range*-0); i <= 5; i++){
+											    	  LocalDate year = LocalDate.now().plusYears(i);
+											    	  
+											    	  %>
+												<option value="<%= year.getYear() %>"><%= year.getYear() %></option>
+												<%
+											    	}
 											    %>
+												
 											</select>
 										</div>
 								

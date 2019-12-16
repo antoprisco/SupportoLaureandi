@@ -59,9 +59,9 @@
 						            </div>
 						            <div class="col-md-8" id="graph-container">
 						                <canvas id="graficoBello"></canvas>
+						                <div id="notify"></div>
 						            </div>
-								</div>
-
+								
 
 
 

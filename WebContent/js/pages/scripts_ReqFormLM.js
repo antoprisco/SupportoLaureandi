@@ -1,8 +1,10 @@
 $(document).ready(function() {
 	$(document).on('submit', '#formRLM', function(e) {
+		
 		var anno = $("#anno").val();
 		if (anno != undefined) {
 			$(".preloader").show();
+			
 			$.ajax({
 				url : absolutePath + "/ServletCercaLM",
 				type : "POST",
@@ -13,12 +15,16 @@ $(document).ready(function() {
 					"flag" : 7
 				},
 				success : function(msg) {
+					
 					if (!msg.result) {
-						showAlert(1, msg.error+"va in success ma ha error");
+						$('#notify').remove();
+						$('#graficoBello').remove();
+						$('#graph-container').append('<div id= "notify">Non ci sono richieste per l anno selezionato<div>');
+						
 						
 					} else {
-						showAlert(1, "SUCCESSO");
 						 $('#graficoBello').remove();
+						 $('#notify').remove();
 						  $('#graph-container').append('<canvas id="graficoBello"><canvas>');
 						new Chart(
 								  $("#graficoBello"),
@@ -68,7 +74,7 @@ $(document).ready(function() {
 					}
 				},
 				error : function(msg) {
-					showAlert(1, "Impossibile recuperare i dati per FORMRLM.  va in error lo script");
+					showAlert(1, "Selezionare un anno accademico");
 				}
 			});
 
