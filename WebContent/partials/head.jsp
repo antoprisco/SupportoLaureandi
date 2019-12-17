@@ -5,6 +5,8 @@
 	Salerno</title>
 
 <!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/newCss.css">
+
 <link href="<%= request.getContextPath() %>/css/bootstrap-grid.css"
 	rel="stylesheet">
 <link href="<%= request.getContextPath() %>/css/bootstrap.css"

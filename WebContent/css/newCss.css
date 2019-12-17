@@ -13,3 +13,7 @@
     background-color: #FF9900;
     border-color: #FF9900;
 }
+
+#anno {
+	border: solid; !important
+}
