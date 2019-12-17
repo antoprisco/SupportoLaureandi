@@ -1,8 +1,7 @@
 $(document).ready(function() {
-	$(document).on('submit', '#formRLM', function(e) {
-		
+	$('#anno').change( function(e) {	
 		var anno = $("#anno").val();
-		if (anno != undefined) {
+		if (anno !== undefined && anno !== 'Open this select menu') {
 			$(".preloader").show();
 			
 			$.ajax({
@@ -45,31 +44,7 @@ $(document).ready(function() {
 								    "options":{}
 								  }
 								)
-						/*showAlert(0, msg.content);
 
-						setTimeout(function() {
-							window.location.href = msg.redirect;
-						}, 2000);
-						new Chart(
-  $("#graficoBello"),
-  {
-    "type": "orizontal-bar",
-    "data": {
-      "labels": ["January", "February", "March", "April", "May", "June", "July"],
-      "datasets": [
-        {
-          "label": "My First Dataset",
-          "data": [65,59,80,81,56,55,40],
-          "fill": false,
-          "borderColor": "rgb(75, 192, 192)",
-          "lineTension": 0.1
-        }
-      ]
-    },
-    "options":{}
-  }
-)
-						*/
 						
 					}
 				},

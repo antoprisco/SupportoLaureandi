@@ -58,17 +58,39 @@ public class ServletFormLM extends HttpServlet {
 	      
 	    
 	     	if(Integer.parseInt(request.getParameter("flag"))==6) {
+	     		
+	     		if(!(request.getParameter("curriculum").length()>0))
+	     			throw new IllegalArgumentException("Curriculum non selezionato");
+
+	     		if(!(request.getParameter("anno").length()>0))
+	     			throw new IllegalArgumentException("Anno non selezionato");
+	     		
 	     		RequestLM r= new RequestLM(request.getParameter("curriculum"),Integer.parseInt(request.getParameter("anno")),idUser); 
-	    	
+	     		
+	     		
+	     		
+	     		
 	     		try {
 	    		RequestlmDAO rd= new RequestlmDAO();
-	    		int idRequest=rd.doSave(r);
-			    if(idRequest>0) {
-			    	content = "Richiesta effettuata correttamente.";
-			    	result=1;
-			    }else
-			    	error = "Richiesta non effettuata errore salvataggio";
-			    redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+	    		
+	    		if(!rd.doRetrieveByUser(idUser)) {
+		    		int idRequest=rd.doSave(r);
+				    if(idRequest>0) {
+				    	content = "Richiesta effettuata correttamente.";
+				    	result=1;
+				    }else
+				    	error = "Richiesta non effettuata errore salvataggio";
+				    redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+	    		}else {
+		    		int idRequest=rd.doUpdate(r);
+				    if(idRequest>0) {
+				    	content = "Richiesta modificata correttamente.";
+				    	result=1;
+				    }else
+				    	error = "Richiesta non modificata errore salvataggio";
+				    redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+	    		}
+
 			    
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

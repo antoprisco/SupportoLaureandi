@@ -59,7 +59,6 @@
 											    	}
 											    %>
 						                    </select>
-						                    <button type="submit"  class="btn btn-primary btn-action generateExcel">Search</button>
 						                </form>
 						            </div>
 						            <div class="col-md-8" id="graph-container">
