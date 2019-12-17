@@ -23,6 +23,8 @@
           + "/viewRequest.jsp\">Richieste</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
+      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+        			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
@@ -30,11 +32,13 @@
   } else if (pageFolder.equals("_areaSecretary")) { //se stiamo in una pagina dell'area segreteria
 	  logoRedirect = request.getContextPath()+"/_areaSecretary/viewRequest.jsp";
   
-    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp")) {
+    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Richieste</a></li>";
-          menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
                   + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
+      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+              			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
