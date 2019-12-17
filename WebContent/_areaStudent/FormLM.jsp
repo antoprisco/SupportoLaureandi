@@ -78,7 +78,7 @@
 											<select class="form-control" id="anno"  name="anno" required>
 												<%
 											    	Integer range = Integer.parseInt(new SystemAttribute().getValueByKey("request-matriculation-year-range"));
-											    	for(int i = (range*-0); i <= 5; i++){
+											    	for(int i = ((range*-0)+1); i <= 5; i++){
 											    	  LocalDate year = LocalDate.now().plusYears(i);
 											    	  
 											    	  %>
