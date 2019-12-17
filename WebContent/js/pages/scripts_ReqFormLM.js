@@ -18,7 +18,7 @@ $(document).ready(function() {
 					if (!msg.result) {
 						$('#notify').remove();
 						$('#graficoBello').remove();
-						$('#graph-container').append('<div id= "notify">Non ci sono richieste per l anno selezionato<div>');
+						$('#graph-container').append('<div id= "notify" class="mt-5">Non ci sono richieste per l\'anno selezionato<div>');
 						
 						
 					} else {
@@ -41,7 +41,17 @@ $(document).ready(function() {
 								        }
 								      ]
 								    },
-								    "options":{}
+								    "options":{
+								    	"scales":{
+								    		"xAxes":[{
+								    			"ticks":{
+								    				"beginAtZero": true,
+								    				"precision": 0,
+								    				"suggestedMax": 100
+								    			}
+								    		}]
+								    	}
+								    }
 								  }
 								)
 

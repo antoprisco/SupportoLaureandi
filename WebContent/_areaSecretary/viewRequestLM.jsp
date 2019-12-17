@@ -61,9 +61,9 @@
 						                    </select>
 						                </form>
 						            </div>
-						            <div class="col-md-8" id="graph-container">
+						            <div class="col-md-8" id="graph-container" align="center">
 						                <canvas id="graficoBello"></canvas>
-						                <div id="notify"></div>
+						                <div id="notify" align="center"></div>
 						            </div>
 								
 
