@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,9 +52,6 @@ public class ServletCercaLM extends HttpServlet {
 	    ArrayList<String> curriculum = new ArrayList<String>();
 		ArrayList<Integer> count = new ArrayList<Integer>();
 		if(Integer.parseInt(request.getParameter("flag"))==7){
-			
-
-				
 			RequestlmDAO rd= new RequestlmDAO();
 			ArrayList<RequestLM> list= new ArrayList<RequestLM>();
 			try {
