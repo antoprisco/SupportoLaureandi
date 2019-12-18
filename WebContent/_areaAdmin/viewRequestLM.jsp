@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 <%@ page
-	import="java.util.*, model.*, java.sql.SQLException, model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+	import="java.util.*, model.*, java.sql.SQLException,java.text.SimpleDateFormat, java.time.*, model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
 
 <%
 	String pageName = "viewRequestLM.jsp";
@@ -48,20 +48,25 @@
 						                    <label for="scegliAnno">Iscritti per anno:</label>
 						                    <select class="custom-select" id="anno" name="anno" required>
 						                        <option selected>Open this select menu</option>
-						                        <option value="2020">2020</option>
-												<option value="2021">2021</option>
-												<option value="2022">2022</option>
-												<option value="2023">2023</option>
-												<option value="2024">2024</option>
+						                        <%
+											    	Integer range = Integer.parseInt(new SystemAttribute().getValueByKey("request-matriculation-year-range"));
+											    	for(int i = ((range*-0)+1); i <= 5; i++){
+											    	  LocalDate year = LocalDate.now().plusYears(i);
+											    	  
+											    	  %>
+												<option value="<%= year.getYear() %>"><%= year.getYear() %></option>
+												<%
+											    	}
+											    %>
 						                    </select>
-						                    <button type="submit"  class="btn btn-primary btn-action generateExcel">Search</button>
+
 						                </form>
 						            </div>
-						            <div class="col-md-8" id="graph-container">
+						            <div class="col-md-8" id="graph-container" align="center">
 						                <canvas id="graficoBello"></canvas>
+						                <div id="notify" align="center"></div>
 						            </div>
-								</div>
-
+								
 
 
 

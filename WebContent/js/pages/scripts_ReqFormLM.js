@@ -1,8 +1,9 @@
 $(document).ready(function() {
-	$(document).on('submit', '#formRLM', function(e) {
+	$('#anno').change( function(e) {	
 		var anno = $("#anno").val();
-		if (anno != undefined) {
+		if (anno !== undefined && anno !== 'Open this select menu') {
 			$(".preloader").show();
+			
 			$.ajax({
 				url : absolutePath + "/ServletCercaLM",
 				type : "POST",
@@ -13,12 +14,16 @@ $(document).ready(function() {
 					"flag" : 7
 				},
 				success : function(msg) {
+					
 					if (!msg.result) {
-						showAlert(1, msg.error+"va in success ma ha error");
+						$('#notify').remove();
+						$('#graficoBello').remove();
+						$('#graph-container').append('<div id= "notify" class="mt-5">Non ci sono richieste per l\'anno selezionato<div>');
+						
 						
 					} else {
-						showAlert(1, "SUCCESSO");
 						 $('#graficoBello').remove();
+						 $('#notify').remove();
 						  $('#graph-container').append('<canvas id="graficoBello"><canvas>');
 						new Chart(
 								  $("#graficoBello"),
@@ -36,39 +41,25 @@ $(document).ready(function() {
 								        }
 								      ]
 								    },
-								    "options":{}
+								    "options":{
+								    	"scales":{
+								    		"xAxes":[{
+								    			"ticks":{
+								    				"beginAtZero": true,
+								    				"precision": 0,
+								    				"suggestedMax": 100
+								    			}
+								    		}]
+								    	}
+								    }
 								  }
 								)
-						/*showAlert(0, msg.content);
 
-						setTimeout(function() {
-							window.location.href = msg.redirect;
-						}, 2000);
-						new Chart(
-  $("#graficoBello"),
-  {
-    "type": "orizontal-bar",
-    "data": {
-      "labels": ["January", "February", "March", "April", "May", "June", "July"],
-      "datasets": [
-        {
-          "label": "My First Dataset",
-          "data": [65,59,80,81,56,55,40],
-          "fill": false,
-          "borderColor": "rgb(75, 192, 192)",
-          "lineTension": 0.1
-        }
-      ]
-    },
-    "options":{}
-  }
-)
-						*/
 						
 					}
 				},
 				error : function(msg) {
-					showAlert(1, "Impossibile recuperare i dati per FORMRLM.  va in error lo script");
+					showAlert(1, "Selezionare un anno accademico");
 				}
 			});
 

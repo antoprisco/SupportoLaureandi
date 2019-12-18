@@ -11,27 +11,34 @@
   
   
   CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
-  if(!ck.isAllowed()){			//cliccando sul logo reinderizza a index se non si è loggati
+  if(!ck.isAllowed()){			//cliccando sul logo reinderizza a index se non si ï¿½ loggati
 	  logoRedirect = request.getContextPath()+ck.getUrlRedirect();
   }
 
   if (pageFolder.equals("_areaAdmin")) { //se stiamo in una pagina dell'area admin
 	  logoRedirect = request.getContextPath()+"/_areaAdmin/viewRequest.jsp";
   
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp")) {
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Richieste</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
+      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+        			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
+    
   } else if (pageFolder.equals("_areaSecretary")) { //se stiamo in una pagina dell'area segreteria
 	  logoRedirect = request.getContextPath()+"/_areaSecretary/viewRequest.jsp";
   
-    if (pageName.equals("viewRequest.jsp")) {
+    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Richieste</a></li>";
+      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+                  + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
+      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+              			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
@@ -61,7 +68,7 @@
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
     if (pageName.equals("signUp.jsp")) {
-		logoRedirect = request.getContextPath()+ck.getUrlRedirect();	//siccome signUp è raggiungibile solo quando non sono loggato
+		logoRedirect = request.getContextPath()+ck.getUrlRedirect();	//siccome signUp ï¿½ raggiungibile solo quando non sono loggato
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/signUp.jsp\">Registrati</a></li>";
       menu += "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Benvenuto</a></li>";
