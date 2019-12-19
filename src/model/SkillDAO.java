@@ -60,6 +60,45 @@ public class SkillDAO {
 			}
 			return listbean;
 		}
-	
+	  public synchronized ArrayList<Skill> doRetrieveAll() throws SQLException {
+		  Connection conn = new DbConnection().getInstance().getConn();
+			PreparedStatement preparedStatement = null;
+
+			ArrayList<Skill> listBean = new ArrayList<Skill>();
+
+			String selectSQL = "SELECT * FROM " + TABLE_NAME+ "";
+			
+			
+
+			try {
+				//connection = DbConnection.getInstance().getConn();
+				preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					Skill bean = new Skill();								
+					bean.setId(rs.getInt("id_skill"));
+					bean.setNome(rs.getString("nome"));
+					bean.setTipo(rs.getInt("tipo"));
+					bean.setLvl(rs.getString("livello"));
+					
+					
+					listBean.add(bean);
+					
+					
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (conn != null)
+						conn.commit();
+				}
+			}
+			return listBean;
+		}
 	
 }

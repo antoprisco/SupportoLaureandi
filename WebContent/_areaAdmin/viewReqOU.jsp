@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 <%@ page
-	import="java.util.*, java.sql.SQLException,model.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+	import="java.util.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
 
 <%
-	String pageName = "viewRequestOU.jsp";
+	String pageName = "viewReqOU.jsp";
 	String pageFolder = "_areaAdmin";
 	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
 	if(!ck.isAllowed()){
@@ -18,19 +18,6 @@
 </head>
 
 <body onLoad="showData()">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script>
-$(document).ready(function(){
-	$(".b").hide();
-  $("button").click(function(){
-    $(".b").toggle();
-    
-  });
-});
-</script>
-
-
 	<div class="page-wrapper">
 
 		<!-- Preloader -->
@@ -52,50 +39,17 @@ $(document).ready(function(){
 								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr>
-											<th class="text-center">Elenco richieste</th>
+											<th class="text-center">Elenco Richieste</th>
 											
-											
+										
 										</tr>
-											<tr>
-										<%
-										RequestOU r= new RequestOU();
-										RequestOUDAO rd= new RequestOUDAO();
-										ArrayList<RequestOU> list= new ArrayList<RequestOU>();
-									try{
-										list=rd.doRetrieveAll();
-										for(int i=0; i<list.size(); i++){
-											UserBean u= new UserBean();
-											UserBeanDAO ud= new UserBeanDAO();
-											u=ud.doRetrieveByEmail(list.get(i).getEmail());
-											%>
-										
-											<th> <button><%=u.getNome()%>  <%=u.getCognome()%></button>
-											
-											<div class="b">
-											<br>
-												<div>Informazioni</div>
-												<p><%=u.getEmail() %></p>
-											</div>
-											
-											</th>
-											
-											
-											</tr>
-											<%
-										
-											}
-										}catch(SQLException e) {
-												// TODO Auto-generated catch block
-												e.printStackTrace();
-											}
-										
-										%>
 									</thead>
 									<tbody id="bodyAdminTable">
 
 									</tbody>
 								</table>
-																						
+								
+							
 							</div>
 						</div>
 					</div>
@@ -109,6 +63,11 @@ $(document).ready(function(){
 
 	<jsp:include page="/partials/includes.jsp" />
 	
+		<script
+		src="<%= request.getContextPath() %>/js/pages/scripts_viewReqOU.js">
+		</script>
 	
+
+
 </body>
 </html>
