@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
 <%@ page
-	import="java.util.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+	import="java.util.*, java.sql.SQLException,model.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
 
 <%
 	String pageName = "viewRequestOU.jsp";
@@ -18,6 +18,19 @@
 </head>
 
 <body onLoad="showData()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$(".b").hide();
+  $("button").click(function(){
+    $(".b").toggle();
+    
+  });
+});
+</script>
+
+
 	<div class="page-wrapper">
 
 		<!-- Preloader -->
@@ -39,35 +52,50 @@
 								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr>
-											<th class="text-center">CURRICULUM</th>
-											<th class="text-center">Allegati</th>
-											<th class="text-center">Matricola</th>
-											<th class="text-center">Nome</th>
-											<th class="text-center">Cognome</th>
-											<th class="text-center">A.A.</th>
-											<th class="text-center">Cod. Cert.</th>
-											<th class="text-center">Liv. Cert.</th>
-											<th class="text-center">Data Ril.</th>
-											<th class="text-center">Data Scad.</th>
-											<th class="text-center">CFU Ric.</th>
-											<th class="text-center">CFU Conv.</th>
-											<th class="text-center">Ente</th>
-											<th class="text-center">Stato</th>
-											<th class="text-center">Azioni</th>
+											<th class="text-center">Elenco richieste</th>
+											
+											
 										</tr>
+											<tr>
+										<%
+										RequestOU r= new RequestOU();
+										RequestOUDAO rd= new RequestOUDAO();
+										ArrayList<RequestOU> list= new ArrayList<RequestOU>();
+									try{
+										list=rd.doRetrieveAll();
+										for(int i=0; i<list.size(); i++){
+											UserBean u= new UserBean();
+											UserBeanDAO ud= new UserBeanDAO();
+											u=ud.doRetrieveByEmail(list.get(i).getEmail());
+											%>
+										
+											<th> <button><%=u.getNome()%>  <%=u.getCognome()%></button>
+											
+											<div class="b">
+											<br>
+												<div>Informazioni</div>
+												<p><%=u.getEmail() %></p>
+											</div>
+											
+											</th>
+											
+											
+											</tr>
+											<%
+										
+											}
+										}catch(SQLException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											}
+										
+										%>
 									</thead>
 									<tbody id="bodyAdminTable">
 
 									</tbody>
 								</table>
-								
-								<div align="center">
-									<button class="btn btn-primary btn-action generateExcel" id="generateExcelAccepted"
-										title="Genera File Excel - Richieste Accettate">Richieste Accettate</button>
-									
-									<button class="btn btn-primary btn-action generateExcel" id="generateExcelRefused"
-										title="Genera File Excel - Richieste Rifiutate">Richieste Rifiutate</button>								
-								</div>
+																						
 							</div>
 						</div>
 					</div>
@@ -80,40 +108,7 @@
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
-	<script>
-			jQuery(document).ready(function($){
-				$('#adminTable').DataTable( {
-			        "order": [[ 0, "desc" ]],
-			        "lengthMenu": [[10, -1], [10, "Tutti"]],
-			        "autoWidth": false,
-			        "bAutoWidth": false,
-			        "language": {
-						    "sEmptyTable":     "Nessuna richiesta Presente",
-						    "sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
-						    "sInfoEmpty":      "Vista da 0 a 0 di 0 elementi",
-						    "sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
-						    "sInfoPostFix":    "",
-						    "sInfoThousands":  ".",
-						    "sLengthMenu":     "Visualizza _MENU_ elementi",
-						    "sLoadingRecords": "Caricamento...",
-						    "sProcessing":     "Elaborazione...",
-						    "sSearch":         "Cerca:",
-						    "sZeroRecords":    "La ricerca non ha portato alcun risultato.",
-						    "oPaginate": {
-						        "sFirst":      "Inizio",
-						        "sPrevious":   '<i class="fa fa-caret-left"></i>',
-						        "sNext":       '<i class="fa fa-caret-right"></i>',
-						        "sLast":       "Fine"
-						    },
-						    "oAria": {
-						        "sSortAscending":  ": attiva per ordinare la colonna in ordine crescente",
-						        "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
-						    }
-			        }        
-			    } );
-			});
-		</script>
-	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_viewRequestAdmin.js"></script>
+	
+	
 </body>
 </html>
