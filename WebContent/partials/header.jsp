@@ -24,7 +24,7 @@
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
       menu +=  "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-        			 + "/viewRequestOU.jsp\">Orientamento in uscita</li>";
+        			 + "/viewReqOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";
     }

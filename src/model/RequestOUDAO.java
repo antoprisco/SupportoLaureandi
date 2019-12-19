@@ -117,7 +117,7 @@ public class RequestOUDAO {
 
 			ArrayList<RequestOU> listaReq = new ArrayList<RequestOU>();
 
-			String selectSQL = "SELECT * FROM " + TABLE_NAME+ "";
+			String selectSQL = "SELECT DISTINCT fk_email FROM " + TABLE_NAME+ "";
 			
 			
 
@@ -130,11 +130,12 @@ public class RequestOUDAO {
 				while (rs.next()) {
 					RequestOU bean = new RequestOU();
 					
-					bean.setIdSkill(rs.getInt("fk_id_skill"));
+					//bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
 					
 					
-					listaReq.add(bean);			
+					listaReq.add(bean);
+					
 					
 				}
 
