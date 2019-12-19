@@ -16,7 +16,25 @@ public class RequestOUDAO {
 	static final String TABLE_NAME = "request_ou";
 	  
 	  
-	  
+	public synchronized boolean doSave(CompetenzeBean cb) throws SQLException {
+
+		Connection con = (Connection) new DbConnection().getInstance().getConn();
+		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(FK_ID_SKILL, FK_EMAIL) VALUES (?,?)";
+		boolean flag = true;
+
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		ps.setInt(1, cb.getSkill().getId());
+		ps.setString(2, cb.getUser().getEmail());
+
+		try {	
+			ps.executeUpdate();
+		} catch (Exception e) {
+			flag = false;
+			e.printStackTrace();
+		}	
+		
+		return flag;
+	}
 	  
 	  public synchronized ArrayList<RequestOU> doRetrieveByID(int id) throws SQLException {
 		  	Connection conn = new DbConnection().getInstance().getConn();
@@ -116,8 +134,7 @@ public class RequestOUDAO {
 					bean.setEmail(rs.getString("fk_email"));
 					
 					
-					listaReq.add(bean);
-					
+					listaReq.add(bean);			
 					
 				}
 

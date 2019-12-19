@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfacce.UserInterface;
 import model.CompetenzeBean;
-import model.CompetenzeBeanDAO;
+import model.RequestOUDAO;
 import model.Skill;
 import model.SkillDAO;
 
@@ -42,7 +42,7 @@ public class SevletFormOU extends HttpServlet {
 		SkillDAO skillDAO = new SkillDAO();
 		ArrayList<Skill> list = new ArrayList<Skill>();
 		
-		CompetenzeBeanDAO cbDAO = new CompetenzeBeanDAO();
+		RequestOUDAO rDAO = new RequestOUDAO();
 		
 		/*
 		 * 		UNDER CONSTRUCTION
