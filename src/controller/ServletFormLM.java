@@ -37,7 +37,7 @@ public class ServletFormLM extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doPost(request, response);
 	/**
@@ -45,7 +45,7 @@ public class ServletFormLM extends HttpServlet {
 	 */
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 	    Integer result = 0;
@@ -110,6 +110,3 @@ public class ServletFormLM extends HttpServlet {
 	    System.err.println(res.toString());
 	}      
 }
-	
-
-
