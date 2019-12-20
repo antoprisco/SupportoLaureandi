@@ -64,10 +64,39 @@ public class ServletViewReqOU extends HttpServlet {
 					u=ud.doRetrieveByEmail(rq.getEmail());
 					nome.add(u.getNome());
 					cognome.add(u.getCognome());
+					Skill s= new Skill();
+					SkillDAO sd= new SkillDAO();
+					ArrayList<Skill> listaskill= new ArrayList<Skill>();
+					listaskill=sd.doRetrieveAll();
+					list=rd.doRetrieveByEmail(rq.getEmail());
 					
 					content+= "<tr>";
 					content+="<td><button>"+u.getCognome()+" "+ u.getNome()+"</button>";
-					content+="<div class='b'> Informazioni <br>"+ u.getEmail()+ " </div>";
+					content+="<div class='b'> Informazioni <br>"+ u.getEmail()+ "</div>";
+					for(RequestOU rou:list) {
+						for(Skill skil: listaskill) {
+							
+							if(rou.getIdSkill()==skil.getId()) {
+								
+								content+="<div class='b'> "+ "<b>"+ skil.getNome()+"</b>";
+								if(skil.getTipo()==0) {
+									if(skil.getLvl().equals("1")) content+=" : Livello basso <br>";
+									if(skil.getLvl().equals("2")) content+=" : Livello medio <br>";
+									if(skil.getLvl().equals("3")) content+=" : Livello alto <br>";
+									
+								}
+								if(skil.getTipo()==1) content+="<br>";
+								if(skil.getTipo()==2) content+=" : Livello "+skil.getLvl()+"<br>";
+							content+=" </div>";
+								
+								
+							}
+					}
+					}
+					
+					
+					
+					
 					content+="</td>";
 					content+="</tr>";
 				}

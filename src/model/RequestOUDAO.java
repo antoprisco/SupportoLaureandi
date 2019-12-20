@@ -19,7 +19,7 @@ public class RequestOUDAO {
 	public synchronized boolean doSave(CompetenzeBean cb) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
-		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(FK_ID_SKILL, FK_EMAIL) VALUES (?,?)";
+		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email) VALUES (?,?)";
 		boolean flag = true;
 
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -150,5 +150,7 @@ public class RequestOUDAO {
 			}
 			return listaReq;
 		}
+	  
+	 
 	  
 }

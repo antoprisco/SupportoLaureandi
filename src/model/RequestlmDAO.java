@@ -43,7 +43,7 @@ public class RequestlmDAO {
 			preparedStatement.setString(3, r.getEmail());
 			
 			
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
               idRequest = rs.getInt(1);
