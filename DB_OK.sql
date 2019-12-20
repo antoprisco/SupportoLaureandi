@@ -1,3 +1,6 @@
+CREATE DATABASE  IF NOT EXISTS `supportolaureandi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `supportolaureandi`;
+
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: supportolaureandi
@@ -122,6 +125,9 @@ DROP TABLE IF EXISTS `request_ou`;
 CREATE TABLE `request_ou` (
   `FK_ID_SKILL` int(3) DEFAULT NULL,
   `FK_EMAIL` varchar(50) NOT NULL,
+  `DATE_OF_BIRTH` DATE NOT NULL,
+  `CELL_NUMBER` varchar(12) NOT NULL, 
+ 
   KEY `FK_EMAIL` (`FK_EMAIL`),
   KEY `FK_ID_SKILL` (`FK_ID_SKILL`),
   CONSTRAINT `RequestOu_ibfk_1` FOREIGN KEY (`FK_EMAIL`) REFERENCES `user` (`EMAIL`),
@@ -135,7 +141,7 @@ CREATE TABLE `request_ou` (
 
 LOCK TABLES `request_ou` WRITE;
 /*!40000 ALTER TABLE `request_ou` DISABLE KEYS */;
-INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it');
+INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it', '1998-12-04', '3333333333' );
 /*!40000 ALTER TABLE `request_ou` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,8 +183,8 @@ DROP TABLE IF EXISTS `skill`;
 CREATE TABLE `skill` (
   `ID_SKILL` int(3) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) NOT NULL,
-  `TIPO` int(20) NOT NULL,
-  `LIVELLO` varchar(5) NOT NULL,
+  `TIPO` smallint(1) NOT NULL,
+  `LIVELLO` varchar(2) NOT NULL,
   PRIMARY KEY (`ID_SKILL`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -189,7 +195,7 @@ CREATE TABLE `skill` (
 
 LOCK TABLES `skill` WRITE;
 /*!40000 ALTER TABLE `skill` DISABLE KEYS */;
-INSERT INTO `skill` VALUES (11,'java',1,'A2');
+INSERT INTO `skill` VALUES (11,'java', 0 ,'3');
 /*!40000 ALTER TABLE `skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +274,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('04wmljf0wy.@studenti.unisa.it','Giuseppe','Cirino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('a.napoli94@studenti.unisa.it','Antonio','Napoli','M','77d5477c94bf3a33e53c6bb08ad720c7072b0fee',0),('fferrucci@unisa.it','Luigia','Melchionno','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',2),('s.avolicino@studenti.unisa.it','Simone','Avolicino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('segreteria@unisa.it','Segreteria','Studenti','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',1);
+INSERT INTO `user` VALUES ('04wmljf0wy.@studenti.unisa.it','Giuseppe','Cirino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('a.napoli94@studenti.unisa.it','Antonio','Napoli','M','77d5477c94bf3a33e53c6bb08ad720c7072b0fee',0),('fferrucci@unisa.it','Filomena','Ferrucci','F','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',2),('s.avolicino@studenti.unisa.it','Simone','Avolicino','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',0),('segreteria@unisa.it','Segreteria','Studenti','M','4bb47fd2a6c598d2a52ef7de3473fd3ea8401a9b',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -72,7 +72,7 @@ private static final long serialVersionUID = 1L;
 					
 					content+= "<tr>";
 					content+="<td>"+u.getCognome()+" "+ u.getNome()+"&emsp;&emsp;<button>Visualizza</button>";
-					content+="<div class='b'> data di nascita: <b>"+/* u.getDataNascita()+*/" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ /*u.getTelefono()+*/"</b><br>";
+					content+="<div class='b'> data di nascita: <b>"+ rq.getDateOfBirth()+" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ rq.getCellNumber()+"</b><br>";
 					content+="<br>Competenze</div> <nav> <ul>";
 					for(RequestOU rou:list) {
 						for(Skill skil: listaskill) {

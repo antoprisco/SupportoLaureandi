@@ -1,5 +1,6 @@
 package model;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,12 +20,14 @@ public class RequestOUDAO {
 	public synchronized boolean doSave(CompetenzeBean cb) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
-		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email) VALUES (?,?)";
+		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email, date_of_birth, cell_number) VALUES (?,?,?,?)";
 		boolean flag = true;
 
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 		ps.setInt(1, cb.getSkill().getId());
 		ps.setString(2, cb.getUser().getEmail());
+		ps.setDate(3, (Date) cb.getDataNascita());
+		ps.setString(4, cb.getTelefono());
 
 		try {	
 			ps.executeUpdate();
@@ -57,6 +60,8 @@ public class RequestOUDAO {
 					RequestOU bean = new RequestOU();
 					bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
+					bean.setDateOfBirth(rs.getDate("date_of_birth"));
+					bean.setCellNumber(rs.getString("cell_number"));
 					
 					
 					listbean.add(bean);
@@ -95,6 +100,8 @@ public class RequestOUDAO {
 					RequestOU bean = new RequestOU();
 					bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
+					bean.setDateOfBirth(rs.getDate("date_of_birth"));
+					bean.setCellNumber(rs.getString("cell_number"));
 					
 					
 					listbean.add(bean);
