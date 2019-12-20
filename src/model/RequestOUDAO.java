@@ -16,15 +16,15 @@ public class RequestOUDAO {
 	static final String TABLE_NAME = "request_ou";
 	  
 	  
-	public synchronized boolean doSave(CompetenzeBean cb) throws SQLException {
+	public synchronized boolean doSave(RequestOU r) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
-		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(FK_ID_SKILL, FK_EMAIL) VALUES (?,?)";
+		String sql = "INSERT INTO " + RequestOUDAO.TABLE_NAME + "(FK_SKILL, FK_USER) VALUES (?,?)";
 		boolean flag = true;
 
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		ps.setInt(1, cb.getSkill().getId());
-		ps.setString(2, cb.getUser().getEmail());
+		ps.setInt(1, r.getIdSkill());
+		ps.setString(2, r.getEmail());
 
 		try {	
 			ps.executeUpdate();
