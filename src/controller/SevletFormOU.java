@@ -44,7 +44,6 @@ public class SevletFormOU extends HttpServlet {
 		
 		UserInterface user = (UserInterface) request.getSession().getAttribute("user");
 		int idSkill = Integer.parseInt(request.getParameter("skill"));
-		String email = user.getEmail();
 		
 		SkillDAO skillDAO = new SkillDAO();
 		ArrayList<Skill> list = new ArrayList<Skill>();
