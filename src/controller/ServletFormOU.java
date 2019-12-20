@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfacce.UserInterface;
 import model.CompetenzeBean;
+import model.RequestOU;
 import model.RequestOUDAO;
 import model.Skill;
 import model.SkillDAO;
@@ -36,17 +37,32 @@ public class SevletFormOU extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Integer result = 0;
+	    String error = "";
+	    String content = "";
+	    String redirect = "";
+		
 		UserInterface user = (UserInterface) request.getSession().getAttribute("user");
 		int idSkill = Integer.parseInt(request.getParameter("skill"));
 		
 		SkillDAO skillDAO = new SkillDAO();
 		ArrayList<Skill> list = new ArrayList<Skill>();
 		
-		RequestOUDAO rDAO = new RequestOUDAO();
-		
-		/*
-		 * 		UNDER CONSTRUCTION
-		 */
+		try {	
+			
+			list = skillDAO.doRetrieveByID(idSkill);
+			RequestOUDAO rDAO = new RequestOUDAO();
+			
+			for(Skill s: list) {
+				RequestOU r = new RequestOU();
+				r.setIdSkill(s.getId());
+				r.setEmail(user.getEmail());
+				rDAO.doSave(r);
+			}
+			
+		} catch (Exception e) {
+			
+		}
 	}
 
 	/**
