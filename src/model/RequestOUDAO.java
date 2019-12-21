@@ -19,7 +19,6 @@ public class RequestOUDAO {
 	public synchronized boolean doSave(RequestOU r) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
-
 		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email) VALUES (?,?)";
 
 		boolean flag = true;
