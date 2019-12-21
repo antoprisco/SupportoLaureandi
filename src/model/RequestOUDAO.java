@@ -17,7 +17,7 @@ public class RequestOUDAO {
 	static final String TABLE_NAME = "request_ou";
 	  
 	  
-	public synchronized boolean doSave(CompetenzeBean cb) throws SQLException {
+	public synchronized boolean doSave(RequestOU r) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
 		String sql = "INSERT INTO" + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email, date_of_birth, cell_number) VALUES (?,?,?,?)";
@@ -28,6 +28,7 @@ public class RequestOUDAO {
 		ps.setString(2, cb.getUser().getEmail());
 		ps.setDate(3, (Date) cb.getDataNascita());
 		ps.setString(4, cb.getTelefono());
+
 
 		try {	
 			ps.executeUpdate();
