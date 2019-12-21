@@ -73,13 +73,12 @@ private static final long serialVersionUID = 1L;
 					content+= "<tr>";
 					content+="<td>"+u.getCognome()+" "+ u.getNome()+"&emsp;&emsp;<button>Visualizza</button>";
 					content+="<div class='b'> data di nascita: <b>"+ rq.getDateOfBirth()+" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ rq.getCellNumber()+"</b><br>";
-					content+="<br>Competenze</div> <nav> <ul>";
+					content+="<br>Competenze<br>";
 					for(RequestOU rou:list) {
 						for(Skill skil: listaskill) {
-							
 							if(rou.getIdSkill()==skil.getId()) {
 								
-								content+="<li><div class='b'> "+ skil.getNome()+"<b>";
+								content+="<li> "+ skil.getNome()+"<b>";
 								if(skil.getTipo()==0) {
 									if(skil.getLvl().equals("1")) content+=": Livello basso <br>";
 									if(skil.getLvl().equals("2")) content+=": Livello medio <br>";
@@ -87,13 +86,14 @@ private static final long serialVersionUID = 1L;
 									
 								}
 								if(skil.getTipo()==1) content+="<br>";
-								if(skil.getTipo()==2) content+=" : Livello "+skil.getLvl()+"<br>";
-							content+=" </nav></b></div>";
+								if(skil.getTipo()==2) content+=": Livello "+skil.getLvl()+"<br>";
+							content+=" </b>";
 								
 								
 							}
 					}
 					}
+					content+="</div>";
 					
 					
 					
