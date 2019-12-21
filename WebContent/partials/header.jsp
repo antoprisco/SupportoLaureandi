@@ -55,7 +55,7 @@
       menu +="<li><a href=\"" + request.getContextPath() + "/" + pageFolder
     		  + "/FormLM.jsp\">Laurea Magistrale</li>";
       menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
-     			 + "/NewFile.jsp\">Orientamento in uscita</li>";
+     			 + "/viewFormOU.jsp\">Orientamento in uscita</li>";
       menu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
     			  + "/gfdgd.sjp\">Iscrizione a corsi singoli</li>";
       menu +=
