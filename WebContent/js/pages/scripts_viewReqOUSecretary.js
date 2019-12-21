@@ -29,7 +29,7 @@ function showData() {
 $(document).ready(function(){
 	$(".b").hide();
   $("button").click(function(){
-    $(".b").toggle();
+	  $(this).siblings(".b").toggle();
     
   });
 });
