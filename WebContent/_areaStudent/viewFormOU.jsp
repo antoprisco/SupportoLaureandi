@@ -81,7 +81,7 @@ tr:nth-child(even) {
 
 										<div class="form-group">
 											<div class="form-group">
-											<label > Data di Nascita</label> <input class="form-control" type="date" value="10-10-1994" id="datanascita">
+											<label > Data di Nascita</label> <input class="form-control" type="date" value="1994-10-10" id="datanascita">
 										</div>
 
 										<div class="form-group">
@@ -97,41 +97,45 @@ tr:nth-child(even) {
 
 
 										<h2>Skill</h2>
-										<table>
+										<table id="skill_table">
 										<tr>
 												<th>Skill</th>
 												<th>Basso</th>
 												<th>Medio</th>
 												<th>Alto</th>
 										</tr>
-										<tr>
+										
 										<%Skill s= new Skill();
 													SkillDAO sd= new SkillDAO();
 													ArrayList<Skill> list= new ArrayList<Skill>();
 													list=sd.doRetrieveAll();
 													for(Skill sk: list){
 														%>
+														<tr class="skills">
 														<td><%=sk.getNome()%></td>
 														<fieldset id="<%=sk.getNome()%>">
 														<td><input type="radio" name="<%=sk.getNome()%>" value="basso"></td>
 														<td><input type="radio" name="<%=sk.getNome()%>" value="medio"></td>
-														<td><input type="radio" name="<%=sk.getNome()%>" value="alto"></td></tr>
+														<td><input type="radio" name="<%=sk.getNome()%>" value="alto"></td>
 														</fieldset>
+														</tr>
 														<%
 													}
 													%>
 										</table>
 										<div class="form-group">
-											<label for="nome">Aggiungi competenza</label> <input class="form-control"
-												type="string" id="nome" required>
-												<h1><button id = "aggiungiSkill">+</button></h1>
+											<label for="nome">Aggiungi competenza</label> 
+											<input class="form-control" type="string" id="nomeSkill">
+												<h1><button type="button" id = "aggiungiSkill">+</button></h1>
 												
 										</div>
 										
 										<h2>Soft Skill</h2>
-										<table><tr><td></td><tr></table>
-										<label for="nome">Aggiungi soft Skill</label> <input class="form-control" type="string" id="nome" required>
-										<h1><button id = "aggiungiSkill">+</button></h1>
+										<table id=softskill_table>
+											<tr class="softskills" style="visible:hidden"></tr>
+										</table>
+										<label for="nome">Aggiungi soft Skill</label> <input class="form-control" type="string" id="nomeSoftSkill">
+										<h1><button type="button" id = "aggiungiSoftSkill">+</button></h1>
 										<table>
 										<tr>
 												<th>Lingua</th>
@@ -139,7 +143,7 @@ tr:nth-child(even) {
 										</tr>
 										<tr>
 										<td>Inglese</td>
-										<td><select class="" id="lingua" name="lingua" required>
+										<td><select class="" id="lingua" name="inglese" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -150,7 +154,7 @@ tr:nth-child(even) {
 											</tr>
 											<tr>
 										<td>Francese</td>
-										<td><select class="" id="lingua" name="lingua" required>
+										<td><select class="" id="lingua" name="francese" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -161,7 +165,7 @@ tr:nth-child(even) {
 											</tr>
 											<tr>
 										<td>Tedesco</td>
-										<td><select class="" id="lingua" name="lingua" required>
+										<td><select class="" id="lingua" name="tedesco" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -171,7 +175,7 @@ tr:nth-child(even) {
 											</select></td>
 											</tr>
 											<td>Spagnolo</td>
-										<td><select class="" id="lingua" name="lingua" required>
+										<td><select class="" id="lingua" name="spagnolo" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -181,7 +185,7 @@ tr:nth-child(even) {
 											</select></td>
 											</tr>
 										</table>
-</body>
+
 
 
 												<div class="form-group">
@@ -191,14 +195,14 @@ tr:nth-child(even) {
 					<div class="clearfix"></div>
 
 </form>
-
+</body>
 <jsp:include page="/partials/footer.jsp" />
 </div>
 <!--End pagewrapper-->
 
 <jsp:include page="/partials/includes.jsp" />
-<script
-	src="<%=request.getContextPath()%>/js/pages/scripts_FormOu.js"></script>
+<script 
+	src="<%=request.getContextPath()%>/js/pages/scripts_ReqFormOU.js"></script>
 
 </body>
 </html>
