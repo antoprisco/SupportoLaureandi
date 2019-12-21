@@ -1,24 +1,18 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class RequestOU {
-	
-	private String nome;
-	private String cognome;
 	private int idSkill;
 	private String email;
-	private String telefono;
-	private Date dataNascita;
-	
-	public RequestOU(String nome, String cognome, int idSkill, String email, String telefono, Date dataNascita) {
-		
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataNascita = dataNascita;
-		this.telefono = telefono;
+	Date dateOfBirth;
+	String  cellNumber;
+
+	public RequestOU(int idSkill, String email, Date day, String cell) {
 		this.idSkill=idSkill;
-		this.email=email;	
+		this.email=email;
+		this.dateOfBirth = day;
+		this.cellNumber = cell;	
 	}
 	
 	public RequestOU() { }
@@ -55,21 +49,20 @@ public class RequestOU {
 		this.email = email;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Date getDataNascita() {
-		return dataNascita;
+	public String getCellNumber() {
+		return cellNumber;
 	}
 
-	public void setDataNascita(Date dataNascita) {
-		this.dataNascita = dataNascita;
-	}  
-
-
+	public void setCellNumber(String cellNumber) {
+		this.cellNumber = cellNumber;
+	}
+	
 }

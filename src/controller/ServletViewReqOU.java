@@ -20,6 +20,7 @@ import java.sql.SQLException;
  */
 @WebServlet("/ServletViewReqOU")
 public class ServletViewReqOU extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -54,6 +55,7 @@ public class ServletViewReqOU extends HttpServlet {
 			RequestOU r= new RequestOU();
 			RequestOUDAO rd= new RequestOUDAO();
 			ArrayList<RequestOU> list= new ArrayList<RequestOU>();
+
 			try{
 				list=rd.doRetrieveAll();
 				if(!list.isEmpty()) {
@@ -91,11 +93,9 @@ public class ServletViewReqOU extends HttpServlet {
 
 
 								}
+
 							}
 						}
-
-
-
 
 						content+="</td>";
 						content+="</tr>";
