@@ -123,7 +123,7 @@ DROP TABLE IF EXISTS `request_ou`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `request_ou` (
-  `FK_ID_SKILL` int(3) DEFAULT NULL,
+  `FK_ID_SKILL` varchar(200) DEFAULT NULL,
   `FK_EMAIL` varchar(50) NOT NULL,
   `DATE_OF_BIRTH` DATE NOT NULL,
   `CELL_NUMBER` varchar(12) NOT NULL, 
@@ -181,7 +181,7 @@ DROP TABLE IF EXISTS `skill`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `skill` (
-  `ID_SKILL` int(3) NOT NULL AUTO_INCREMENT,
+  `ID_SKILL` int(3) NOT NULL AUTO-INCREMENT,
   `NOME` varchar(50) NOT NULL,
   `TIPO` smallint(1) NOT NULL,
   `LIVELLO` varchar(2) NOT NULL,

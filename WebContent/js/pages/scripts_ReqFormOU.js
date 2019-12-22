@@ -50,7 +50,7 @@ $(document).ready(
 											$(".preloader").show();
 											$.ajax({
 														url : absolutePath
-																+ "/SevletFormOU",
+																+ "/ServletFormOU",
 														type : "POST",
 														dataType : 'JSON',
 														async : false,

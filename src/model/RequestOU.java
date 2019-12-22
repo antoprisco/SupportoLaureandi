@@ -4,26 +4,26 @@ import java.util.Date;
 
 public class RequestOU {
 	
-	private int idSkill;
+	private String idSkill;
 	private String email;
 	Date dateOfBirth;
-	String  cellNumber;
+	String cellNumber;
 
-	public RequestOU(int idSkill, String email, Date day, String cell) {
+	public RequestOU(String idSkill, String email, Date day, String cell) {
 		this.idSkill=idSkill;
 		this.email=email;
 		this.dateOfBirth = day;
 		this.cellNumber = cell;	
 	}
 	
-	public RequestOU() { }
+	public RequestOU() { } 
 	
 
-	public int getIdSkill() {
+	public String getIdSkill() {
 		return idSkill;
 	}
 
-	public void setIdSkill(int idSkill) {
+	public void setIdSkill(String idSkill) {
 		this.idSkill = idSkill;
 	}
 

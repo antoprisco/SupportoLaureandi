@@ -25,7 +25,7 @@ public class RequestOUDAO {
 		boolean flag = true;
 
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		ps.setInt(1, r.getIdSkill());
+		ps.setString(1, r.getIdSkill());
 		ps.setString(2, r.getEmail());
 		ps.setDate(3, (Date) r.getDateOfBirth());
 		ps.setString(4, r.getCellNumber());
@@ -41,7 +41,7 @@ public class RequestOUDAO {
 		return flag;
 	}
 	  
-	  public synchronized ArrayList<RequestOU> doRetrieveByID(int id) throws SQLException {
+	  public synchronized ArrayList<RequestOU> doRetrieveByID(String id) throws SQLException {
 		  	Connection conn = new DbConnection().getInstance().getConn();
 			PreparedStatement preparedStatement = null;
 
@@ -54,18 +54,17 @@ public class RequestOUDAO {
 			try {
 				//connection = DbConnection.getInstance().getConn();
 				preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
-				preparedStatement.setInt(1, id);
+				preparedStatement.setString(1, id);
 
 				ResultSet rs = preparedStatement.executeQuery();
 
 				while (rs.next()) {
 					RequestOU bean = new RequestOU();
-					bean.setIdSkill(rs.getInt("fk_id_skill"));
+					bean.setIdSkill(rs.getString("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
 					bean.setDateOfBirth(rs.getDate("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
-					
-					
+								
 					listbean.add(bean);
 				}
 
@@ -100,7 +99,7 @@ public class RequestOUDAO {
 
 				while (rs.next()) {
 					RequestOU bean = new RequestOU();
-					bean.setIdSkill(rs.getInt("fk_id_skill"));
+					bean.setIdSkill(rs.getString("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
 					bean.setDateOfBirth(rs.getDate("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
@@ -128,8 +127,6 @@ public class RequestOUDAO {
 
 			String selectSQL = "SELECT DISTINCT fk_email, date_of_birth, cell_number FROM " + TABLE_NAME+ "";
 			
-			
-
 			try {
 				//connection = DbConnection.getInstance().getConn();
 				preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
@@ -144,9 +141,7 @@ public class RequestOUDAO {
 					bean.setDateOfBirth(rs.getDate("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
 					
-					listaReq.add(bean);
-					
-					
+					listaReq.add(bean);							
 				}
 
 			} finally {
@@ -159,8 +154,5 @@ public class RequestOUDAO {
 				}
 			}
 			return listaReq;
-		}
-	  
-	 
-	  
+		}	  
 }
