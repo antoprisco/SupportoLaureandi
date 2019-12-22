@@ -16,46 +16,50 @@
   }
 
   if (pageFolder.equals("_areaAdmin")) { //se stiamo in una pagina dell'area admin
-	  logoRedirect = request.getContextPath()+"/_areaAdmin/viewRequest.jsp";
+	  logoRedirect = request.getContextPath()+"/_areaAdmin/Open.jsp";
   
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp")) {
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp") || pageName.equals("viewReqOU.jsp")|| pageName.equals("Open.jsp") ) {
+
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-          + "/viewRequest.jsp\">Richieste</a></li>";
+          + "/viewRequest.jsp\">Certificazione Lingua Inglese</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
-      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
-        			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
+      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+        			 + "/viewReqOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
     
   } else if (pageFolder.equals("_areaSecretary")) { //se stiamo in una pagina dell'area segreteria
-	  logoRedirect = request.getContextPath()+"/_areaSecretary/viewRequest.jsp";
+	  logoRedirect = request.getContextPath()+"/_areaSecretary/Open.jsp";
   
-    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp")) {
+    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp") || pageName.equals("Open.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-          + "/viewRequest.jsp\">Richieste</a></li>";
+          + "/viewRequest.jsp\">Certificazione Lingua Inglese</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-                  + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
-      menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
-              			 + "viewRequestOU.jsp\">Orientamento in uscita</li>";
+           + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
+      menu +=  "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+           + "/viewRequestOU.jsp\">Orientamento in uscita</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
     }
   } else if (pageFolder.equals("_areaStudent")) { //se stiamo in una pagina dell'area studente
-	 logoRedirect = request.getContextPath()+"/_areaStudent/viewRequest.jsp";
+	 logoRedirect = request.getContextPath()+"/_areaStudent/Open.jsp";
   
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") || pageName.equals("uploadAttached.jsp")) { //se stiamo in viewRequest
-      menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
-          + "/viewRequest.jsp\">Richieste</a></li>";
-          
+
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") || pageName.equals("uploadAttached.jsp") || pageName.equals("Open.jsp")) { //se stiamo in viewRequest
+      //3 in 1
       menu += "<li><div class=\"dropdown\"><a class=\"nav-element\">Certificazione lingua inglese</a><div class=\"dropContent\">";   
           
       menu += "<a class=\"nav-element\" href=\"" + request.getContextPath() + "/" + pageFolder
           + "/firstForm.jsp\">Compila Richiesta</a>";
       menu += "<a class=\"nav-element\" href=\"" + request.getContextPath() + "/" + pageFolder
           + "/uploadAttached.jsp\">Carica Allegato</a>";
-     menu +="</div></div></li>";
+      menu += "<a class=\"nav-element\" href=\"" + request.getContextPath() + "/" + pageFolder
+           + "/viewRequest.jsp\">Richieste</a>";
+      menu +="</div></div>";
+     //end 3 in 1
+
       menu +="<li><a href=\"" + request.getContextPath() + "/" + pageFolder
     		  + "/FormLM.jsp\">Laurea Magistrale</li>";
       menu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
@@ -63,8 +67,28 @@
       menu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
     			  + "/gfdgd.sjp\">Iscrizione a corsi singoli</li>";
       menu +=
-          "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
+
+          "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";
+      //HIDDENMENU
+      hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+          + "/firstForm.jsp\">Compila Richiesta</a></li>";
+      hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+          + "/uploadAttached.jsp\">Carica Allegato</a></li>";
+      hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+           + "/viewRequest.jsp\">Richieste</a></li>";
+          
+    hiddenMenu +="<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+    		  + "/FormLM.jsp\">Laurea Magistrale</li>";
+   hiddenMenu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+     			 + "/viewFormOU.jsp\">Orientamento in uscita</li>";
+     	hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+    			  + "/gfdgd.sjp\">Iscrizione a corsi singoli</li>";
+   	   hiddenMenu +=
+          "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";  
+         
+          
     }
+
     if (pageName.equals("signUp.jsp")) {
 		logoRedirect = request.getContextPath()+ck.getUrlRedirect();	//siccome signUp � raggiungibile solo quando non sono loggato
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
@@ -72,7 +96,8 @@
       menu += "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Benvenuto</a></li>";
     }
   } else if (pageFolder.equals("")) { //se non siamo (o siamo) loggati
-    if (pageName.equals("login.jsp")) { //se ci troviamo in login.jsp
+	  
+	  if (pageName.equals("login.jsp")) { //se ci troviamo in login.jsp
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath()
           + "/login.jsp\">Login</a></li>";
       menu += "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Benvenuto</a></li>";
@@ -89,7 +114,12 @@
   }
 
 
-  hiddenMenu = menu;
+  if(pageFolder.equals("_areaStudent")){
+	  
+  }
+  else{
+	  hiddenMenu = menu;
+  }
 %>
 <!-- Modal -->
 <div id="defaultModal" class="modal fade" role="dialog">
