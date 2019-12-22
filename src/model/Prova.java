@@ -9,29 +9,19 @@ public class Prova {
 		// TODO Auto-generated method stub
 
 	
-		RequestLM r= new RequestLM("SICUREZZA",2023,"s.avolicino@studenti.unisa.it");
-		RequestlmDAO rdd= new RequestlmDAO();
-		try {
-			rdd.doSave(r);
-			System.out.println("Inserimento effettuato");
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		RequestOU r= new RequestOU();
+		RequestOUDAO rd= new RequestOUDAO();
+		ArrayList<RequestOU> list= new ArrayList<RequestOU>();
 		
-	    RequestlmDAO rd= new RequestlmDAO();
-	    ArrayList<RequestLM> ar= new ArrayList<RequestLM>();
-	    
-	    try {
-			ar=rd.doRetrieveByYear(2020);
-			for (int i=0; i<ar.size();i++) {
-			System.out.println(ar.get(i).getId() + "    "+ ar.get(i).getCurr() );
+		try {
+			list=rd.doRetrieveByEmail("s.avolicino@studenti.unisa.it");
+			for(int i=0; i<list.size(); i++) {
+				System.out.println(list.get(i).getIdSkill());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
 	   
 	    
 	   

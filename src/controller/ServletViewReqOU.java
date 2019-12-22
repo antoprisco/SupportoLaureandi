@@ -71,7 +71,7 @@ private static final long serialVersionUID = 1L;
 					list=rd.doRetrieveByEmail(rq.getEmail());
 					
 					content+= "<tr>";
-					content+="<td>"+u.getCognome()+" "+ u.getNome()+"&emsp;&emsp;<button>Visualizza</button>";
+					content+="<td><button>"+u.getCognome()+" "+ u.getNome()+"</button>";
 					content+="<div class='b'> data di nascita: <b>"+ rq.getDateOfBirth()+" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ rq.getCellNumber()+"</b><br>";
 					content+="<br>Competenze<br>";
 					for(RequestOU rou:list) {
