@@ -57,7 +57,7 @@ public class SevletFormOU extends HttpServlet {
 				RequestOU r = new RequestOU();
 				r.setIdSkill(s.getId());
 				r.setEmail(user.getEmail());
-				//rDAO.doSave(r);
+				rDAO.doSave(r);
 			}
 			
 		} catch (Exception e) {
