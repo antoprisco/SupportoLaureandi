@@ -1,8 +1,9 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class RequestOU {
+	
 	private int idSkill;
 	private String email;
 	Date dateOfBirth;
@@ -16,22 +17,7 @@ public class RequestOU {
 	}
 	
 	public RequestOU() { }
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
+	
 
 	public int getIdSkill() {
 		return idSkill;

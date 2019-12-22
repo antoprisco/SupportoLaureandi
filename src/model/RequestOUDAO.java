@@ -25,10 +25,10 @@ public class RequestOUDAO {
 		boolean flag = true;
 
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		ps.setInt(1, cb.getSkill().getId());
-		ps.setString(2, cb.getUser().getEmail());
-		ps.setDate(3, (Date) cb.getDataNascita());
-		ps.setString(4, cb.getTelefono());
+		ps.setInt(1, r.getIdSkill());
+		ps.setString(2, r.getEmail());
+		ps.setDate(3, (Date) r.getDateOfBirth());
+		ps.setString(4, r.getCellNumber());
 
 
 		try {	

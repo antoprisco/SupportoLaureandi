@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import interfacce.UserInterface;
-import model.CompetenzeBean;
 import model.RequestOU;
 import model.RequestOUDAO;
 import model.Skill;
