@@ -112,7 +112,7 @@ tr:nth-child(even) {
 													for(Skill sk: list){
 														%>
 														<tr class="skills">
-														<td><%=sk.getNome()%></td>
+														<td data-skill="<%=sk.getNome()%>"><%=sk.getNome()%></td>
 														<fieldset id="<%=sk.getNome()%>">
 														<td><input type="radio" name="<%=sk.getNome()%>" value="basso"></td>
 														<td><input type="radio" name="<%=sk.getNome()%>" value="medio"></td>
@@ -143,7 +143,7 @@ tr:nth-child(even) {
 										</tr>
 										<tr>
 										<td>Inglese</td>
-										<td><select class="" id="lingua" name="inglese" required>
+										<td><select class="lingua" name="inglese" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -154,7 +154,7 @@ tr:nth-child(even) {
 											</tr>
 											<tr>
 										<td>Francese</td>
-										<td><select class="" id="lingua" name="francese" required>
+										<td><select class="lingua" name="francese" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -165,7 +165,7 @@ tr:nth-child(even) {
 											</tr>
 											<tr>
 										<td>Tedesco</td>
-										<td><select class="" id="lingua" name="tedesco" required>
+										<td><select class="lingua"  name="tedesco" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -175,7 +175,7 @@ tr:nth-child(even) {
 											</select></td>
 											</tr>
 											<td>Spagnolo</td>
-										<td><select class="" id="lingua" name="spagnolo" required>
+										<td><select class="lingua" name="spagnolo" required>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>

@@ -25,18 +25,20 @@ $(document).ready(
 											  skills.push({skill: nomeSkill,value:livelloSkill});
 										});
 										
-										$("tr.softskills").each(function(){
+										$("#softskill_table").find('tr').each(function(){
 											tr=$(this);
 											var valueSkill=tr.first('td').text().trim();
 											softSkills.push({softskill:valueSkill});
 										});
 										
-										$("#lingua").each(function() {
+										$(".lingua").each(function() {
 											  lingua=$(this);
 											  var nameLanguage=lingua.attr('name');
 											  var valueLanguage = lingua.val();
-											  lingue.push({lang: nameLanguage,value:valueLang});
+											  lingue.push({lang: nameLanguage,value:valueLanguage});
 										});
+										
+										console.log(JSON.stringify(skills),JSON.stringify(softSkills),JSON.stringify(lingue));
 										
 										if (nome != undefined
 												&& cognome != undefined
@@ -95,7 +97,7 @@ $(document).ready(
 					$("#aggiungiSkill").click(function() {
 						skill = $("#nomeSkill").val();
 						$("#nomeSkill").val('');
-						content="<tr class=\"skills\"><td>" + skill + "</td><fieldset id="+skill+">" +
+						content="<tr class=\"skills\"><td data-skill=\"" + skill + "\">" + skill + "</td><fieldset id="+skill+">" +
 						"<td><input type=\"radio\" name="+skill+" value=\"basso\"></td>" + 
 							"<td><input type=\"radio\" name="+skill+" value=\"medio\"></td>" +
 								"<td><input type=\"radio\" name="+skill+" value=\"alto\"></td> </fieldset> </tr>";
@@ -103,7 +105,7 @@ $(document).ready(
 						
 						$("tr.skills").each(function() {
 						  tr=$(this);
-						  value=tr.first('td').text();
+						  value=tr.first('td').data("skill");
 						  checked = tr.find("input[type='radio']:checked");
 						  if (checked.length > 0)
 							  value+=checked.val();
@@ -121,10 +123,10 @@ $(document).ready(
 					$("#aggiungiSoftSkill").click(function() {
 						softskill = $("#nomeSoftSkill").val();
 						$("#nomeSoftSkill").val('');
-						content="<tr class=\"softskills\"><td>"+softskill+"</td></tr>";
+						content="<tr class=\"softskills\"><td data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
 						$("#softskill_table").append(content);
 						
-						$("#softskill_table>tr").each(function(){
+						$("#softskill_table").find('tr').each(function(){
 							value=$(this).first('td').text();
 							showAlert(0,value);
 						});
