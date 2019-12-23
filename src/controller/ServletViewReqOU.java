@@ -56,48 +56,48 @@ public class ServletViewReqOU extends HttpServlet {
 			RequestOUDAO rd= new RequestOUDAO();
 			ArrayList<RequestOU> list= new ArrayList<RequestOU>();
 
-		try{
-			list=rd.doRetrieveAll();
-			if(!list.isEmpty()) {
-				result=1;
-				for(RequestOU rq:list) {
-					UserBean u= new UserBean();
-					UserBeanDAO ud= new UserBeanDAO();
-					u=ud.doRetrieveByEmail(rq.getEmail());
-					nome.add(u.getNome());
-					cognome.add(u.getCognome());
-					Skill s= new Skill();
-					SkillDAO sd= new SkillDAO();
-					ArrayList<Skill> listaskill= new ArrayList<Skill>();
-					listaskill=sd.doRetrieveAll();
-					list=rd.doRetrieveByEmail(rq.getEmail());
-					
-					content+= "<tr>";
-					content+="<td><button>"+u.getCognome()+" "+ u.getNome()+"</button>";
-					content+="<div class='b'> data di nascita: <b>"+ rq.getDateOfBirth()+" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ rq.getCellNumber()+"</b><br>";
-					content+="<br>Competenze<br>";
-					for(RequestOU rou:list) {
-						for(Skill skil: listaskill) {
-							if(rou.getIdSkill()==skil.getId()) {
-								
-								content+="<li> "+ skil.getNome()+"<b>";
-								if(skil.getTipo()==0) {
-									if(skil.getLvl().equals("1")) content+=": Livello basso <br>";
-									if(skil.getLvl().equals("2")) content+=": Livello medio <br>";
-									if(skil.getLvl().equals("3")) content+=": Livello alto <br>";
-								}
+			try{
+				list=rd.doRetrieveAll();
+				if(!list.isEmpty()) {
+					result=1;
+					for(RequestOU rq:list) {
+						UserBean u= new UserBean();
+						UserBeanDAO ud= new UserBeanDAO();
+						u=ud.doRetrieveByEmail(rq.getEmail());
+						nome.add(u.getNome());
+						cognome.add(u.getCognome());
+						Skill s= new Skill();
+						SkillDAO sd= new SkillDAO();
+						ArrayList<Skill> listaskill= new ArrayList<Skill>();
+						listaskill=sd.doRetrieveAll();
+						list=rd.doRetrieveByEmail(rq.getEmail());
 
+						content+= "<tr>";
+						content+="<td><button>"+u.getCognome()+" "+ u.getNome()+"</button>";
+						content+="<div class='b'> data di nascita: <b>"+ rq.getDateOfBirth()+" </b><br>E-Mail: <b>"+ u.getEmail()+ "</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Telefono: <b>"+ rq.getCellNumber()+"</b><br>";
+						content+="<br>Competenze<br>";
+						for(RequestOU rou:list) {
+							for(Skill skil: listaskill) {
+								if(rou.getIdSkill()==skil.getId()) {
+
+									content+="<li> "+ skil.getNome()+"<b>";
+									if(skil.getTipo()==0) {
+										if(skil.getLvl().equals("1")) content+=": Livello basso <br>";
+										if(skil.getLvl().equals("2")) content+=": Livello medio <br>";
+										if(skil.getLvl().equals("3")) content+=": Livello alto <br>";
+									}
+
+								}
 							}
+
+							content+="</td>";
+							content+="</tr>";
 						}
 
-						content+="</td>";
-						content+="</tr>";
 					}
 
+
 				}
-
-
-
 
 			}catch(SQLException e) {
 				// TODO Auto-generated catch block
