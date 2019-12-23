@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import interfacce.UserInterface;
 import model.RequestOU;
@@ -43,7 +44,15 @@ public class ServletFormOU extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("CIAO");
+		
 		Integer result = 0;
 		String error = "";
 		String content = "";
@@ -61,14 +70,35 @@ public class ServletFormOU extends HttpServlet {
 		String cell = request.getParameter("telefono");
 		String date = request.getParameter("datanascita");
 
-		String[] skills = request.getParameterValues("skills");
-		String[] softskills = request.getParameterValues("softskills");
-		String[] lingue = request.getParameterValues("lingua");
+		String skills = request.getParameter("skills");
+		String softskills = request.getParameter("softskills");
+		String lingue = request.getParameter("lingua");
 
-		ArrayList<Skill> sk = new ArrayList<Skill>();
-		ArrayList<Skill> ss = new ArrayList<Skill>();
-		ArrayList<Skill> l = new ArrayList<Skill>();
-		ArrayList<Integer> idList = new ArrayList<Integer>();
+		// Creo oggetti JSON
+		JSONParser parser = new JSONParser();
+		JSONObject skills1 = new JSONObject();
+		JSONObject softskills1 = new JSONObject();
+		JSONObject lingue1 = new JSONObject();
+
+		// Converto stringhe in input in oggetti JSON
+		try {
+			skills1 = (JSONObject) parser.parse(skills);
+			softskills1 = (JSONObject) parser.parse(softskills);
+			lingue1 = (JSONObject) parser.parse(lingue);
+		} catch (org.json.simple.parser.ParseException e2) {
+			e2.printStackTrace();
+		}
+
+		// Prendo i valori
+		String[] skillName = (String[]) skills1.get("skill");
+		String[] skillValue = (String[]) skills1.get("value");
+		String[] softSkillName = (String[]) softskills1.get("softskill");
+		String[] linguaName = (String[]) lingue1.get("lang");
+		String[] linguaValue = (String[]) lingue1.get("value");
+
+		ArrayList<Skill> skillList = new ArrayList<Skill>();
+		ArrayList<Skill> softSkillList = new ArrayList<Skill>();
+		ArrayList<Skill> lingueList = new ArrayList<Skill>();
 
 
 		// ----------- Conversione Stringa -> Data ---------------
@@ -84,147 +114,114 @@ public class ServletFormOU extends HttpServlet {
 
 
 
-		for (int i = 0; i < skills.length; i++) {
-			for (int j = 0; j < skills[i].length(); j++) {
-				String[] temp = skills[i].split(":");
-				primaParte = temp[0];
-				secParte = temp[1];
-				Skill s = new Skill(primaParte, 0, secParte);
-
-				try {
-					if(!sDAO.checkIfExists(s.getId())) {	
-						id = sDAO.doSave(s);
-						idList.add(id);
-						sk.add(s);
-					} else {
-						id = sDAO.doRetrieveByData(s);
-						idList.add(id);
-						sk.add(s);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-
-		for (int i = 0; i < softskills.length; i++) {
-			Skill s = new Skill(softskills[i], 1, null);
+		for (int i = 0; i < skillName.length; i++) {
+			Skill s = new Skill(skillName[i], 0, skillValue[i]);
 
 			try {
-				if(sDAO.doRetrieveByData(s) != 0) {
-					idList.add(id);
-					ss.add(s);
+				if(sDAO.doRetrieveByData(s) == 0) {
+					int idSkill = sDAO.doSave(s);
+					skillList.add(s);
 				} else {
-					id = sDAO.doSave(s);
-					idList.add(id);
-					ss.add(s);
+					skillList.add(s);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}	
-		}
-
-
-		for (int i = 0; i < lingue.length; i++) {
-			for (int j = 0; j < lingue[i].length(); j++) {
-				String[] temp = lingue[i].split(":");
-				primaParte = temp[0];
-				secParte = temp[1];
-				Skill s = new Skill(primaParte, 2, secParte);
-
-				try {
-					if(!sDAO.checkIfExists(s.getId())) {	
-						id = sDAO.doSave(s);
-						idList.add(id);
-						l.add(s);
-					} else {
-						id = sDAO.doRetrieveByData(s);
-						idList.add(id);
-						l.add(s);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 
-		//----------- Conversione ArrayList(id) -> String --------------
 
-		// Esempio risultato: {1, 2, 3, 4, 5}
+		for (int i = 0; i < softSkillName.length; i++) {
+			Skill s = new Skill(softSkillName[i], 1, null);
 
-		StringJoiner sj = new StringJoiner(", ");
+			try {
+				if(sDAO.doRetrieveByData(s) == 0) {
+					int idSkill = sDAO.doSave(s);
+					softSkillList.add(s);
+				} else {
+					softSkillList.add(s);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+
+		for (int i = 0; i < linguaName.length; i++) {
+			Skill s = new Skill(linguaName[i], 0, linguaValue[i]);
+
+			try {
+				if(sDAO.doRetrieveByData(s) == 0) {
+					int idSkill = sDAO.doSave(s);
+					lingueList.add(s);
+				} else {
+					lingueList.add(s);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		//-------------- Caricamento richieste nel DB ---------------
 		
-		for (Integer seat : idList) {
-			sj.add(seat.toString());
-		}
-
-		//--------------------------------------------------------------
-
-		if((sk.size() > ss.size()) && sk.size() > l.size()) {
-			for (int i = 0; i < sk.size(); i++) {
+		if(skillList.size() > 0) {
+			for(Skill s: skillList) {
 				RequestOU r = new RequestOU();
-				r.setEmail(user.getEmail());
-				r.setDateOfBirth(data);
+				r.setEmail(email);
+				r.setIdSkill(s.getId());
 				r.setCellNumber(cell);
-				r.setIdSkill(sj.toString());
-
-				try {
-					if(rDAO.doSave(r)) {
-						content = "Richiesta avvenuta con successo";
-						redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
-						result = 1;
-					} else {
-						error = "Errore nell'esecuzione della query";
-						redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		} else if((ss.size() > sk.size()) && ss.size() > l.size()){
-			for (int i = 0; i < ss.size(); i++) {
-				RequestOU r = new RequestOU();
-				r.setEmail(user.getEmail());
 				r.setDateOfBirth(data);
-				r.setCellNumber(cell);
-				r.setIdSkill(sj.toString());
-
+				
 				try {
-					if(rDAO.doSave(r)) {
-						content = "Richiesta avvenuta con successo";
-						redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
-						result = 1;
-					} else {
-						error = "Errore nell'esecuzione della query";
-						redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
-					}
+					rDAO.doSave(r);
 				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		} else {
-			for (int i = 0; i < l.size(); i++) {
-				RequestOU r = new RequestOU();
-				r.setEmail(user.getEmail());
-				r.setDateOfBirth(data);
-				r.setCellNumber(cell);
-				r.setIdSkill(sj.toString());
-
-				try {
-					if(rDAO.doSave(r)) {
-						content = "Richiesta avvenuta con successo";
-						redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
-						result = 1;
-					} else {
-						error = "Errore nell'esecuzione della query";
-						redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
-					}
-				} catch (SQLException e) {
+					error = "Errore nell'esecuzione della query";
+					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
 					e.printStackTrace();
 				}
 			}
 		}
+
+		if(softSkillList.size() > 0) {
+			for(Skill s1: softSkillList) {
+				RequestOU r1 = new RequestOU();
+				r1.setEmail(email);
+				r1.setIdSkill(s1.getId());
+				r1.setCellNumber(cell);
+				r1.setDateOfBirth(data);
+				
+				try {
+					rDAO.doSave(r1);
+				} catch (SQLException e) {
+					error = "Errore nell'esecuzione della query";
+					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
+					e.printStackTrace();
+				}
+			}
+		}
+
+		if(lingueList.size() > 0) {
+			for(Skill s2: lingueList) {
+				RequestOU r2 = new RequestOU();
+				r2.setEmail(email);
+				r2.setIdSkill(s2.getId());
+				r2.setCellNumber(cell);
+				r2.setDateOfBirth(data);
+				
+				try {
+					rDAO.doSave(r2);
+				} catch (SQLException e) {
+					error = "Errore nell'esecuzione della query";
+					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
+					e.printStackTrace();
+				}
+			}
+		}
+		//----------------------------------------------------------------
+	
+		
+		content = "Richiesta avvenuta con successo";
+		redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+		result = 1;
 
 		JSONObject res = new JSONObject();
 		res.put("result", result);
@@ -235,15 +232,6 @@ public class ServletFormOU extends HttpServlet {
 		out.println(res);
 		response.setContentType("json");
 		System.err.println(res.toString());
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

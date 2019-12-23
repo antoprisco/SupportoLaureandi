@@ -2,6 +2,7 @@
     <wb-module deploy-name="EnglishValidation">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF"/>
         <property name="context-root" value="EnglishValidation"/>
         <property name="java-output-path" value="/EnglishValidation/build/classes"/>
     </wb-module>
