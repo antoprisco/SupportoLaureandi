@@ -37,6 +37,7 @@ $(document).ready(
 											  var valueLanguage = lingua.val();
 											  lingue.push({lang: nameLanguage,value:valueLanguage});
 										});
+										showAlert(1,JSON.stringify(softSkills));
 										console.log(JSON.stringify(skills),JSON.stringify(softSkills),JSON.stringify(lingue));
 										
 										if (nome != undefined
@@ -49,7 +50,7 @@ $(document).ready(
 
 											$(".preloader").show();
 											$.ajax({
-														url : absolutePath + "/src/controller/ServletFormOU",
+														url : absolutePath + "/ServletFormOU",
 														type : "POST",
 														dataType : 'JSON',
 														async : false,
@@ -59,9 +60,9 @@ $(document).ready(
 															"datanascita" : datanascita,
 															"email" : email,
 															"telefono" : telefono,
-															"skills" : "Ciao",
-															"softSkills" : "Ciao1",
-															"lingue" : "Ciao2",
+															"skills" : JSON.stringify(skills),
+															"softSkills" : JSON.stringify(softSkills),
+															"lingue" : JSON.stringify(lingue),
 															"flag" : 1
 														},
 														success : function(msg) {

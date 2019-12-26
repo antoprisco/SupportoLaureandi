@@ -91,18 +91,19 @@ public class SkillDAO {
 			return listBean;
 		}
 	  
-	  public synchronized boolean checkIfExists(int id) throws SQLException {
+	  public synchronized boolean checkIfExists(Skill s) throws SQLException {
 		  
 		  Connection conn = new DbConnection().getInstance().getConn();
 		  boolean flag = false;
 		  
-		  String sql = "SELECT * FROM " + this.TABLE_NAME + "WHERE ID_SKILL = ?";
+		  String sql = "SELECT ID_SKILL FROM " + this.TABLE_NAME + " WHERE NOME = ? AND LIVELLO = ?";
 		  PreparedStatement ps = conn.prepareStatement(sql);
-		  ps.setInt(1, id);
+		  ps.setString(1, s.getNome());
+		  ps.setString(2, String.valueOf(s.getLvl().charAt(0)));
 		  
 		  ResultSet rs = ps.executeQuery();
-		  
 		  while(rs.next()) {
+			  int id = rs.getInt("ID_SKILL");
 			  flag = true;
 		  }
 		  
@@ -115,37 +116,45 @@ public class SkillDAO {
 		  PreparedStatement ps = null;
 		  Integer id = 0;
 		  
-		  String sql = "INSERT INTO TABLE " + this.TABLE_NAME + "(ID_SKILL, NOME, TIPO, LIVELLO) VALUES (?,?,?,?)";
+		  String sql = "INSERT INTO " + this.TABLE_NAME + "(ID_SKILL, NOME, TIPO, LIVELLO) VALUES (?,?,?,?)";
 		  ps = conn.prepareStatement(sql, ps.RETURN_GENERATED_KEYS);
 		  
 		  ps.setInt(1, s.getId());
 		  ps.setString(2, s.getNome());
 		  ps.setInt(3, s.getTipo());
-		  ps.setString(4, s.getLvl());
+		  ps.setString(4, String.valueOf(s.getLvl().charAt(0)));
 		  
-		  ps.executeUpdate(sql);
+		  ps.executeUpdate();
+		  
+		  System.out.println("33333333");
 		  
 		  ResultSet rs = ps.getGeneratedKeys();
+		  System.out.println("44444444");
           if (rs.next()) {
+        	  System.out.println("5555555");
             id = rs.getInt(1);
           }          
           return id;
 	  }
 	  
 	  public synchronized int doRetrieveByData(Skill s) throws SQLException {
-		  
+
 		  Connection conn = new DbConnection().getInstance().getConn();
 		  PreparedStatement ps = null;
 		  Integer id = 0;
 		  
-		  String sql = "SELECT ID_SKILL FROM " + this.TABLE_NAME + "WHERE NOME = ?, TIPO = ?, LIVELLO = ?";
+		  String sql = "SELECT ID_SKILL FROM " + this.TABLE_NAME + " WHERE NOME = ? AND LIVELLO = ?";
 		  ps = conn.prepareStatement(sql);
-		  ResultSet rs = ps.executeQuery(sql);
+
+		  ps.setString(1, s.getNome());
+		  ps.setString(2, String.valueOf(s.getLvl().charAt(0)));
+
+		  ResultSet rs = ps.executeQuery();
 		  
-		  while(rs.next()) {
-			  id = rs.getInt(1);
+		  while(rs.next()) {	  
+			  id = rs.getInt("ID_SKILL");
 		  }
-		  
+
 		  return id;
 	  }
 }

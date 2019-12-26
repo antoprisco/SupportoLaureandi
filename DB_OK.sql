@@ -131,7 +131,7 @@ CREATE TABLE `request_ou` (
   KEY `FK_EMAIL` (`FK_EMAIL`),
   KEY `FK_ID_SKILL` (`FK_ID_SKILL`),
   CONSTRAINT `RequestOu_ibfk_1` FOREIGN KEY (`FK_EMAIL`) REFERENCES `user` (`EMAIL`),
-  CONSTRAINT `RequestOu_ibfk_2` FOREIGN KEY (`FK_ID_SKILL`) REFERENCES `skill` (`ID_SKILL`)
+  CONSTRAINT `RequestOu_ibfk_2` FOREIGN KEY (`FK_ID_SKILL`) REFERENCES `skill` (`ID_SKILL`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
