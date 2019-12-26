@@ -90,7 +90,7 @@ tr:nth-child(even) {
 
 
 										<div class="form-group">
-											<label>Telefono</label> <input class="form-control" type="number" value="3661044433" id="telefono" required>
+											<label>Telefono</label> <input class="form-control" type="number" value="" id="telefono" required>
 										</div>
 
 
@@ -108,7 +108,6 @@ tr:nth-child(even) {
 										<%Skill s= new Skill();
 													SkillDAO sd= new SkillDAO();
 													ArrayList<Skill> list= new ArrayList<Skill>();
-													list=sd.doRetrieveAll();
 													for(Skill sk: list){
 														%>
 														<tr class="skills">
@@ -144,6 +143,7 @@ tr:nth-child(even) {
 										<tr>
 										<td>Inglese</td>
 										<td><select class="lingua" name="inglese" required>
+											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -155,6 +155,7 @@ tr:nth-child(even) {
 											<tr>
 										<td>Francese</td>
 										<td><select class="lingua" name="francese" required>
+											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -166,6 +167,7 @@ tr:nth-child(even) {
 											<tr>
 										<td>Tedesco</td>
 										<td><select class="lingua"  name="tedesco" required>
+											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
@@ -176,6 +178,7 @@ tr:nth-child(even) {
 											</tr>
 											<td>Spagnolo</td>
 										<td><select class="lingua" name="spagnolo" required>
+											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
 											<option value="B1">B1</option>
