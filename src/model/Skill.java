@@ -25,6 +25,11 @@ public class Skill {
 		this.tipo = tipo;
 		this.lvl = livello;
 	}
+	
+	public Skill(String nome, int tipo) {
+		this.nome = nome;
+		this.tipo = tipo; 
+	}
 
 	public int getId() {
 		return id;

@@ -15,7 +15,7 @@ $(document).ready(
 										var lingue = [];
 										
 										
-										showAlert(1,"prelevo i campi1");
+										
 										$("tr.skills").each(function() {
 											  tr=$(this);
 											  var nomeSkill=tr.first('td').text().trim();
@@ -24,20 +24,20 @@ $(document).ready(
 												  livelloSkill=checked.val();
 											  skills.push({skill: nomeSkill,value:livelloSkill});
 										});
-										showAlert(1,"prelevo i campi2");
+										
 										$("#softskill_table").find('tr').each(function(){
 											tr=$(this);
 											var valueSkill=tr.first('td').text().trim();
 											softSkills.push({softskill:valueSkill});
 										});
-										showAlert(1,"prelevo i campi3");
+										
 										$(".lingua").each(function() {
 											  lingua=$(this);
 											  var nameLanguage=lingua.attr('name');
 											  var valueLanguage = lingua.val();
 											  lingue.push({lang: nameLanguage,value:valueLanguage});
 										});
-										showAlert(1,JSON.stringify(softSkills));
+										
 										console.log(JSON.stringify(skills),JSON.stringify(softSkills),JSON.stringify(lingue));
 										
 										if (nome != undefined
@@ -46,7 +46,7 @@ $(document).ready(
 												&& email != undefined
 												&& telefono != undefined 
 												&& skills.length>0) {
-											showAlert(1,"Sono nell'if");
+											
 
 											$(".preloader").show();
 											$.ajax({

@@ -47,14 +47,14 @@ public class ServletFormOU extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Integer result = 0;
 		String error = "";
@@ -66,6 +66,7 @@ public class ServletFormOU extends HttpServlet {
 		String softSkillName = null;
 		String linguaName = null;
 		String linguaValue = null;
+		int idSkill = 0;
 
 		ArrayList<Skill> skillList = new ArrayList<Skill>();
 		ArrayList<Skill> softSkillList = new ArrayList<Skill>();
@@ -81,8 +82,9 @@ public class ServletFormOU extends HttpServlet {
 		String date = request.getParameter("datanascita");
 
 		String skills = request.getParameter("skills");
-		String softskills = request.getParameter("softskills");
-		String lingue = request.getParameter("lingua");
+		String softskills = request.getParameter("softSkills");
+		String lingue = request.getParameter("lingue");
+		
 
 		// ----------- Conversione Stringa -> Data ---------------
 
@@ -98,41 +100,102 @@ public class ServletFormOU extends HttpServlet {
 		// Creo oggetti JSON
 		JSONParser parser = new JSONParser();
 		JSONArray skills1 = new JSONArray();
-		//JSONArray softskills1 = new JSONArray();
-		//JSONArray lingue1 = new JSONArray();
+		JSONArray softskills1 = new JSONArray();
+		JSONArray lingue1 = new JSONArray();
 
 		// Converto stringhe in input in oggetti JSON
 		try {
 			skills1 = (JSONArray) parser.parse(skills);
-			//softskills1 = (JSONArray) parser.parse(softskills);
-			//lingue1 = (JSONArray) parser.parse(lingue);
+			softskills1 = (JSONArray) parser.parse(softskills);
+			lingue1 = (JSONArray) parser.parse(lingue);
 		} catch (org.json.simple.parser.ParseException e2) {
 			e2.printStackTrace();
 		}
 
 
+		//----------------- Salvataggio skills nel db ---------------
+		
 		for (int i = 0; i < skills1.size(); i++) {
 			JSONObject j = (JSONObject) skills1.get(i);
 			skillName = (String) j.get("skill");
 			skillValue = (String) j.get("value");
 
 			Skill s = new Skill(skillName, 0, skillValue);
+			try {
+				idSkill = sDAO.doRetrieveByData(s);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 
 			try {
-				if(sDAO.checkIfExists(s)) {
-					s.setId(sDAO.doRetrieveByData(s));
+				if(idSkill != 0) {
+					s.setId(idSkill);
 					skillList.add(s);
 				} else {
 					sDAO.doSave(s);
-					s.setId(sDAO.doRetrieveByData(s));
+					s.setId(idSkill);
 					skillList.add(s);
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-	
+		
+		for (int i = 0; i < softskills1.size(); i++) {
+			JSONObject j = (JSONObject) softskills1.get(i);
+			softSkillName = (String) j.get("skill");
+
+			Skill s = new Skill(softSkillName, 1);
+			try {
+				idSkill = sDAO.doRetrieveByData(s);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+
+			try {
+				if(idSkill != 0) {
+					s.setId(idSkill);
+					skillList.add(s);
+				} else {
+					sDAO.doSave(s);
+					s.setId(idSkill);
+					skillList.add(s);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		for (int i = 0; i < lingue1.size(); i++) {
+			JSONObject j = (JSONObject) lingue1.get(i);
+			linguaName = (String) j.get("lang");
+			linguaValue = (String) j.get("value");
+
+			Skill s = new Skill(linguaName, 2, linguaValue);
+			try {
+				idSkill = sDAO.doRetrieveByData(s);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+
+			try {
+				if(idSkill != 0) {
+					s.setId(idSkill);
+					skillList.add(s);
+				} else {
+					sDAO.doSave(s);
+					s.setId(idSkill);
+					skillList.add(s);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//------------------------------------------------------------
+		
+		
+		//----------------- Salvataggio richieste nel db -------------
 
 		if(skillList.size() > 0) {
 			for(Skill s: skillList) {
@@ -151,6 +214,44 @@ public class ServletFormOU extends HttpServlet {
 				}
 			}
 		}
+		
+		if(softSkillList.size() > 0) {
+			for(Skill s: softSkillList) {
+				RequestOU r = new RequestOU();
+				r.setEmail(email);
+				r.setIdSkill(s.getId());
+				r.setCellNumber(cell);
+				r.setDateOfBirth(data);
+
+				try {
+					rDAO.doSave(r);
+				} catch (SQLException e) {
+					error = "Errore nell'esecuzione della query";
+					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		if(lingueList.size() > 0) {
+			for(Skill s: lingueList) {
+				RequestOU r = new RequestOU();
+				r.setEmail(email);
+				r.setIdSkill(s.getId());
+				r.setCellNumber(cell);
+				r.setDateOfBirth(data);
+
+				try {
+					rDAO.doSave(r);
+				} catch (SQLException e) {
+					error = "Errore nell'esecuzione della query";
+					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		//------------------------------------------------------------
 
 		content = "Richiesta avvenuta con successo";
 		redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
@@ -165,8 +266,5 @@ public class ServletFormOU extends HttpServlet {
 		out.println(res);
 		response.setContentType("json");
 		System.err.println(res.toString());
-
-
 	}
-
 }
