@@ -155,11 +155,11 @@ public class ServletFormOU extends HttpServlet {
 			try {
 				if(idSkill != 0) {
 					s.setId(idSkill);
-					skillList.add(s);
+					softSkillList.add(s);
 				} else {
 					sDAO.doSave(s);
 					s.setId(idSkill);
-					skillList.add(s);
+					softSkillList.add(s);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -181,11 +181,11 @@ public class ServletFormOU extends HttpServlet {
 			try {
 				if(idSkill != 0) {
 					s.setId(idSkill);
-					skillList.add(s);
+					lingueList.add(s);
 				} else {
 					sDAO.doSave(s);
 					s.setId(idSkill);
-					skillList.add(s);
+					lingueList.add(s);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
