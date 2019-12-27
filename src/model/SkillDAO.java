@@ -100,12 +100,14 @@ public class SkillDAO {
 		Integer id = 0;
 
 		if(s.getTipo() == 1) {
-			sql = "INSERT INTO " + this.TABLE_NAME + "(ID_SKILL, NOME, TIPO, LIVELLO) VALUES (?,?,?)";
+			sql = "INSERT INTO " + this.TABLE_NAME + "(NOME, TIPO, LIVELLO) VALUES (?,?,?)";
 			ps = conn.prepareStatement(sql, ps.RETURN_GENERATED_KEYS);
 			
-			ps.setInt(1, s.getId());
-			ps.setString(2, s.getNome());
-			ps.setInt(3, s.getTipo());
+			System.out.println(s.getNome());
+			
+			ps.setString(1, s.getNome());
+			ps.setInt(2, s.getTipo());
+			ps.setString(3, "");
 			
 		} else if(s.getTipo() == 0) {
 			sql = "INSERT INTO " + this.TABLE_NAME + "(ID_SKILL, NOME, TIPO, LIVELLO) VALUES (?,?,?,?)";

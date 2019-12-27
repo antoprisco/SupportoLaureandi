@@ -6,10 +6,10 @@ public class RequestOU {
 	
 	private int idSkill;
 	private String email;
-	Date dateOfBirth;
+	String dateOfBirth;
 	String cellNumber;
 
-	public RequestOU(int idSkill, String email, Date day, String cell) {
+	public RequestOU(int idSkill, String email, String day, String cell) {
 		this.idSkill=idSkill;
 		this.email=email;
 		this.dateOfBirth = day;
@@ -35,11 +35,11 @@ public class RequestOU {
 		this.email = email;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

@@ -84,19 +84,8 @@ public class ServletFormOU extends HttpServlet {
 		String skills = request.getParameter("skills");
 		String softskills = request.getParameter("softSkills");
 		String lingue = request.getParameter("lingue");
+
 		
-
-		// ----------- Conversione Stringa -> Data ---------------
-
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date data = null;
-		try {
-			data = formatter.parse(date);
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		// -------------------------------------------------------
-
 		// Creo oggetti JSON
 		JSONParser parser = new JSONParser();
 		JSONArray skills1 = new JSONArray();
@@ -143,7 +132,7 @@ public class ServletFormOU extends HttpServlet {
 		
 		for (int i = 0; i < softskills1.size(); i++) {
 			JSONObject j = (JSONObject) softskills1.get(i);
-			softSkillName = (String) j.get("skill");
+			softSkillName = (String) j.get("softskill");
 
 			Skill s = new Skill(softSkillName, 1);
 			try {
@@ -165,6 +154,7 @@ public class ServletFormOU extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 		
 		for (int i = 0; i < lingue1.size(); i++) {
 			JSONObject j = (JSONObject) lingue1.get(i);
@@ -203,7 +193,7 @@ public class ServletFormOU extends HttpServlet {
 				r.setEmail(email);
 				r.setIdSkill(s.getId());
 				r.setCellNumber(cell);
-				r.setDateOfBirth(data);
+				r.setDateOfBirth(date);
 
 				try {
 					rDAO.doSave(r);
@@ -221,7 +211,7 @@ public class ServletFormOU extends HttpServlet {
 				r.setEmail(email);
 				r.setIdSkill(s.getId());
 				r.setCellNumber(cell);
-				r.setDateOfBirth(data);
+				r.setDateOfBirth(date);
 
 				try {
 					rDAO.doSave(r);
@@ -239,7 +229,7 @@ public class ServletFormOU extends HttpServlet {
 				r.setEmail(email);
 				r.setIdSkill(s.getId());
 				r.setCellNumber(cell);
-				r.setDateOfBirth(data);
+				r.setDateOfBirth(date);
 
 				try {
 					rDAO.doSave(r);

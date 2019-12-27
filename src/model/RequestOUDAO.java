@@ -20,18 +20,16 @@ public class RequestOUDAO {
 	public synchronized boolean doSave(RequestOU r) throws SQLException {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
-		
-		java.sql.Date newData = new java.sql.Date(r.getDateOfBirth().getTime());
+		PreparedStatement ps = null;
 
 		String sql = "INSERT INTO " + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email, date_of_birth, cell_number) VALUES (?,?,?,?)";
 		boolean flag = true;
 
-		PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		ps = con.prepareStatement(sql);
 		ps.setInt(1, r.getIdSkill());
 		ps.setString(2, r.getEmail());
-		ps.setDate(3, newData);
+		ps.setString(3, r.getDateOfBirth());
 		ps.setString(4, r.getCellNumber());
-
 
 		try {	
 			ps.executeUpdate();
@@ -44,9 +42,9 @@ public class RequestOUDAO {
 	}
 	  
 	  public synchronized ArrayList<RequestOU> doRetrieveByID(int id) throws SQLException {
+		  	
 		  	Connection conn = new DbConnection().getInstance().getConn();
 			PreparedStatement preparedStatement = null;
-
 			
 			ArrayList<RequestOU> listbean = new ArrayList<RequestOU>();
 
@@ -64,7 +62,7 @@ public class RequestOUDAO {
 					RequestOU bean = new RequestOU();
 					bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
-					bean.setDateOfBirth(rs.getDate("date_of_birth"));
+					bean.setDateOfBirth(rs.getString("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
 								
 					listbean.add(bean);
@@ -103,7 +101,7 @@ public class RequestOUDAO {
 					RequestOU bean = new RequestOU();
 					bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
-					bean.setDateOfBirth(rs.getDate("date_of_birth"));
+					bean.setDateOfBirth(rs.getString("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
 					
 					
@@ -140,7 +138,7 @@ public class RequestOUDAO {
 					
 					//bean.setIdSkill(rs.getInt("fk_id_skill"));
 					bean.setEmail(rs.getString("fk_email"));
-					bean.setDateOfBirth(rs.getDate("date_of_birth"));
+					bean.setDateOfBirth(rs.getString("date_of_birth"));
 					bean.setCellNumber(rs.getString("cell_number"));
 					
 					listaReq.add(bean);							
