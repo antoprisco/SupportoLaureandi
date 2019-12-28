@@ -56,7 +56,7 @@ tr:nth-child(even) {
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstForm-container">
 									<div class="panel">
-										<h2 class="text-center">Orientamento in uscita</h2>
+										<h1 class="text-center">Orientamento in uscita</h1>
 										<p class="text-center">Compila tutti i campi</p>
 									</div>
 						<%
@@ -95,14 +95,15 @@ tr:nth-child(even) {
 
 
 
-
-										<h2>Skill</h2>
-										<table id="skill_table">
+																				<br>
+										
+										<h2 class="mt-3">Skill</h2>
+										<div class="pr-5 pl-5"><table id="skill_table">
 										<tr>
-												<th>Skill</th>
-												<th>Basso</th>
-												<th>Medio</th>
-												<th>Alto</th>
+												<th class="pl-2">Skill</th>
+												<th class="pl-2">Basso</th>
+												<th class="pl-2">Medio</th>
+												<th class="pl-2">Alto</th>
 										</tr>
 										
 										<%Skill s= new Skill();
@@ -121,28 +122,44 @@ tr:nth-child(even) {
 														<%
 													}
 													%>
-										</table>
-										<div class="form-group">
-											<label for="nome">Aggiungi competenza</label> 
-											<input class="form-control" type="string" id="nomeSkill">
-												<h1><button type="button" id = "aggiungiSkill">+</button></h1>
-												
+										</table></div>
+										<div class="form-group pr-5 pl-5">
+											<label class="mt-1" for="nomeSkill">Indica le tue competenze informatiche e il livello</label>
+											<div class="input-group"> 
+												<input class="form-control" type="string" id="nomeSkill">
+												<span class="input-group-btn">
+	    										<button class="btn btn-outline-secondary" type="button" id ="aggiungiSkill">+</button>
+	  											</span>
+	  										</div>
 										</div>
 										
+										<br>
 										<h2>Soft Skill</h2>
-										<table id=softskill_table>
+										<div class="pr-5 pl-5"><table id=softskill_table>
 											<tr class="softskills" style="visible:hidden"></tr>
-										</table>
-										<label for="nome">Aggiungi soft Skill</label> <input class="form-control" type="string" id="nomeSoftSkill">
-										<h1><button type="button" id = "aggiungiSoftSkill">+</button></h1>
-										<table>
+										</table></div>
+										<div class="form-group pr-5 pl-5">
+											<label class="mt-1" for="nomeSoftSkill">Indica le soft skill che ritieni di possedere</label>
+											<div class="input-group">
+											<input class="form-control" type="string" id="nomeSoftSkill">
+											<span class="input-group-btn">
+											<button class="btn btn-outline-secondary" type="button" id ="aggiungiSoftSkill">+</button>
+											</span>
+											</div>
+										</div>
+										
+																				<br>
+										
+										<h2 class="mt-3">Lingue</h2>
+										<div class="pr-5 pl-5"><table>
 										<tr>
-												<th>Lingua</th>
-												<th>Livello</th>
+												<th class="pl-2">Lingua</th>
+												<th class="pl-2">Livello</th>
+												<label>Indica il tuo livello di certificazione nelle seguenti lingue</label> 
 										</tr>
 										<tr>
-										<td>Inglese</td>
-										<td><select class="lingua" name="inglese" required>
+										<td class="pl-2">Inglese</td>
+										<td><select class="lingua ml-2" name="inglese" required>
 											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
@@ -153,8 +170,8 @@ tr:nth-child(even) {
 											</select></td>
 											</tr>
 											<tr>
-										<td>Francese</td>
-										<td><select class="lingua" name="francese" required>
+										<td class="pl-2">Francese</td>
+										<td><select class="lingua ml-2" name="francese" required>
 											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
@@ -165,8 +182,8 @@ tr:nth-child(even) {
 											</select></td>
 											</tr>
 											<tr>
-										<td>Tedesco</td>
-										<td><select class="lingua"  name="tedesco" required>
+										<td class="pl-2">Tedesco</td>
+										<td><select class="lingua ml-2"  name="tedesco" required>
 											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
@@ -176,8 +193,8 @@ tr:nth-child(even) {
 											<option value="C2">C2</option>
 											</select></td>
 											</tr>
-											<td>Spagnolo</td>
-										<td><select class="lingua" name="spagnolo" required>
+										<td class="pl-2">Spagnolo</td>
+										<td><select class="lingua ml-2" name="spagnolo" required>
 											<option value="NA">NA</option>
 											<option value="A1">A1</option>
 											<option value="A2">A2</option>
@@ -187,11 +204,11 @@ tr:nth-child(even) {
 											<option value="C2">C2</option>
 											</select></td>
 											</tr>
-										</table>
+										</table></div>
 
 
 
-												<div class="form-group">
+												<div class="form-group mt-5">
 														<button type="submit" class="btn btn-primary btn-submit">Invia</button>
 												</div>
 

@@ -47,7 +47,7 @@
 	 logoRedirect = request.getContextPath()+"/_areaStudent/Open.jsp";
   
 
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") || pageName.equals("uploadAttached.jsp") || pageName.equals("Open.jsp") || pageName.equals("Open.jsp") || pageName.equals("viewRequestCS.jsp") ) { //se stiamo in viewRequest
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") || pageName.equals("uploadAttached.jsp") || pageName.equals("Open.jsp") || pageName.equals("Open.jsp") || pageName.equals("viewRequestCS.jsp")|| pageName.equals("viewFormOU.jsp")|| pageName.equals("FormCS.jsp") ) { //se stiamo in viewRequest
       //3 in 1
       menu += "<li><div class=\"dropdown\"><a class=\"nav-element\">Certificazione lingua inglese</a><div class=\"dropContent\">";   
           

@@ -98,11 +98,12 @@ $(document).ready(
 					$("#aggiungiSkill").click(function() {
 						skill = $("#nomeSkill").val();
 						$("#nomeSkill").val('');
-						content="<tr class=\"skills\"><td data-skill=\"" + skill + "\">" + skill + "</td><fieldset id="+skill+">" +
-						"<td><input type=\"radio\" name="+skill+" value=\"basso\"></td>" + 
-							"<td><input type=\"radio\" name="+skill+" value=\"medio\"></td>" +
-								"<td><input type=\"radio\" name="+skill+" value=\"alto\"></td> </fieldset> </tr>";
-						$("#skill_table").append(content);
+						if(skill!=''){
+						content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td><fieldset id="+skill+">" +
+						"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
+							"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
+								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"alto\"></td> </fieldset> </tr>";
+						$("#skill_table").append(content);}
 						
 						$("tr.skills").each(function() {
 						  tr=$(this);
@@ -124,8 +125,9 @@ $(document).ready(
 					$("#aggiungiSoftSkill").click(function() {
 						softskill = $("#nomeSoftSkill").val();
 						$("#nomeSoftSkill").val('');
-						content="<tr class=\"softskills\"><td data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
-						$("#softskill_table").append(content);
+						if(softskill!=''){
+						content="<tr class=\"softskills\"><td class=\"pl-2\" data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
+						$("#softskill_table").append(content);}
 						
 						$("#softskill_table").find('tr').each(function(){
 							value=$(this).first('td').text();
