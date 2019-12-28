@@ -47,7 +47,7 @@
 						                <form id="formRLM" class="ml-5">
 						                    <label for="scegliAnno">Iscritti per anno:</label>
 						                    <select class="custom-select" id="anno" name="anno" required>
-						                        <option selected>Open this select menu</option>
+						                        <option selected>Selezionare l'anno</option>
 						                        <%
 											    	Integer range = Integer.parseInt(new SystemAttribute().getValueByKey("request-matriculation-year-range"));
 											    	for(int i = ((range*-0)+1); i <= 5; i++){

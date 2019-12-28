@@ -41,9 +41,14 @@ if(!ck.isAllowed()){
 							
 							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); %>
 							
-							<div id="open">Salve <%=user.getName()+","%> <br> questo portale ti consente di monitorare e gestire servizi durante il percorso di laurea e per il post-laurea.<br>
-							<b>Servizi pre-laurea:</b><li>Convalida dell'esame di inglese</li>
-							<b>Servizi post-laurea:</b><li>Laurea Magistrale</li><li>Orientamento in uscita</li><li>Iscrizione corsi singoli</li>
+							<div id="open"><h2>Salve <%=user.getName()+","%></h2>questo portale ti consente di monitorare 
+							e gestire servizi durante il percorso di laurea e per il post-laurea.<br>
+								<div class="row mt-5">
+									<div class="col md-1"></div>
+									<div class="col md-5"><b>Servizi pre-laurea:</b><li>Convalida della certificazione di esame Inglese</li></div>
+									<div class="col md-5"><b>Servizi post-laurea:</b><li>Pre-Iscrizione ad una Laurea Magistrale</li><li>Iscrizione alla iniziativa di Orientamento in uscita</li><li>Iscrizione a singoli corsi magistrali</li></div>
+									<div class="col md-1"></div>
+								</div>
 							</div>
 							
 							
