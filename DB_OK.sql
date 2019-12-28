@@ -1,6 +1,5 @@
 CREATE DATABASE  IF NOT EXISTS `supportolaureandi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `supportolaureandi`;
-
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: supportolaureandi
@@ -19,6 +18,36 @@ USE `supportolaureandi`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `allegati`
+--
+
+DROP TABLE IF EXISTS `allegati`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `allegati` (
+  `ID` int(3) NOT NULL AUTO_INCREMENT,
+  `FILENAME` varchar(200) NOT NULL,
+  `FK_USER` varchar(50) NOT NULL,
+  `FK_REQCS` int(3) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_USER` (`FK_USER`),
+  KEY `FK_REQCS` (`FK_REQCS`),
+  CONSTRAINT `request_ibfk_1111` FOREIGN KEY (`FK_USER`) REFERENCES `user` (`EMAIL`),
+  CONSTRAINT `request_ibfk_2222` FOREIGN KEY (`FK_REQCS`) REFERENCES `requestcs` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `allegati`
+--
+
+LOCK TABLES `allegati` WRITE;
+/*!40000 ALTER TABLE `allegati` DISABLE KEYS */;
+INSERT INTO `allegati` VALUES (52,'C:\\Users\\Pietro\\SupportoLaureandi\\IscrizioneLentisco_Firmata.pdf','p.lentisco1@studenti.unisa.it',9),(53,'C:\\Users\\Pietro\\SupportoLaureandi\\DocumentoLentiscoPietro.pdf','p.lentisco1@studenti.unisa.it',9);
+/*!40000 ALTER TABLE `allegati` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `attached`
 --
 
@@ -35,7 +64,7 @@ CREATE TABLE `attached` (
   KEY `FK_USER` (`FK_USER`),
   CONSTRAINT `attached_ibfk_1` FOREIGN KEY (`FK_REQUEST`) REFERENCES `request` (`ID_REQUEST`),
   CONSTRAINT `attached_ibfk_2` FOREIGN KEY (`FK_USER`) REFERENCES `user` (`EMAIL`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +75,32 @@ LOCK TABLES `attached` WRITE;
 /*!40000 ALTER TABLE `attached` DISABLE KEYS */;
 INSERT INTO `attached` VALUES (1,'certificato.pdf',1,'prova@unisa.it');
 /*!40000 ALTER TABLE `attached` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `corsi`
+--
+
+DROP TABLE IF EXISTS `corsi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `corsi` (
+  `ID` int(3) NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(30) NOT NULL,
+  `SEMESTRE` int(1) NOT NULL,
+  `CFU` int(2) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `corsi`
+--
+
+LOCK TABLES `corsi` WRITE;
+/*!40000 ALTER TABLE `corsi` DISABLE KEYS */;
+INSERT INTO `corsi` VALUES (1,'ALGORITMI AVANZATI',2,6),(9,'INTELLIGENZA ARTIFICIALE',1,6),(10,'BASI DI DATI II',1,6),(11,'CLOUD COMPUTING',1,6),(12,'COMPILATORI',2,6),(13,'COMPRESSIONE DATI',2,9),(14,'CYBERSECURITY',1,9),(15,'DIDATTICA DELL\'INFORMATICA',2,9),(16,'DIGITAL FORENCIS',2,9);
+/*!40000 ALTER TABLE `corsi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -76,6 +131,59 @@ INSERT INTO `ente` VALUES (1,'','Cambridge Assessment English','',1),(2,'','City
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gestiscecs`
+--
+
+DROP TABLE IF EXISTS `gestiscecs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gestiscecs` (
+  `FK_USER` varchar(50) NOT NULL,
+  `FK_REQCS` int(3) NOT NULL,
+  KEY `FK_USER` (`FK_USER`),
+  KEY `FK_REQCS` (`FK_REQCS`),
+  CONSTRAINT `request_ibfk_11` FOREIGN KEY (`FK_USER`) REFERENCES `user` (`EMAIL`),
+  CONSTRAINT `request_ibfk_22` FOREIGN KEY (`FK_REQCS`) REFERENCES `requestcs` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gestiscecs`
+--
+
+LOCK TABLES `gestiscecs` WRITE;
+/*!40000 ALTER TABLE `gestiscecs` DISABLE KEYS */;
+INSERT INTO `gestiscecs` VALUES ('p.lentisco1@studenti.unisa.it',9);
+/*!40000 ALTER TABLE `gestiscecs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `include`
+--
+
+DROP TABLE IF EXISTS `include`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `include` (
+  `FK_CORSI` int(50) NOT NULL,
+  `FK_REQCS` int(3) NOT NULL,
+  KEY `FK_CORSI` (`FK_CORSI`),
+  KEY `FK_REQCS` (`FK_REQCS`),
+  CONSTRAINT `request_ibfk_111` FOREIGN KEY (`FK_CORSI`) REFERENCES `corsi` (`ID`),
+  CONSTRAINT `request_ibfk_222` FOREIGN KEY (`FK_REQCS`) REFERENCES `requestcs` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `include`
+--
+
+LOCK TABLES `include` WRITE;
+/*!40000 ALTER TABLE `include` DISABLE KEYS */;
+/*!40000 ALTER TABLE `include` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `request`
 --
 
@@ -102,7 +210,7 @@ CREATE TABLE `request` (
   CONSTRAINT `request_ibfk_1` FOREIGN KEY (`FK_USER`) REFERENCES `user` (`EMAIL`),
   CONSTRAINT `request_ibfk_2` FOREIGN KEY (`FK_STATE`) REFERENCES `state` (`ID_STATE`),
   CONSTRAINT `request_ibfk_3` FOREIGN KEY (`FK_CERTIFIER`) REFERENCES `ente` (`ID_ENTE`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,9 +233,8 @@ DROP TABLE IF EXISTS `request_ou`;
 CREATE TABLE `request_ou` (
   `FK_ID_SKILL` int(3) DEFAULT NULL,
   `FK_EMAIL` varchar(50) NOT NULL,
-  `DATE_OF_BIRTH` DATE NOT NULL,
-  `CELL_NUMBER` varchar(12) NOT NULL, 
- 
+  `DATE_OF_BIRTH` date NOT NULL,
+  `CELL_NUMBER` varchar(12) NOT NULL,
   KEY `FK_EMAIL` (`FK_EMAIL`),
   KEY `FK_ID_SKILL` (`FK_ID_SKILL`),
   CONSTRAINT `RequestOu_ibfk_1` FOREIGN KEY (`FK_EMAIL`) REFERENCES `user` (`EMAIL`),
@@ -141,8 +248,36 @@ CREATE TABLE `request_ou` (
 
 LOCK TABLES `request_ou` WRITE;
 /*!40000 ALTER TABLE `request_ou` DISABLE KEYS */;
-INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it', '1998-12-04', '3333333333' );
+INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it','1998-12-04','3333333333'),(11,'p.lentisco1@studenti.unisa.it','1997-03-27','3275707891'),(NULL,'p.lentisco1@studenti.unisa.it','1997-03-27','3275707891');
 /*!40000 ALTER TABLE `request_ou` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `requestcs`
+--
+
+DROP TABLE IF EXISTS `requestcs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requestcs` (
+  `ID` int(3) NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(20) NOT NULL,
+  `COGNOME` varchar(20) NOT NULL,
+  `FK_STATE` int(20) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_STATE` (`FK_STATE`),
+  CONSTRAINT `request_ibfk_27` FOREIGN KEY (`FK_STATE`) REFERENCES `state` (`ID_STATE`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `requestcs`
+--
+
+LOCK TABLES `requestcs` WRITE;
+/*!40000 ALTER TABLE `requestcs` DISABLE KEYS */;
+INSERT INTO `requestcs` VALUES (9,'Pietro','Lentisco',1);
+/*!40000 ALTER TABLE `requestcs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -169,7 +304,7 @@ CREATE TABLE `requestlm` (
 
 LOCK TABLES `requestlm` WRITE;
 /*!40000 ALTER TABLE `requestlm` DISABLE KEYS */;
-INSERT INTO `requestlm` VALUES (120,'DATA SCIENCE',2020,'s.avolicino@studenti.unisa.it');
+INSERT INTO `requestlm` VALUES (120,'SICUREZZA INFORMATICA',2020,'p.lentisco1@studenti.unisa.it');
 /*!40000 ALTER TABLE `requestlm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +316,7 @@ DROP TABLE IF EXISTS `skill`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `skill` (
-  `ID_SKILL` int(3) NOT NULL AUTO-INCREMENT,
+  `ID_SKILL` int(3) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(50) NOT NULL,
   `TIPO` smallint(1) NOT NULL,
   `LIVELLO` varchar(2) NOT NULL,
@@ -195,7 +330,7 @@ CREATE TABLE `skill` (
 
 LOCK TABLES `skill` WRITE;
 /*!40000 ALTER TABLE `skill` DISABLE KEYS */;
-INSERT INTO `skill` VALUES (11,'java', 0 ,'3');
+INSERT INTO `skill` VALUES (11,'java',0,'3');
 /*!40000 ALTER TABLE `skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-20 12:08:04
+-- Dump completed on 2019-12-28 16:24:39
