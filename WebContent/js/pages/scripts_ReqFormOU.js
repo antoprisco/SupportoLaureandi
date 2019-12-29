@@ -22,6 +22,7 @@ $(document).ready(
 											  var checked = tr.find("input[type='radio']:checked");
 											  if (checked.length > 0)
 												  livelloSkill=checked.val();
+											 
 											  skills.push({skill: nomeSkill,value:livelloSkill});
 										});
 										
@@ -98,7 +99,7 @@ $(document).ready(
 					$("#aggiungiSkill").click(function() {
 						skill = $("#nomeSkill").val();
 						$("#nomeSkill").val('');
-						if(skill!=''){
+						if(skill!='' && skill!="undefined"){
 						content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td><fieldset id="+skill+">" +
 						"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
 							"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
@@ -106,16 +107,19 @@ $(document).ready(
 						$("#skill_table").append(content);}
 						
 						$("tr.skills").each(function() {
-						  tr=$(this);
+						 
+							/*tr=$(this);
 						  value=tr.first('td').data("skill");
-						  checked = tr.find("input[type='radio']:checked");
+						  checked = tr.find("input[type='radio']:checked");		
 						  if (checked.length > 0)
 							  value+=checked.val();
-						  else
+						  else{
 							  value+="Nessun valore";
-						 
-								
-						  showAlert(0,value);
+						  	  showAlert(1,value);
+								}*/
+							  
+						  
+						  showAlert(0,skill+" inserito")
 						});
 
 
@@ -125,13 +129,14 @@ $(document).ready(
 					$("#aggiungiSoftSkill").click(function() {
 						softskill = $("#nomeSoftSkill").val();
 						$("#nomeSoftSkill").val('');
-						if(softskill!=''){
+						if(softskill!='' && softskill!="undefined"){
 						content="<tr class=\"softskills\"><td class=\"pl-2\" data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
 						$("#softskill_table").append(content);}
 						
-						$("#softskill_table").find('tr').each(function(){
-							value=$(this).first('td').text();
-							showAlert(0,value);
+						$("softskill_table").each(function(){
+							tr=$(this);
+							value=tr.first('td').text().trim();
+						showAlert(0,softskill+" inserito");
 						});
 					});
 

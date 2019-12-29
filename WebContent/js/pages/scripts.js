@@ -51,4 +51,21 @@ function checkEmail(email) {
 	} else {
 		return true;
 	}
+}		
+
+function checkSkill(nameSkill){
+	var $nameSkill = nameSkill;
+	if(($nameSkill =="") || ($nameSkill=="undefined")){
+		return false;
+	}else{
+		return true;
+	}
+}
+function checkSoft(nameSoftSkill){
+	var $nameSoftSkill = nameSoftSkill;
+	if(($nameSoftSkill=="") || ($nameSoftSkill=="undefined")){
+			return false;
+		}else {
+			return true;
+	}
 }
