@@ -121,7 +121,7 @@ public class ServletFormOU extends HttpServlet {
 					s.setId(idSkill);
 					skillList.add(s);
 				} else {
-					sDAO.doSave(s);
+					idSkill = sDAO.doSave(s);
 					s.setId(idSkill);
 					skillList.add(s);
 				}
@@ -146,9 +146,11 @@ public class ServletFormOU extends HttpServlet {
 					s.setId(idSkill);
 					softSkillList.add(s);
 				} else {
-					sDAO.doSave(s);
-					s.setId(idSkill);
-					softSkillList.add(s);
+					if (!s.getNome().equals("")) {
+						idSkill = sDAO.doSave(s);
+						s.setId(idSkill);
+						softSkillList.add(s);
+					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -173,9 +175,11 @@ public class ServletFormOU extends HttpServlet {
 					s.setId(idSkill);
 					lingueList.add(s);
 				} else {
-					sDAO.doSave(s);
-					s.setId(idSkill);
-					lingueList.add(s);
+					if (!linguaValue.equals("NA")) {
+						idSkill = sDAO.doSave(s);
+						s.setId(idSkill);
+						lingueList.add(s);
+					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -230,14 +234,15 @@ public class ServletFormOU extends HttpServlet {
 				r.setIdSkill(s.getId());
 				r.setCellNumber(cell);
 				r.setDateOfBirth(date);
-
+					
 				try {
 					rDAO.doSave(r);
 				} catch (SQLException e) {
 					error = "Errore nell'esecuzione della query";
 					redirect = request.getContextPath() + "/_areaStudent/viewFormOU.jsp";
 					e.printStackTrace();
-				}
+				} 
+
 			}
 		}
 		

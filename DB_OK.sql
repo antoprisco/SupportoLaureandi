@@ -233,7 +233,7 @@ DROP TABLE IF EXISTS `request_ou`;
 CREATE TABLE `request_ou` (
   `FK_ID_SKILL` int(3) DEFAULT NULL,
   `FK_EMAIL` varchar(50) NOT NULL,
-  `DATE_OF_BIRTH` date NOT NULL,
+  `DATE_OF_BIRTH` varchar(20) NOT NULL,
   `CELL_NUMBER` varchar(12) NOT NULL,
   KEY `FK_EMAIL` (`FK_EMAIL`),
   KEY `FK_ID_SKILL` (`FK_ID_SKILL`),
