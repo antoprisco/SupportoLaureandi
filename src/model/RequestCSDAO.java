@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import controller.DbConnection;
 
 public class RequestCSDAO {
-	
-static final String TABLE_NAME = "requestCS";
-	
+
+	static final String TABLE_NAME = "requestCS";
+
 	public synchronized void doSave(RequestCS r) throws SQLException {
 
 		Connection connection = new DbConnection().getInstance().getConn();
@@ -26,8 +26,8 @@ static final String TABLE_NAME = "requestCS";
 			preparedStatement.setString(2, r.getCognome());
 			preparedStatement.setInt(3, r.getStato());
 			preparedStatement.executeUpdate();
-            
-			
+
+
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -38,16 +38,16 @@ static final String TABLE_NAME = "requestCS";
 			}
 		}
 	}
-	
+
 	public synchronized ArrayList<RequestCS> doRetrieveByNC(String nome, String cognome) throws SQLException {
-	  	Connection conn = new DbConnection().getInstance().getConn();
+		Connection conn = new DbConnection().getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 
-		
+
 		ArrayList<RequestCS> listbean = new ArrayList<RequestCS>();
 
 		String selectSQL = "select * from " + RequestCSDAO.TABLE_NAME + " where nome = ? and cognome=?";
-		
+
 
 		try {
 			//connection = DbConnection.getInstance().getConn();
@@ -63,14 +63,14 @@ static final String TABLE_NAME = "requestCS";
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setStato(rs.getInt("fk_state"));
-				
-				
+
+
 				listbean.add(bean);
 			}
 
 		} finally {
 			try {
-			if (preparedStatement != null)
+				if (preparedStatement != null)
 					preparedStatement.close();
 			} finally {
 				if (conn != null)
@@ -79,16 +79,16 @@ static final String TABLE_NAME = "requestCS";
 		}
 		return listbean;
 	}
-	
+
 	public synchronized RequestCS doRetrieveByNCS(String nome, String cognome, int stato) throws SQLException {
-	  	Connection conn = new DbConnection().getInstance().getConn();
+		Connection conn = new DbConnection().getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 
-		
+
 		RequestCS bean = new RequestCS();
 
 		String selectSQL = "select * from " + RequestCSDAO.TABLE_NAME + " where nome = ? and cognome=? and fk_state=?";
-		
+
 
 		try {
 			//connection = DbConnection.getInstance().getConn();
@@ -105,14 +105,14 @@ static final String TABLE_NAME = "requestCS";
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setStato(rs.getInt("fk_state"));
-				
-				
+
+
 				//listbean.add(bean);
 			}
 
 		} finally {
 			try {
-			if (preparedStatement != null)
+				if (preparedStatement != null)
 					preparedStatement.close();
 			} finally {
 				if (conn != null)
@@ -121,6 +121,43 @@ static final String TABLE_NAME = "requestCS";
 		}
 		return bean;
 	}
-	
-	
+
+
+	public synchronized ArrayList<RequestCS> doRetrieveAll() throws SQLException {
+
+		Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+
+		String selectSQL = "SELECT DISTINCT id, nome, cognome FROM " + TABLE_NAME + "";
+
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestCS r = new RequestCS();
+				
+				r.setId(rs.getInt(1));
+				r.setNome(rs.getString("nome"));
+				r.setCognome(rs.getString("cognome"));
+
+				listaRichieste.add(r);							
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+		
+		return listaRichieste;
+	}
 }
+

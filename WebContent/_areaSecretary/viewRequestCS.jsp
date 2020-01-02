@@ -41,17 +41,16 @@
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="content">
 							<div class="news-block-seven">
-								<table id="bodySegretaryTable" class="display data-results table table-striped table-hover table-bordered">
+								<table id="bodySecretaryTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr>
 											<th class="text-center">ID</th>
-											<th class="text-center">Matricola</th>
 											<th class="text-center">Nome</th>
 											<th class="text-center">Cognome</th>
 											<th class="text-center">Inoltra</th>
 										</tr>
 									</thead>
-									<tbody id="bodySegretaryBody">
+									<tbody id="bodySecretaryBody">
 
 									</tbody>
 								</table>
@@ -102,7 +101,7 @@
 			});
 		</script>
 	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_viewRequestCSsegretary.js"></script>
+		src="<%= request.getContextPath() %>/js/pages/scripts_viewRequestCSsecretary.js"></script>
 </body>
 </html>
 
