@@ -80,9 +80,9 @@ private static final long serialVersionUID = 1L;
 								
 								content+="<li> "+ skil.getNome()+"<b>";
 								if(skil.getTipo()==0) {
-									if(skil.getLvl().equals("1")) content+=": Livello basso <br>";
-									if(skil.getLvl().equals("2")) content+=": Livello medio <br>";
-									if(skil.getLvl().equals("3")) content+=": Livello alto <br>";
+									if(skil.getLvl().equals("b")) content+=": Livello basso <br>";
+									if(skil.getLvl().equals("m")) content+=": Livello medio <br>";
+									if(skil.getLvl().equals("a")) content+=": Livello alto <br>";
 									
 								}
 								if(skil.getTipo()==1) content+="<br>";
