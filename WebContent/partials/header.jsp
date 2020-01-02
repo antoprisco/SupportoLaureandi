@@ -27,21 +27,23 @@
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
         			 + "/viewReqOU.jsp\">Orientamento in uscita</li>";
       menu +=
-          "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
+          "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";
     }
     
   } else if (pageFolder.equals("_areaSecretary")) { //se stiamo in una pagina dell'area segreteria
 	  logoRedirect = request.getContextPath()+"/_areaSecretary/Open.jsp";
   
-    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp") || pageName.equals("Open.jsp")) {
+    if (pageName.equals("viewRequest.jsp")|| pageName.equals("viewRequestLM.jsp") || pageName.equals("viewRequestOU.jsp") || pageName.equals("viewRequestCS.jsp")|| pageName.equals("Open.jsp")) {
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Certificazione Lingua Inglese</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
       menu +=  "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequestOU.jsp\">Orientamento in uscita</li>";
+      menu +="<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+              + "/viewRequestCS.jsp\">Corsi Singoli</li>";
       menu +=
-          "<li><a href=\"" + request.getContextPath() + "/logout.jsp\">Disconnetti</a></li>";
+          "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";
     }
   } else if (pageFolder.equals("_areaStudent")) { //se stiamo in una pagina dell'area studente
 	 logoRedirect = request.getContextPath()+"/_areaStudent/Open.jsp";
