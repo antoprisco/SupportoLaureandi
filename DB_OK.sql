@@ -248,7 +248,7 @@ CREATE TABLE `request_ou` (
 
 LOCK TABLES `request_ou` WRITE;
 /*!40000 ALTER TABLE `request_ou` DISABLE KEYS */;
-INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it','1998-12-04','3333333333'),(11,'p.lentisco1@studenti.unisa.it','1997-03-27','3275707891'),(NULL,'p.lentisco1@studenti.unisa.it','1997-03-27','3275707891');
+INSERT INTO `request_ou` VALUES (11,'a.napoli94@studenti.unisa.it','1998-12-04','3333333333'),(11,'p.lentisco1@studenti.unisa.it','1994-10-10','3661044433'),(NULL,'p.lentisco1@studenti.unisa.it','1994-10-10','3661044433');
 /*!40000 ALTER TABLE `request_ou` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +330,7 @@ CREATE TABLE `skill` (
 
 LOCK TABLES `skill` WRITE;
 /*!40000 ALTER TABLE `skill` DISABLE KEYS */;
-INSERT INTO `skill` VALUES (11,'java',0,'3');
+INSERT INTO `skill` VALUES (11,'java',0,'a'); /*Il livello della skill è gestito con "a": alto,"m": medio, "b":basso*/
 /*!40000 ALTER TABLE `skill` ENABLE KEYS */;
 UNLOCK TABLES;
 
