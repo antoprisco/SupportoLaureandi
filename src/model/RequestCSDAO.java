@@ -11,6 +11,8 @@ import controller.DbConnection;
 public class RequestCSDAO {
 
 	static final String TABLE_NAME = "requestCS";
+	
+
 
 	public synchronized void doSave(RequestCS r) throws SQLException {
 
@@ -159,5 +161,42 @@ public class RequestCSDAO {
 		
 		return listaRichieste;
 	}
+	
+	
+	public synchronized void doUpdate(int stato, int id) throws SQLException {
+
+		Connection connection = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		Integer idRequest = 0;
+		String UpdateSQL = "UPDATE " + RequestCSDAO.TABLE_NAME
+				+ " set fk_state = ?  WHERE id = ? ";
+		
+		int x;
+
+		try {
+
+			preparedStatement = connection.prepareStatement(UpdateSQL,preparedStatement.RETURN_GENERATED_KEYS);
+			
+			preparedStatement.setInt(1, stato);
+			preparedStatement.setInt(2, id);
+			
+			x = preparedStatement.executeUpdate();
+			
+
+			
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.commit();;
+			}
+		}
+		
+	}
+
+	
+	
 }
 

@@ -38,14 +38,14 @@ public class AllegatiDAO {
 		}
 	}
 	
-	public synchronized ArrayList<Allegati> doRetrievebyReq(String email) throws SQLException {
+	public synchronized ArrayList<Allegati> doRetrievebyReq(String email, int id) throws SQLException {
 	  	Connection conn = new DbConnection().getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 
 		int i=0;
 		ArrayList<Allegati> listbean = new ArrayList<Allegati>();
 
-		String selectSQL = "select * from " + AllegatiDAO.TABLE_NAME + " where fk_user=?";
+		String selectSQL = "select * from " + AllegatiDAO.TABLE_NAME + " where fk_user=? and fk_reqcs=?";
 		
 		
 		
@@ -54,6 +54,7 @@ public class AllegatiDAO {
 			
 			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, email);
+			preparedStatement.setInt(2, id);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {

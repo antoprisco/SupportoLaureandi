@@ -68,9 +68,9 @@ public class ServletUploadFiles extends HttpServlet {
 	    		AllegatiDAO ad= new AllegatiDAO();
 	    		ArrayList<Allegati> listaAllegati= new ArrayList<Allegati>();
 	    		
-	    		try {
+	    	try {
 	    			ArrayList<RequestCS> list= rd.doRetrieveByNC(user.getName(), user.getSurname());
-	    			if(!list.isEmpty()) {
+	    		if(!list.isEmpty()) {
 	    			for(int i=0; i<list.size();i++) {
 	    				r=list.get(i);
 	    				if(r.getStato()==1) {
@@ -94,10 +94,11 @@ public class ServletUploadFiles extends HttpServlet {
 	    					else {
 	    						a= new Allegati(upi,user.getEmail(),r.getId());
 	    						
-	    						listaAllegati=ad.doRetrievebyReq(user.getEmail());
+	    						listaAllegati=ad.doRetrievebyReq(user.getEmail(),r.getId());
 	    						if(listaAllegati.isEmpty() || listaAllegati.size()<2) {
 	    							ad.doSave(a);
-									error="allegata correttamente";
+									//error="allegata correttamente";
+									result=1;
 	    						}else {
 	    							error="documenti già inseriti";
 	    						}
@@ -105,12 +106,9 @@ public class ServletUploadFiles extends HttpServlet {
 	    							
 	    						}
 	    						
-	    						
-	    						
-	    					
+	    				    	     		
 	    	     		
-	    	     		
-	    	     		//Documente deve rispettare il seguente formato per essere accettato
+	    	     		//Documento deve rispettare il seguente formato per essere accettato
 	    					String upd=request.getParameter("UPD");
 	    					String prefixUPD = "";
 	    					if (upd.length() > 0 && upd.contains("Documento")) {
@@ -122,7 +120,7 @@ public class ServletUploadFiles extends HttpServlet {
 	    					else {
 	    						a= new Allegati(upd,user.getEmail(),r.getId());
 	    						
-	    						listaAllegati=ad.doRetrievebyReq(user.getEmail());
+	    						listaAllegati=ad.doRetrievebyReq(user.getEmail(), r.getId());
 	    						if(listaAllegati.isEmpty() || listaAllegati.size()<2) {
 	    							ad.doSave(a);
 									error="allegata correttamente";
@@ -133,6 +131,7 @@ public class ServletUploadFiles extends HttpServlet {
 	    							
 	    						}
 
+	    				rd.doUpdate(r.getStato()+1, r.getId());
 	    				}		
 	    			else {	error="Spiacenti, non abbiamo trovato alcuna richiesta che attenda l'upload dei file "; }
 	    		}

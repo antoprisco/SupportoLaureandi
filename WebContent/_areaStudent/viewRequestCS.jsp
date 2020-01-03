@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1" import="controller.CheckSession"%>
-<%@ page import="java.util.*,model.Request, model.*, interfacce.*"%>
+<%@ page
+	import="java.util.*,model.Request,controller.DbConnection,controller.ServletAdmin,java.sql.ResultSet,java.sql.Statement"%>
+
 <%
 	String pageName = "viewRequestCS.jsp";
 	String pageFolder = "_areaStudent";
@@ -28,68 +30,47 @@
 		</jsp:include>
 
 
-		<div class="sidebar-page-container basePage viewRequestStudent">
+		<div class="sidebar-page-container basePage viewRequestAdmin">
 			<div class="auto-container">
 				<div class="row clearfix">
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="content">
+						<div class="content ">
 							<div class="news-block-seven">
-								<table id="studentTable" class="display data-results table table-striped table-hover table-bordered">
+								<table id="adminTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
-										<tr align="center">
-											<th class="text-center" align="center">ID</th>
-											<th class="text-center" align="center">Nome</th>
-											<th class="text-center" align="center">Cognome</th>
-											<th class="text-center" align="center">Stato</th>
-										</tr>
-										<%
-										UserInterface user = (UserInterface) request.getSession().getAttribute("user");
-									    String idUser = user.getEmail();
-									    
-										RequestCS r= new RequestCS();
-										RequestCSDAO rd= new RequestCSDAO();
-										ArrayList<RequestCS> list= new ArrayList<RequestCS>();
-										list=rd.doRetrieveByNC(user.getName(), user.getSurname());
-										if(!list.isEmpty()){
+										<tr>
+											<th class="text-center">Id</th>
+											<th class="text-center">Nome</th>
+											<th class="text-center">Cognome</th>
+											<th class="text-center">Stato</th>
+											
 										
-										for (RequestCS req: list){
-											%>
-											<tr>
-											<td><%=req.getId() %></td>
-											<td><%=req.getNome() %></td>
-											<td><%=req.getCognome() %></td>
-											<%
-											Stato s= new Stato();
-											StatoDAO sd= new StatoDAO();
-											s=sd.doRetrieveById(req.getStato());
-											
-											
-											%>
-											<td><%=s.getDescr() %></td>
-											</tr>
-											<%
-										} 
-										}else{
-											%><p>Non ci sono richieste</p><%
-										}%>
+										</tr>
 									</thead>
-									<tbody id="bodyStudentTable">
+									<tbody id="bodyAdminTable">
+
 									</tbody>
 								</table>
-
+								
+							
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<jsp:include page="/partials/footer.jsp" />
 	</div>
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
+	
+		<script
+		src="<%= request.getContextPath() %>/js/pages/scripts_viewReqCSSt.js">
+		</script>
+	
 
-	
-	
+
 </body>
 </html>

@@ -32,9 +32,6 @@ $(document)
 										var voto = $("#voto").val();
 										var lode = $(".lode:checked").val();
 										var year = $("#immatricolazione").val();
-										//var scelta = $(".esami:checked").val();
-										//var scelta= $("#scelta").val();
-										// var sem=$("#sem").val();
 										var scelta =[];
 										
 										
@@ -42,11 +39,7 @@ $(document)
 										$("tr.esami").each(function() {
 											  tr=$(this);
 											  var nomeEsame=tr.first('td').text().trim();
-											 // var cfuEsame=tr.last('td').text().trim();
 											  var idEsame= tr.find("input[type='checkbox']:checked").val()
-											//  var checked = tr.find("input[type='checkbox']:checked");
-											 // if (checked.length > 0)
-												//  idEsame=checked.val();
 											  scelta.push({esame: nomeEsame,value:idEsame});
 										});
 										
@@ -79,11 +72,7 @@ $(document)
 												&& voto != undefined
 												&& lode != undefined
 												&& year != undefined
-												
-											//	&& sem != undefined
 												&& scelta.length > 0
-											//	&& scelta != undefined
-											//	&& idEsame != undefined
 										) {
 											$(".preloader").show();
 
@@ -121,9 +110,7 @@ $(document)
 															 "voto" : voto,
 															 "lode" : lode,	
 															 "year" : year,
-														//	 "sem" : sem,
 															 "scelta" : JSON.stringify(scelta),
-														//	 "idEsame": idEsame,
 															
 															
 															 "flag" : 8
