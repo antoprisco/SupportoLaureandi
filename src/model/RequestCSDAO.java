@@ -40,6 +40,33 @@ public class RequestCSDAO {
 			}
 		}
 	}
+	
+	public synchronized void doUpdateNC(RequestCS r) throws SQLException{
+
+		Connection connection = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+		
+		String upSQL = "UPDATE" + RequestCSDAO.TABLE_NAME 
+								+" set name = ?, cognome = ? "
+								+ "WHERE id = ?";
+		try {
+			preparedStatement = connection.prepareStatement(upSQL,preparedStatement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, r.getNome());
+			preparedStatement.setString(2, r.getCognome());
+			preparedStatement.setInt(3, r.getId());
+			preparedStatement.executeUpdate();
+
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.commit();;
+			}
+		}
+	}
 
 	public synchronized ArrayList<RequestCS> doRetrieveByNC(String nome, String cognome) throws SQLException {
 		Connection conn = new DbConnection().getInstance().getConn();

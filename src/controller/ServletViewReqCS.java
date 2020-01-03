@@ -65,9 +65,9 @@ public class ServletViewReqCS extends HttpServlet {
 						listaCognomi.add(r.getCognome());
 
 						content += "<tr>";
-						content += "<td align='center' class = 'id'><button>" + r.getId() + "</button>";
-						content += "<td align='center'><button class='changeName'>" + r.getNome() + "</button>";
-						content += "<td align='center'><button>" + r.getCognome() + "</button>";
+						content += "<td align='center' class = 'id'><button  id='idR'>" + r.getId() + "</button>";
+						content += "<td align='center'><button class='changeName' id='nome'>" + r.getNome() + "</button>";
+						content += "<td align='center'><button  class ='changeSurname' id='cognome'>" + r.getCognome() + "</button>";
 						content += "<td align='center'><input type='checkbox'>";
 						content +="</td>";
 						content +="</td>";
@@ -80,6 +80,18 @@ public class ServletViewReqCS extends HttpServlet {
 				error = "Errore nel database";
 				e.printStackTrace();
 			} 
+		/*}else if (Integer.parseInt(request.getParameter("flag")) == 2) {
+			try {
+				RequestCS rn = new RequestCS();
+				rn.setId(Integer.parseInt(request.getParameter("id")));
+				rn.setNome(request.getParameter("nome"));
+				rn.setCognome(request.getParameter("cognome"));
+				
+				rDAO.doUpdateNC(rn);
+			}catch(Exception e) {
+				error = "errore nel db";
+				e.printStackTrace();
+			}*/
 		}
 		JSONObject res= new JSONObject();
 	   	res.put("result", result);
