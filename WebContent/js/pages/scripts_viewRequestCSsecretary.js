@@ -1,3 +1,54 @@
+function callInoltra() {
+
+	$.ajax({
+		url : absolutePath + "/ServletInoltra",
+		type : "POST",
+		dataType : 'JSON',
+		async : false,
+		data : {
+			"flag" : 1,
+		},
+		success : function(msg) {
+			if (!msg.result) {
+				showAlert(1, msg.error);
+			} else {
+				$("#bodySecretaryBody").html(msg.content);
+			}
+		},
+		error : function(msg) {
+			showAlert(1, "Impossibile cambiare i dati.");
+		}
+	});
+}
+
+function callChangData() {
+	
+	var name = $("#nome").val();
+	var id = $("#idR").data();
+
+	$.ajax({
+		url : absolutePath + "/ServletChangeData",
+		type : "POST",
+		dataType : 'JSON',
+		async : false,
+		data : {
+			"flag" : 1,
+			"nome" : name,
+			"id" : id
+		},
+		success : function(msg) {
+			if (!msg.result) {
+				showAlert(1, msg.error);
+			} else {
+				$("#bodySecretaryBody").html(msg.content);
+			}
+		},
+		error : function(msg) {
+			showAlert(1, "Impossibile cambiare i dati.");
+		}
+	});
+}
+
 function showData() {
 
 	$(".preloader").show();
@@ -40,7 +91,7 @@ function showData() {
 									$(".preloader").show();
 
 									title = 'Cambia Nome';
-
+									
 									text += '<div class="form-group">';
 									text += '	<label for="name">Inserire il nuovo Nome:</label>';
 									text += '	<input type="text" class="form-control" id="nome" placeholder="Nome" minlength="1" maxlength="20" value="'
@@ -48,7 +99,7 @@ function showData() {
 									text += '</div>';
 
 									footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
-									footer += '<button type="submit" class="btn btn-default btn-success confirm" data-id="'
+									footer += '<button onclick="callChangeData()" type="submit" class="btn btn-default btn-success confirm" data-id="'
 											+ idR
 											+ '" >Salva</button>';
 

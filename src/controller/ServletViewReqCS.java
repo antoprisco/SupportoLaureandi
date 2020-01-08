@@ -65,7 +65,7 @@ public class ServletViewReqCS extends HttpServlet {
 						listaCognomi.add(r.getCognome());
 
 						content += "<tr>";
-						content += "<td align='center' class = 'id'><button  id='idR'>" + r.getId() + "</button>";
+						content += "<td align='center'><button  id='idR'>" + r.getId() + "</button>";
 						content += "<td align='center'><button class='changeName' id='nome'>" + r.getNome() + "</button>";
 						content += "<td align='center'><button  class ='changeSurname' id='cognome'>" + r.getCognome() + "</button>";
 						content += "<td align='center'><input type='checkbox'>";
