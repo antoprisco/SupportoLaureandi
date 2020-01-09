@@ -53,33 +53,8 @@
 											<th class="text-center">Declina</th>
 										</tr>
 									</thead>
-									<tbody id="bodySecretaryBody">
-										<tr>
-											<td align='center' class = 'id'><button  id='idR'>01</button></td>
-											<td align='center'><button class='changeName' id='nome'>Nome1</button></td>
-											<td align='center'><button  class ='changeSurname' id='cognome'>Nome2</button></td>
-											<td align='center'><a href="#">Documento</a></td>
-											<td align='center'><p class="list-group-item-success">Stato</p></td>
-											<td align='center'>
-												<button type="button" class="btn btn-default" aria-label="Conferma" id="checkConferma">
-													<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-												</button>
-											</td>
-											<td align='center'>
-												<button type="button" class="btn btn-default" aria-label="Rifiuta" id="checkRifiuta">
-													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-												</button>
-											</td>	
-										</tr>
-										<tr>
-											<td align='center' class = 'id'><button  id='idR'>01</button></td>
-											<td align='center'><button class='changeName' id='nome'>Nome1</button></td>
-											<td align='center'><button  class ='changeSurname' id='cognome'>Nome2</button></td>
-											<td align='center'><a href="#">Documento</a></td>
-											<td align='center'><p class="list-group-item-success">Stato</p></td>
-											<td align='center'><input type='checkbox' id="checkConferma"></td>
-											<td align='center'><input type='checkbox' id="checkRifiuta"></td>	
-										</tr>
+									<tbody id="bodyTableCSAdminBody">
+										
 									</tbody>
 								</table>
 								<div class="d-flex justify-content-center"><button class="btn btn-primary btn-action generateExcel" style="width: auto !important; height: 35px !important;" id="btnConfermaRichieste">Conferma</button></div>
@@ -129,7 +104,7 @@
 			});
 		</script>
 	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_viewRequestCSsecretary.js"></script>
+		src="<%= request.getContextPath() %>/js/pages/scripts_viewRequestCSAdmin.js"></script>
 </body>
 </html>
 

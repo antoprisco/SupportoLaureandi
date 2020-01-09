@@ -21,7 +21,7 @@ import model.StatoDAO;
 /**
  * Servlet implementation class ServletViewReqCS
  */
-@WebServlet("/ServletViewReqCS")
+@WebServlet("/ServletViewReqCSA")
 public class ServletViewReqCSA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

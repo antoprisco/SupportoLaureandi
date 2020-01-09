@@ -17,7 +17,7 @@ import model.RequestCSDAO;
 /**
  * Servlet implementation class ServletInoltra
  */
-@WebServlet("/ServletInoltra")
+@WebServlet("/ServletChangeStReqCS")
 public class ServletChangeStReqCS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
