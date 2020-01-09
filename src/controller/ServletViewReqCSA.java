@@ -66,7 +66,32 @@ public class ServletViewReqCSA extends HttpServlet {
 						listaNomi.add(r.getNome());
 						listaCognomi.add(r.getCognome());
 						listaStati.add(sDAO.doRetrieveById(r.getStato()));
-						content = "";
+
+						content += "<tr>";
+						content += "<td align='center' class = 'id'><p  id='idR'>"+r.getId()+ "</p></td>";
+						content += "<td align='center'><button class='changeName' id='nome'>" + r.getNome() + "</button>";
+						content += "<td align='center'><button  class ='changeSurname' id='cognome'>" + r.getCognome() + "</button>";
+						content += "<td align='center'><a href=\"#\">Documento</a></td>";
+						
+						if(r.getStato()==3) {
+							content += "<td align='center'><p class=\"list-group-item-warning\">In attesa</p></td>";
+						}else if(r.getStato()==4) {
+							content += "<td align='center'><p class=\"list-group-item-success\">Approvata, revisione in consiglio</p></td>";
+						}else if(r.getStato()==5) {
+							content += "<td align='center'><p class=\"list-group-item-danger\">Approvata, revisione in consiglio</p></td>";
+						}
+						
+						content += "<td align='center'>"+ 
+									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Conferma\" id=\"checkConferma\">" + 
+										"<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>" + 
+									"</button>" + 
+								"</td>";
+						content += "<td align='center'>"+ 
+									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Rifiuta\" id=\"checkRifiuta\">" + 
+										"<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>" + 
+									"</button>" + 
+								"</td>";
+						content +="</tr>";
 					}
 				}
 			} catch (Exception e) {
