@@ -45,11 +45,11 @@ public class ServletInoltra extends HttpServlet {
 		String content = "";
 		String redirect = "";
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		RequestCSDAO rDAO = new RequestCSDAO();
 		
 		try {
-			rDAO.doInoltra(id);
+			rDAO.doInoltraToAdmin(id);
 			content = "Richiesta inoltrata all'admin!";
 			result = 1;
 		} catch (Exception e) {
