@@ -18,7 +18,7 @@
   if (pageFolder.equals("_areaAdmin")) { //se stiamo in una pagina dell'area admin
 	  logoRedirect = request.getContextPath()+"/_areaAdmin/Open.jsp";
   
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp") || pageName.equals("viewReqOU.jsp")|| pageName.equals("Open.jsp") ) {
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("viewRequestLM.jsp") || pageName.equals("viewReqOU.jsp")|| pageName.equals("Open.jsp")|| pageName.equals("viewRequestCS.jsp") ) {
 
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
           + "/viewRequest.jsp\">Certificazione Lingua Inglese</a></li>";
@@ -26,6 +26,8 @@
            + "/viewRequestLM.jsp\">Laurea Magistrale</a></li>";
       menu += "<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
         			 + "/viewReqOU.jsp\">Orientamento in uscita</li>";
+	 menu +="<li class=\"current\"><a href=\"" + request.getContextPath() + "/" + pageFolder
+              + "/viewRequestCS.jsp\">Corsi Singoli</li>";
       menu +=
           "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";
     }
