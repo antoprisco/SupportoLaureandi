@@ -188,6 +188,45 @@ public class RequestCSDAO {
 
 		return listaRichieste;
 	}
+	
+	
+	public synchronized ArrayList<RequestCS> doRetrieveAdmin() throws SQLException {
+
+		Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+
+		String selectSQL = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME + " WHERE fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC";
+
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestCS r = new RequestCS();
+
+				r.setId(rs.getInt(1));
+				r.setNome(rs.getString("nome"));
+				r.setCognome(rs.getString("cognome"));
+				r.setStato(rs.getInt("fk_state"));
+				listaRichieste.add(r);							
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+
+		return listaRichieste;
+	}
+
 
 
 	public synchronized void doUpdate(int stato, int id) throws SQLException {
@@ -258,6 +297,31 @@ public class RequestCSDAO {
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, newSurname);
+			preparedStatement.setInt(2, id);
+
+			preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.commit();;
+			}
+		}
+	}
+	
+	public synchronized void doChangeState(int state, int id) throws SQLException {
+
+		Connection connection = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		String sql = "UPDATE " + RequestCSDAO.TABLE_NAME + " SET FK_STATE = ? WHERE ID = ?";
+
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, state);
 			preparedStatement.setInt(2, id);
 
 			preparedStatement.executeUpdate();
