@@ -46,12 +46,12 @@ public class ServletChangeData extends HttpServlet {
 		String content = "";
 		String redirect = "";
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+		
 		RequestCSDAO rDAO = new RequestCSDAO();
 		
 		if(Integer.parseInt(request.getParameter("flag")) == 1) {
-			String nome = request.getParameter("nome");
-			
+			String nome = request.getParameter("newName");
+			Integer id = Integer.parseInt(request.getParameter("id"));
 			try {
 				rDAO.doChangeName(nome, id);
 				content = "Modifica avvenuta con successo!";
@@ -61,8 +61,8 @@ public class ServletChangeData extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(Integer.parseInt(request.getParameter("flag")) == 2) {
-			String cognome = request.getParameter("cognome");
-			
+			String cognome = request.getParameter("newSurname");
+			Integer id = Integer.parseInt(request.getParameter("id"));
 			try {
 				rDAO.doChangeSurname(cognome, id);
 				content = "Modifica avvenuta con successo!";

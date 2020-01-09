@@ -56,42 +56,43 @@ public class ServletViewReqCS extends HttpServlet {
 
 	    if (Integer.parseInt(request.getParameter("flag")) == 1) {
 			try {
-				listaRichieste = rDAO.doRetrieveAll();
+				listaRichieste = rDAO.doRetrieveAllSecretary();
 				result = 1;
 
 				if (!listaRichieste.isEmpty()) {
 					for (RequestCS r : listaRichieste) {
-						listaNomi.add(r.getNome());
-						listaCognomi.add(r.getCognome());
-
-						content += "<tr>";
-						content += "<td align='center'><button  id='idR'>" + r.getId() + "</button>";
-						content += "<td align='center'><button class='changeName' id='nome'>" + r.getNome() + "</button>";
-						content += "<td align='center'><button  class ='changeSurname' id='cognome'>" + r.getCognome() + "</button>";
-						content += "<td align='center'><input type='checkbox'>";
-						content +="</td>";
-						content +="</td>";
-						content +="</td>";
-						content +="</td>";
-						content +="</tr>";
+						
+							listaNomi.add(r.getNome());
+							listaCognomi.add(r.getCognome());
+	
+							content += "<tr>";
+							content += "<td align='center'><button  id='idr'>" + r.getId() + "</button>";
+							content += " <td align='center'> <button class='changeName' data-idr='"+ r.getId() + "' data-name='"+ r.getNome()
+			                        + "' title='Modifica Nome'>"+r.getNome();
+							content += " <td align='center'> <button class='changeSurname' data-idr='"+ r.getId() + "'  data-surname='" + r.getCognome()
+			                        + "' title='Modifica Cognome'>"+r.getCognome();
+							//content += "<td align='center'><input type='checkbox'  id='check'>";
+							content += "<td class='text-center'>";
+				            content += "<button class=\"btn btn-primary btn-action toAdmin"
+				                    + "\" title=\"Inoltra all'admin\" data-idr='"+ r.getId()
+				                    + "' style='background-color: #149414; border-color: #149414;' "
+				                    + "><i class=\"fa fa-check\"></i></button>";
+							content +="</td>";
+							content +="</td>";
+							content +="</td>";
+							content +="</td>";
+							content +="</tr>";
+						
 					}
+				}
+				else {
+					content += "nessuna richiesta da elaborare";
 				}
 			} catch (Exception e) {
 				error = "Errore nel database";
 				e.printStackTrace();
 			} 
-		/*}else if (Integer.parseInt(request.getParameter("flag")) == 2) {
-			try {
-				RequestCS rn = new RequestCS();
-				rn.setId(Integer.parseInt(request.getParameter("id")));
-				rn.setNome(request.getParameter("nome"));
-				rn.setCognome(request.getParameter("cognome"));
-				
-				rDAO.doUpdateNC(rn);
-			}catch(Exception e) {
-				error = "errore nel db";
-				e.printStackTrace();
-			}*/
+		
 		}
 		JSONObject res= new JSONObject();
 	   	res.put("result", result);

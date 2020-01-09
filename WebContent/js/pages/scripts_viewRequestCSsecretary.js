@@ -75,130 +75,90 @@ function showData() {
 
 	$(".preloader").hide();
 }
-	$(document)
-					.on(
-							"click",
-							".changeName",
-							function() {
-								var idR = $("#idR").val();
-								var name = $("#nome").val();
-								var title = '';
-								var text = '';
-								var footer = '';
 
-								if (name != undefined
-									|| name.length > 0) {
+$(document)
+		.ready(
+				function() {
+
+					$(document)
+					.on(
+							"submit",
+							"#saveSurname",
+							function() {
+								var idr = $("#saveSurname .confirm")
+										.data("idr");
+								var newSurname = $(
+										"#saveSurname #surname").val();
+								if (true) {
 									$(".preloader").show();
 
-									title = 'Cambia Nome';
-									
-									text += '<div class="form-group">';
-									text += '	<label for="name">Inserire il nuovo Nome:</label>';
-									text += '	<input type="text" class="form-control" id="nome" placeholder="Nome" minlength="1" maxlength="20" value="'
-											+ name + '" required>';
-									text += '</div>';
-
-									footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
-									footer += '<button onclick="callChangeData()" type="submit" class="btn btn-default btn-success confirm" data-id="'
-											+ idR
-											+ '" >Salva</button>';
-
-									$("#defaultModal form").attr("id",
-											"saveName");
-									$("#defaultModal .modal-title")
-											.html(title);
-									$("#defaultModal .modal-body")
-											.html(text);
-									$("#defaultModal .modal-footer")
-											.html(footer);
-
-									$("#defaultModal").modal("show");
+									$
+											.ajax({
+												url : absolutePath
+														+ "/ServletChangeData",
+												type : "POST",
+												dataType : 'JSON',
+												async : false,
+												data : {
+													"id" : idr,
+													"newSurname" : newSurname,
+													"flag" : 2
+												},
+												success : function(msg) {
+													if (!msg.result) {
+														showAlert(
+																1,
+																msg.error);
+													} else {
+														showAlert(
+																0,
+																msg.content);
+														$(
+																"#defaultModal")
+																.modal(
+																		"hide");
+														setTimeout(
+																function() {
+																	showData();
+																}, 2000);
+													}
+												},
+												error : function(msg) {
+													showAlert(1,
+															"Impossibile Recuperare i dati.");
+												}
+											});
 
 									$(".preloader").hide();
 								} else {
 									showAlert(1, "Errore parametri.");
 								}
-							});					
-					
-							/*$(document)
-												.on(
-														"submit",
-														"#saveName",
-														function() {
-															var idR = $("#saveName idR")
-																	.val();
-															var newName = $("#saveName #name")
-																	.val();
-															var cog = $("#cognome").val();
-															if (name != undefined
-																|| name.length > 0) {
-																$(".preloader").show();
+							});
 
-																$
-																		.ajax({
-																			url : absolutePath
-																					+ "/ServletViewRequesCS",
-																			type : "POST",
-																			dataType : 'JSON',
-																			async : false,
-																			data : {
-																				"flag" : 2,
-																				"idR" : idR,
-																				"nome" : newName,
-																				"cognome" : cog
-																				
-																			},
-																			success : function(msg) {
-																				if (!msg.result) {
-																					showAlert(
-																							1,
-																							msg.error);
-																				} else {
-																					showAlert(
-																							0,
-																							msg.content);
-																					$(
-																							"#defaultModal")
-																							.modal(
-																									"hide");
-																					//setTimeout(
-																						//	function() {
-																								showData();
-																							//}, 2000);
-																				}
-																			},
-																			error : function(msg) {
-																				showAlert(1,
-																						"Impossibile Recuperare i dati.");
-																			}
-																		});*/
-        $(document)
+			$(document)
 					.on(
 							"click",
 							".changeSurname",
 							function() {
-								var idR = $("#idR").val();
-								var cog = $("#cognome").val();
+								var idr =parseInt($(this).data("idr"));
+								var surname = $(this).data("surname");
 								var title = '';
 								var text = '';
 								var footer = '';
 
-								if (cog != undefined
-									|| cog.length > 0) {
+								if (true) {
 									$(".preloader").show();
 
 									title = 'Cambia Cognome';
 
 									text += '<div class="form-group">';
-									text += '	<label for="name">Inserire il nuovo Cognome:</label>';
-									text += '	<input type="text" class="form-control" id="cognome" placeholder="Cognome" minlength="1" maxlength="20" value="'
-											+ cog + '" required>';
+									text += '<label for="name">Inserire il nuovo Cognome:</label>';
+									text += '<input type="text" class="form-control" id="surname" placeholder="nuovo Cognome" minlength="1" maxlength="20" value="'
+											+'" required>';
 									text += '</div>';
 
 									footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
-									footer += '<button type="submit" class="btn btn-default btn-success confirm" data-id="'
-											+ idR
-											+ '" >Salva</button>';
+									footer += '<button type="submit" class="btn btn-default btn-success confirm" data-idr="'+ idr +'">Salva</button>';
 
 									$("#defaultModal form").attr("id",
 											"saveSurname");
@@ -215,4 +175,157 @@ function showData() {
 								} else {
 									showAlert(1, "Errore parametri.");
 								}
-							});					
+							});
+
+			$(document)
+					.on(
+							"submit",
+							"#saveName",
+							function() {
+								var idr = $("#saveName .confirm")
+										.data("idr");
+								var newName = $("#saveName #name")
+										.val();
+								if (true) {
+									$(".preloader").show();
+
+									$
+											.ajax({
+												url : absolutePath
+														+ "/ServletChangeData",
+												type : "POST",
+												dataType : 'JSON',
+												async : false,
+												data : {
+													"id" : idr,
+													"newName" : newName,
+													"flag" : 1
+												},
+												success : function(msg) {
+													if (!msg.result) {
+														showAlert(
+																1,
+																msg.error);
+													} else {
+														showAlert(
+																0,
+																msg.content);
+														$(
+																"#defaultModal")
+																.modal(
+																		"hide");
+														setTimeout(
+																function() {
+																	showData();
+																}, 2000);
+													}
+												},
+												error : function(msg) {
+													showAlert(1,
+															"Impossibile Recuperare i dati.");
+												}
+											});
+
+									$(".preloader").hide();
+								} else {
+									showAlert(1, "Errore parametri.");
+								}
+							});
+
+			$(document)
+					.on(
+							"click",
+							".changeName",
+							function() {
+								var idr = parseInt($(this).data("idr"));
+								var name = $(this).data("name");
+								var title = '';
+								var text = '';
+								var footer = '';
+
+								if (true) {
+									$(".preloader").show();
+
+									title = 'Cambia Nome';
+
+									text += '<div class="form-group">';
+									text += '<label for="name">Inserire il nuovo Nome:</label>';
+									text += '<input type="text" class="form-control" id="name" placeholder="nuovo Nome" minlength="1" maxlength="20" value="'
+											+ '" required>';
+									text += '</div>';
+
+									footer += '<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>';
+									footer += '<button type="submit" class="btn btn-default btn-success confirm" data-idr="'+ idr +'">Salva</button>';
+
+											
+
+									$("#defaultModal form").attr("id",
+											"saveName");
+									$("#defaultModal .modal-title")
+											.html(title);
+									$("#defaultModal .modal-body")
+											.html(text);
+									$("#defaultModal .modal-footer")
+											.html(footer);
+
+									$("#defaultModal").modal("show");
+
+									$(".preloader").hide();
+								} else {
+									showAlert(1, "Errore parametri.");
+								}
+							});
+			$(document)
+							.on(
+									"click",
+									".toAdmin",
+									function() {
+										var idr= parseInt($(this).data("idr"));
+										if (true) {
+											
+												$(".preloader").show();
+
+												$
+														.ajax({
+															url : absolutePath
+																	+ "/ServletInoltra",
+															type : "POST",
+															dataType : 'JSON',
+															async : false,
+															data : {
+																//"flag" : 3,
+																"id" : idr
+															},
+															success : function(
+																	msg) {
+																if (!msg.result) {
+																	showAlert(
+																			1,
+																			msg.error);
+																} else {
+																	showAlert(
+																			0,
+																			msg.content);
+																	setTimeout(
+																			function() {
+																				showData();
+																			},
+																			2000);
+																}
+															},
+															error : function(
+																	msg) {
+																showAlert(1,
+																		"Impossibile Recuperare i dati.");
+															}
+														});
+
+												$(".preloader").hide();
+											}
+										else {
+											showAlert(1, "Errore parametri.");
+										}
+
+									});
+								
+						});				

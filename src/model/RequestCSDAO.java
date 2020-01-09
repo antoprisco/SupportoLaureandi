@@ -41,32 +41,6 @@ public class RequestCSDAO {
 		}
 	}
 
-	public synchronized void doUpdateNC(RequestCS r) throws SQLException{
-
-		Connection connection = new DbConnection().getInstance().getConn();
-		PreparedStatement preparedStatement = null;
-
-		String upSQL = "UPDATE" + RequestCSDAO.TABLE_NAME 
-				+" set name = ?, cognome = ? "
-				+ "WHERE id = ?";
-		try {
-			preparedStatement = connection.prepareStatement(upSQL,preparedStatement.RETURN_GENERATED_KEYS);
-			preparedStatement.setString(1, r.getNome());
-			preparedStatement.setString(2, r.getCognome());
-			preparedStatement.setInt(3, r.getId());
-			preparedStatement.executeUpdate();
-
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.commit();;
-			}
-		}
-	}
 
 	public synchronized ArrayList<RequestCS> doRetrieveByNC(String nome, String cognome) throws SQLException {
 		Connection conn = new DbConnection().getInstance().getConn();
@@ -228,7 +202,42 @@ public class RequestCSDAO {
 	}
 
 
+	public synchronized ArrayList<RequestCS> doRetrieveAllSecretary() throws SQLException {
 
+		Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+
+		String selectSQL = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME + "WHERE FK_STATE=2";
+
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestCS r = new RequestCS();
+
+				r.setId(rs.getInt(1));
+				r.setNome(rs.getString("nome"));
+				r.setCognome(rs.getString("cognome"));
+
+				listaRichieste.add(r);							
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+
+		return listaRichieste;
+	}
 	public synchronized void doUpdate(int stato, int id) throws SQLException {
 
 		Connection connection = new DbConnection().getInstance().getConn();
@@ -337,12 +346,12 @@ public class RequestCSDAO {
 		}
 	}
 	
-	public synchronized void doInoltra(int id) throws SQLException {
+	public synchronized void doInoltraToAdmin(int id) throws SQLException {
 		
 		Connection connection = new DbConnection().getInstance().getConn();
 		PreparedStatement preparedStatement = null;
 
-		String sql = "UPDATE " + RequestCSDAO.TABLE_NAME + " SET FK_STATO = 3 WHERE ID = ?";
+		String sql = "UPDATE " + RequestCSDAO.TABLE_NAME + " SET FK_STATE = 3 WHERE ID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
