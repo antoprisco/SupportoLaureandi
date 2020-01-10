@@ -50,7 +50,7 @@ function callChangData() {
 }
 
 function showData() {
-
+	console.log("ciaooo");
 	$(".preloader").show();
 
 	$.ajax({
@@ -327,5 +327,115 @@ $(document)
 										}
 
 									});
+			
+			$(document)
+			.on(
+					"click",
+					"#checkConferma",
+					function() {
+						var stato = $(this).data("stato");
+						var idreq = $(this).data("idreq");
+						if (true) {
+							
+								$(".preloader").show();
+
+								$
+										.ajax({
+											url : absolutePath
+													+ "/ServletChangeStReqCS",
+											type : "POST",
+											dataType : 'JSON',
+											async : false,
+											data : {
+												"idreq" : idreq,
+												"stato" : stato,
+												"op" : 1
+											},
+											success : function(
+													msg) {
+												if (!msg.result) {
+													showAlert(
+															1,
+															msg.error);
+												} else {
+													showAlert(
+															0,
+															msg.content);
+													setTimeout(
+															function() {
+																showData();
+															},
+															2000);
+												}
+											},
+											error : function(
+													msg) {
+												showAlert(1,
+														"Impossibile Recuperare i dati.");
+											}
+										});
+
+								$(".preloader").hide();
+							}
+						else {
+							showAlert(1, "Errore parametri.");
+						}
+
+					});
+			
+			$(document)
+			.on(
+					"click",
+					"#checkRifiuta",
+					function() {
+						var stato = $(this).data("stato");
+						var idreq = $(this).data("idreq");
+						if (true) {
+							
+								$(".preloader").show();
+
+								$
+										.ajax({
+											url : absolutePath
+													+ "/ServletChangeStReqCS",
+											type : "POST",
+											dataType : 'JSON',
+											async : false,
+											data : {
+												"idreq" : idreq,
+												"stato" : stato,
+												"op" : 0
+											},
+											success : function(
+													msg) {
+												if (!msg.result) {
+													showAlert(
+															1,
+															msg.error);
+												} else {
+													showAlert(
+															0,
+															msg.content);
+													setTimeout(
+															function() {
+																showData();
+															},
+															2000);
+												}
+											},
+											error : function(
+													msg) {
+												showAlert(1,
+														"Impossibile Recuperare i dati.");
+											}
+										});
+
+								$(".preloader").hide();
+							}
+						else {
+							showAlert(1, "Errore parametri.");
+						}
+
+					});
 								
 						});				

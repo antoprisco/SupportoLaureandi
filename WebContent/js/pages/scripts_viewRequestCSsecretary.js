@@ -1,25 +1,4 @@
-function callInoltra() {
 
-	$.ajax({
-		url : absolutePath + "/ServletInoltra",
-		type : "POST",
-		dataType : 'JSON',
-		async : false,
-		data : {
-			"flag" : 1,
-		},
-		success : function(msg) {
-			if (!msg.result) {
-				showAlert(1, msg.error);
-			} else {
-				$("#bodySecretaryBody").html(msg.content);
-			}
-		},
-		error : function(msg) {
-			showAlert(1, "Impossibile cambiare i dati.");
-		}
-	});
-}
 
 function callChangData() {
 	
@@ -275,57 +254,6 @@ $(document)
 									showAlert(1, "Errore parametri.");
 								}
 							});
-			$(document)
-							.on(
-									"click",
-									".toAdmin",
-									function() {
-										var idr= parseInt($(this).data("idr"));
-										if (true) {
-											
-												$(".preloader").show();
-
-												$
-														.ajax({
-															url : absolutePath
-																	+ "/ServletInoltra",
-															type : "POST",
-															dataType : 'JSON',
-															async : false,
-															data : {
-																//"flag" : 3,
-																"id" : idr
-															},
-															success : function(
-																	msg) {
-																if (!msg.result) {
-																	showAlert(
-																			1,
-																			msg.error);
-																} else {
-																	showAlert(
-																			0,
-																			msg.content);
-																	setTimeout(
-																			function() {
-																				showData();
-																			},
-																			2000);
-																}
-															},
-															error : function(
-																	msg) {
-																showAlert(1,
-																		"Impossibile Recuperare i dati.");
-															}
-														});
-
-												$(".preloader").hide();
-											}
-										else {
-											showAlert(1, "Errore parametri.");
-										}
-
-									});
+			
 								
 						});				
