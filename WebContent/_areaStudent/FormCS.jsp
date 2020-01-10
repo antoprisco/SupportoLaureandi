@@ -52,121 +52,121 @@
 									</div>
 									<form id="FormCS">
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cognome">Cognome</label> 
 												<input class="form-control"	type="text" id="cognome" value="<%=user.getSurname()%>" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="nome">Nome</label> 
 											<input class="form-control"	type="text" id="nome" value="<%=user.getName()%>" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="luogoNascita">Luogo di Nascita:</label> 
 											<input class="form-control" type="text" id="luogoNascita" value="" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="provincia" >Provincia</label> 
 											<input class="form-control" type="text" value="" id="provincia" required>
 										</div>
 
-										<div class="form-group">
+									<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="dataNascita" >Data di nascita</label> 
 											<input class="form-control" type="date" value="" id="dataNascita">
 										</div>
-				<!-- DATI RESIDENZA --> <hr>
-										<div class="form-group">
+				<!-- DATI RESIDENZA --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 												<label for="residenza">Residenza</label> 
 												<input class="form-control" type="text" id="residenza" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="provinciaR" >Provincia</label> 
 											<input class="form-control" type="text" value="" id="provinciaR" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="indirizzo" >Indirizzo</label> 
 											<input class="form-control" type="text" value="" id="indirizzo" required>
 										</div>
 
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cap">CAP:</label> 
 											<input class="form-control" type="number" value="" id="cap" required>
 										</div>
-          		<!-- FINE RESIDENZA --> <hr>
-										<div class="form-group">
+          		<!-- FINE RESIDENZA --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="telefonoF">Telefono fisso:</label> 
 											<input class="form-control" type="text" value="" id="telefonoF" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cellulare">Cellulare:</label> 
 											<input class="form-control" type="text" value="" id="cellulare" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cf">Codice fiscale:</label> 
 											<input class="form-control" type="text" value="" id="cf" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="email">Email:</label> 
 											<input class="form-control" type="text" value="<%=user.getEmail()%>" id="email" required>
 										</div>
-					<!-- DIPLOMA -->	<hr>
-										<div class="form-group">
+					<!-- DIPLOMA -->	
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="diploma">Diploma:</label> 
 											<input class="form-control" type="text" value="" id="diploma" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="annoD">conseguito nell'anno:</label> 
 											<input class="form-control" type="text" value="" id="annoD" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="istituto">presso l'istituto:</label> 
 											<input class="form-control" type="text" value="" id="istituto" required>
 										</div>
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="comune">comune:</label> 
 											<input class="form-control" type="text" value="" id="comune" required>
 										</div>
-				<!-- TITOLO DI STUDIO --> <hr>
-										<div class="form-group">
+				<!-- TITOLO DI STUDIO --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="laurea">Laurea (Titolo):</label> 
 											<input class="form-control" type="text" value="" id="laurea" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="dataL">conseguito in data:</label> 
 											<input class="form-control" type="date" value="" id="dataL" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="universita">presso l'università:</label> 
 											<input class="form-control" type="text" value="" id="universita" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="matricola">Matricola</label> 
 											<input	class="form-control" type="number" value="512103683" id="matricola" required>
 										</div>
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="voto">con voto</label> 
-											<input	class="form-control" type="number" value="" id="voto" required>/100
+											<input	class="form-control" type="number" value="" id="voto" required>/110
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="lode">Lode</label>
 											<input type="radio"  class="lode" name="lode" value="si">Si
 											<input type="radio"  class="lode" name="lode" value="no">No
 										</div>
-										
+										<br>
 										<div class="form-group">
 											<label for="immatricolazione">Anno di immatricolazione:</label> 
 												<select class="form-control"
