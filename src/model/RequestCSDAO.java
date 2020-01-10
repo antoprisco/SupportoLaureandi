@@ -369,5 +369,80 @@ public class RequestCSDAO {
 			}
 		}
 	}
+
+
+	public synchronized ArrayList<RequestCS> doRetrieveAccettate() throws SQLException {
+
+		Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+
+		String selectSQL = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME + " WHERE fk_state = 4 ";
+
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestCS r = new RequestCS();
+
+				r.setId(rs.getInt(1));
+				r.setNome(rs.getString("nome"));
+				r.setCognome(rs.getString("cognome"));
+				r.setStato(rs.getInt("fk_state"));
+				listaRichieste.add(r);							
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+
+		return listaRichieste;
+	}
+	
+	public synchronized ArrayList<RequestCS> doRetrieveRifiutate() throws SQLException {
+
+		Connection conn = new DbConnection().getInstance().getConn();
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+
+		String selectSQL = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME + " WHERE fk_state = 5 ";
+
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RequestCS r = new RequestCS();
+
+				r.setId(rs.getInt(1));
+				r.setNome(rs.getString("nome"));
+				r.setCognome(rs.getString("cognome"));
+				r.setStato(rs.getInt("fk_state"));
+				listaRichieste.add(r);							
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (conn != null)
+					conn.commit();
+			}
+		}
+
+		return listaRichieste;
+	}
 }
 

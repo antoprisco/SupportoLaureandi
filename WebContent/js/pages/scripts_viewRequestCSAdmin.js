@@ -78,6 +78,10 @@ function showData() {
 
 $(document)
 		.ready(
+				
+				
+				
+				
 				function() {
 
 					$(document)
@@ -436,6 +440,28 @@ $(document)
 							showAlert(1, "Errore parametri.");
 						}
 
+					});
+			
+			$(document).on(
+					"click",
+					"#generateExcelAccepted",
+					function() {
+						$(".preloader").show();
+						window.location.href = absolutePath
+								+ "/ServletGeneraExcel?flag=5";
+						$(".preloader").hide();
+						showData();
+					});
+
+			$(document).on(
+					"click",
+					"#generateExcelRefused",
+					function() {
+						$(".preloader").show();
+						window.location.href = absolutePath
+								+ "/ServletGeneraExcel?flag=6";
+						$(".preloader").hide();
+						showData();
 					});
 								
 						});				
