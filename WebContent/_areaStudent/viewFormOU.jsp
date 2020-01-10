@@ -3,7 +3,7 @@
 	import="controller.CheckSession, model.*, interfacce.*,java.util.ArrayList, model.SystemAttribute, java.text.SimpleDateFormat, java.time.*, controller.DbConnection, java.sql.Connection, java.sql.ResultSet, java.sql.Statement"%>
 
 <%
-	String pageName = "FormOU.jsp";
+	String pageName = "viewFormOU.jsp";
 	String pageFolder = "_areaStudent";
 	CheckSession ck = new CheckSession(pageFolder, pageName, request.getSession());
 	if (!ck.isAllowed()) {

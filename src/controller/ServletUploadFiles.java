@@ -18,6 +18,7 @@ import model.Allegati;
 import model.AllegatiDAO;
 import model.RequestCS;
 import model.RequestCSDAO;
+import model.SystemAttribute;
 
 /**
  * Servlet implementation class ServletUploadFiles
@@ -53,11 +54,12 @@ public class ServletUploadFiles extends HttpServlet {
 	    String content = "";
 	    String redirect = "";
 		
-		UserInterface user = (UserInterface) request.getSession().getAttribute("user");
-	    String idUser = user.getEmail();
-	      
+		
+	    UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+
+
 	    System.out.println("upfiles");
-	     	if(Integer.parseInt(request.getParameter("flag"))==4) {
+	     	if(Integer.parseInt(request.getParameter("flag"))==3) {
 	     		
 	     		
 	     		
@@ -69,7 +71,7 @@ public class ServletUploadFiles extends HttpServlet {
 	    		ArrayList<Allegati> listaAllegati= new ArrayList<Allegati>();
 	    		
 	    	try {
-	    			ArrayList<RequestCS> list= rd.doRetrieveByNC(user.getName(), user.getSurname());
+	    		ArrayList<RequestCS> list= rd.doRetrieveByNC(user.getName(), user.getSurname());
 	    		if(!list.isEmpty()) {
 	    			for(int i=0; i<list.size();i++) {
 	    				r=list.get(i);
@@ -77,59 +79,26 @@ public class ServletUploadFiles extends HttpServlet {
 	    //Se rispetta la condizione possiamo allegare i file
 	    					
 	    					
-	    					System.out.println(request.getParameter("UPI"));
-	    					System.out.println(request.getParameter("UPD"));
-	    	     		
-	    	     		
-	    	     		
-	    	     		//Domanda di iscrizione deve rispettare il seguente formato per essere accettata
-	    					String upi=request.getParameter("UPI");
-	    					String prefixUPI = "";
-	    					if (upi.length() > 0 && upi.contains("Iscrizione")) {
-	    						prefixUPI = upi.substring(0, upi.indexOf("Iscrizione"));
-	    						}
-	    					if (upi.length() == 0  || !upi.endsWith(user.getSurname()+"_Firmata.pdf") || prefixUPI.equals("")) {
-	    						error="Formato della domanda di iscrizione non corretto";
-	    						}
-	    					else {
-	    						a= new Allegati(upi,user.getEmail(),r.getId());
-	    						
+	    						    					
+	    	//parte di 	EV			
+	    					String[] filenames = request.getParameterValues("filenames[]");
+	    					if (filenames.length != 2 
+	    							|| !filenames[0].endsWith(".pdf") 
+	    							|| !filenames[1].endsWith(".pdf")) {
+	    								throw new IllegalArgumentException("Valore non corretto");
+	    					}
+	    					
+	    					for (int j = 0; j < filenames.length; j++) {
+	    						a= new Allegati(filenames[j],user.getEmail(),r.getId());
 	    						listaAllegati=ad.doRetrievebyReq(user.getEmail(),r.getId());
 	    						if(listaAllegati.isEmpty() || listaAllegati.size()<2) {
 	    							ad.doSave(a);
-									//error="allegata correttamente";
 									result=1;
 	    						}else {
 	    							error="documenti già inseriti";
 	    						}
-	    						
-	    							
-	    						}
-	    						
-	    				    	     		
+	    					}
 	    	     		
-	    	     		//Documento deve rispettare il seguente formato per essere accettato
-	    					String upd=request.getParameter("UPD");
-	    					String prefixUPD = "";
-	    					if (upd.length() > 0 && upd.contains("Documento")) {
-	    						prefixUPD = upd.substring(0, upd.indexOf("Documento"));
-	    						}
-	    					if (upd.length() == 0  || !upd.endsWith(user.getSurname()+user.getName()+".pdf") || prefixUPD.equals("")) {
-	    						error="Formato del documento non corretto";
-	    						}
-	    					else {
-	    						a= new Allegati(upd,user.getEmail(),r.getId());
-	    						
-	    						listaAllegati=ad.doRetrievebyReq(user.getEmail(), r.getId());
-	    						if(listaAllegati.isEmpty() || listaAllegati.size()<2) {
-	    							ad.doSave(a);
-									error="allegata correttamente";
-	    						}else {
-	    							error="documenti già inseriti";
-	    						}
-	    						
-	    							
-	    						}
 
 	    				rd.doUpdate(r.getStato()+1, r.getId());
 	    				}		
@@ -142,9 +111,12 @@ public class ServletUploadFiles extends HttpServlet {
 	    		catch (SQLException e) {		
 	    			e.printStackTrace();   		
 	    			}
+	    			
+	    			
+	    			}
 	     		
 	
-	}	
+		
 	     	
 	     	
 	     	JSONObject res = new JSONObject();

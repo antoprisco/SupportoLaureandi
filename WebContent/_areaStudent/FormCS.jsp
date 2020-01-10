@@ -15,6 +15,16 @@
 <html>
 <head>
 <jsp:include page="/partials/head.jsp" />
+
+<style type="text/css">
+.dropzoneUploader.dz-clickable {
+    background-color: darkorange;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    height: auto;
+}
+</style>
 </head>
 
 <body onLoad="">
@@ -186,7 +196,7 @@
 										
 										
 						
-										<h2>Corsi</h2>
+										<center><h2>Seleziona corsi</h2></center>
 										<table id="Corsi">
 										<tr>
 											<th>ESAME</th>
@@ -227,32 +237,21 @@
 
 										<div class="clearfix"></div>
 										
-									</form>
-							
+									<center><h2>Carica allegati</h2></center>
+										
+										<div action='<%= request.getContextPath() + "/UploaderCS" %>'
+											class='dropzoneUploader'>
+											Trascina o clicca su questo riquadro per caricare i file
+											</div>
+											
+	
+											
+
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary btn-submit"
+												id='aggiungiAllegati'>Concludi</button>
+										</div>
 									
-									
-									
-									<form id="UploadFiles">
-									<div class="form-group">
-									<h3>Allegare:</h3>
-									
-									
-									<p>Domanda di iscrizione firmata</p>
-									<ol>
-									Allegare il file con l'opportuno nome: Iscrizione<%=user.getSurname()%>_Firmata.pdf
-									</ol>
-									
-									<input id="UPI" class="form-control" type="file" name="myFile" required><br>
-									
-									<p>Un documento di riconoscimento</p>
-									<ol>
-									Allegare il file con l'opportuno nome: Documento<%=user.getSurname()%><%=user.getName()%>.pdf
-									</ol>
-									<input id="UPD" class="form-control" type="file" name="myFile" required><br>
-  										<button type="submit" class="btn btn-primary btn-submit">Invia domanda</button>
-  										
-									</div>
-									</form>
 								</div>
 
 							</div>
@@ -269,8 +268,45 @@
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
+	
+			<script>
+			$( document ).ready(function() {	
+				$(".dropzoneUploader").dropzone({
+					  maxFiles: 2,
+					  acceptedFiles: ".pdf",
+					  accept: function(file, done){
+					    done();
+					  },
+					  init: function() {		
+					      this.on("maxfilesexceeded", function(file, errorMessage){
+					    	  this.removeFile(file);
+					    	  showAlert(1, errorMessage);		    	  
+					      });
+	                      
+					      this.on("error", function(file, errorMessage) {
+					    	  this.removeFile(file);
+					    	  showAlert(1, errorMessage);
+	                      });
+	                    
+						  this.on("success", function(file, response) {
+							  var msg = jQuery.parseJSON(response);
+						  	  if(!msg.result){
+						  		showAlert(1, msg.error);
+						  	  }	            		    
+						  	  else{
+						  		file.previewElement.querySelector("[data-dz-name]").innerHTML = msg.content;
+						  	  }
+						  });
+					  }		  						
+				});					
+			});
+		</script>
+
 	<script	src="<%= request.getContextPath() %>/js/pages/scripts_FormCS.js"></script>
-	<script	src="<%= request.getContextPath() %>/js/pages/scripts_UploadFiles.js"></script>
+	
+	<script src="<%= request.getContextPath() %>/js/filesystem_dropzone.js"></script>
+	
+	<script	src="<%= request.getContextPath() %>/js/pages/scripts_UploadFiles.js"></script> 
 
 </body>
 </html>

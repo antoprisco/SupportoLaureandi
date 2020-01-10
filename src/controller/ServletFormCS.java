@@ -216,7 +216,7 @@ public class ServletFormCS extends HttpServlet {
 		     			RequestCS list7=rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 7);
 		     			
 		     			//Nel caso in cui non vi siano richieste con il nome dell'utente oppure ci sono ma sono completate si può effettuare la richiesta
-		     			if(list6==null || list7==null || list.isEmpty()) {
+		     			if(list6!=null || list7!=null || list.isEmpty()) {
 		     				
 		     				//vengono presi tutti i parametri per creare il PDF
 
