@@ -22,7 +22,7 @@
     border-radius: 5px;
     text-align: center;
     margin-bottom: 10px;
-    height: auto;
+    height: 100px;
 }
 </style>
 </head>
