@@ -17,10 +17,10 @@ public class AllegatiDAO {
   public synchronized void doSave(Allegati a) throws SQLException {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
-    String insertSQL = "insert into " + AllegatiDAO.TABLE_NAME
+    String insertSql = "insert into " + AllegatiDAO.TABLE_NAME
         + " (filename,fk_user, fk_reqcs) values (?, ?, ?)";
     try {
-      preparedStatement = connection.prepareStatement(insertSQL,
+      preparedStatement = connection.prepareStatement(insertSql,
          preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, a.getFilename());
       preparedStatement.setString(2, a.getEmail());
@@ -47,9 +47,10 @@ public class AllegatiDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<Allegati> listbean = new ArrayList<Allegati>();
-    String selectSQL = "select * from " + AllegatiDAO.TABLE_NAME + " where fk_user=? and fk_reqcs=?";
+    String selectSql = "select * from " + AllegatiDAO.TABLE_NAME 
+         + " where fk_user=? and fk_reqcs=?";
     try {
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, email);
       preparedStatement.setInt(2, id);
       ResultSet rs = preparedStatement.executeQuery();
