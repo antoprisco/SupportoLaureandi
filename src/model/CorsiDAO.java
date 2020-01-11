@@ -9,36 +9,27 @@ import java.util.ArrayList;
 import controller.DbConnection;
 
 public class CorsiDAO {
-	static final String TABLE_NAME = "corsi";
-
-	 public synchronized ArrayList<Corsi> doRetrieveAll() throws SQLException {
-		  Connection conn = new DbConnection().getInstance().getConn();
-			PreparedStatement preparedStatement = null;
-
-			ArrayList<Corsi> listBean = new ArrayList<Corsi>();
-
-			String selectSQL = "SELECT * FROM " + CorsiDAO.TABLE_NAME+ "";
-			
-			
-
-			try {
-				//connection = DbConnection.getInstance().getConn();
-				preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
-
-				ResultSet rs = preparedStatement.executeQuery();
-
-				while (rs.next()) {
-					Corsi bean = new Corsi();
-					
-					bean.setId(rs.getInt("id"));
-					bean.setNome(rs.getString("nome"));
-					bean.setSemestre(rs.getInt("semestre"));
-					bean.setCfu(rs.getInt("cfu"));
-					
-					listBean.add(bean);
-					
-					
-				}
+  static final String TABLE_NAME = "corsi";
+  /**
+   * Query per recuperare tutti i corsi nel db.
+   */
+  
+  public synchronized ArrayList<Corsi> doRetrieveAll() throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    ArrayList<Corsi> listBean = new ArrayList<Corsi>();
+    String selectSQL = "SELECT * FROM " + CorsiDAO.TABLE_NAME+ "";
+    try {
+      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        Corsi bean = new Corsi();
+        bean.setId(rs.getInt("id"));
+        bean.setNome(rs.getString("nome"));
+        bean.setSemestre(rs.getInt("semestre"));
+        bean.setCfu(rs.getInt("cfu"));
+        listBean.add(bean);
+      }
 
 			} finally {
 				try {

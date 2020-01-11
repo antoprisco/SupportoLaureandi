@@ -1,5 +1,14 @@
 package controller;
 
+
+import com.google.common.collect.Table;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import interfacce.UserInterface;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -9,26 +18,11 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import com.google.common.collect.Table;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-
-import interfacce.UserInterface;
 import model.Corsi;
 import model.CorsiDAO;
 import model.GestisceCS;
@@ -37,9 +31,12 @@ import model.RequestCS;
 import model.RequestCSDAO;
 import model.Residenza;
 import model.TitoloStudio;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 /**
- * Servlet implementation class ServletCommon.
+ * Servlet implementation class ServletFormCS.
  */
 @WebServlet("/ServletFormCS")
 public class ServletFormCS extends HttpServlet {
