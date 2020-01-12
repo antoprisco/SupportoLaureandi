@@ -15,6 +15,16 @@
 <html>
 <head>
 <jsp:include page="/partials/head.jsp" />
+
+<style type="text/css">
+.dropzoneUploader.dz-clickable {
+    background-color: darkorange;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    height: 100px;
+}
+</style>
 </head>
 
 <body onLoad="">
@@ -52,121 +62,121 @@
 									</div>
 									<form id="FormCS">
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cognome">Cognome</label> 
 												<input class="form-control"	type="text" id="cognome" value="<%=user.getSurname()%>" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="nome">Nome</label> 
 											<input class="form-control"	type="text" id="nome" value="<%=user.getName()%>" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="luogoNascita">Luogo di Nascita:</label> 
 											<input class="form-control" type="text" id="luogoNascita" value="" required>
 										</div>
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="provincia" >Provincia</label> 
 											<input class="form-control" type="text" value="" id="provincia" required>
 										</div>
 
-										<div class="form-group">
+									<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="dataNascita" >Data di nascita</label> 
 											<input class="form-control" type="date" value="" id="dataNascita">
 										</div>
-				<!-- DATI RESIDENZA --> <hr>
-										<div class="form-group">
+				<!-- DATI RESIDENZA --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 												<label for="residenza">Residenza</label> 
 												<input class="form-control" type="text" id="residenza" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="provinciaR" >Provincia</label> 
 											<input class="form-control" type="text" value="" id="provinciaR" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="indirizzo" >Indirizzo</label> 
 											<input class="form-control" type="text" value="" id="indirizzo" required>
 										</div>
 
 
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cap">CAP:</label> 
 											<input class="form-control" type="number" value="" id="cap" required>
 										</div>
-          		<!-- FINE RESIDENZA --> <hr>
-										<div class="form-group">
+          		<!-- FINE RESIDENZA --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="telefonoF">Telefono fisso:</label> 
 											<input class="form-control" type="text" value="" id="telefonoF" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cellulare">Cellulare:</label> 
 											<input class="form-control" type="text" value="" id="cellulare" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="cf">Codice fiscale:</label> 
 											<input class="form-control" type="text" value="" id="cf" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="email">Email:</label> 
 											<input class="form-control" type="text" value="<%=user.getEmail()%>" id="email" required>
 										</div>
-					<!-- DIPLOMA -->	<hr>
-										<div class="form-group">
+					<!-- DIPLOMA -->	
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="diploma">Diploma:</label> 
 											<input class="form-control" type="text" value="" id="diploma" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="annoD">conseguito nell'anno:</label> 
 											<input class="form-control" type="text" value="" id="annoD" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="istituto">presso l'istituto:</label> 
 											<input class="form-control" type="text" value="" id="istituto" required>
 										</div>
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="comune">comune:</label> 
 											<input class="form-control" type="text" value="" id="comune" required>
 										</div>
-				<!-- TITOLO DI STUDIO --> <hr>
-										<div class="form-group">
+				<!-- TITOLO DI STUDIO --> 
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="laurea">Laurea (Titolo):</label> 
 											<input class="form-control" type="text" value="" id="laurea" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="dataL">conseguito in data:</label> 
 											<input class="form-control" type="date" value="" id="dataL" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="universita">presso l'università:</label> 
 											<input class="form-control" type="text" value="" id="universita" required>
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="matricola">Matricola</label> 
 											<input	class="form-control" type="number" value="512103683" id="matricola" required>
 										</div>
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="voto">con voto</label> 
-											<input	class="form-control" type="number" value="" id="voto" required>/100
+											<input	class="form-control" type="number" value="" id="voto" required>/110
 										</div>
 										
-										<div class="form-group">
+										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="lode">Lode</label>
 											<input type="radio"  class="lode" name="lode" value="si">Si
 											<input type="radio"  class="lode" name="lode" value="no">No
 										</div>
-										
+										<br>
 										<div class="form-group">
 											<label for="immatricolazione">Anno di immatricolazione:</label> 
 												<select class="form-control"
@@ -186,7 +196,7 @@
 										
 										
 						
-										<h2>Corsi</h2>
+										<center><h2>Seleziona corsi</h2></center>
 										<table id="Corsi">
 										<tr>
 											<th>ESAME</th>
@@ -227,32 +237,21 @@
 
 										<div class="clearfix"></div>
 										
-									</form>
-							
+									<center><h2>Carica allegati</h2></center>
+										
+										<div action='<%= request.getContextPath() + "/UploaderCS" %>'
+											class='dropzoneUploader'>
+											Trascina o clicca su questo riquadro per caricare i file
+											</div>
+											
+	
+											
+
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary btn-submit"
+												id='aggiungiAllegati'>Concludi</button>
+										</div>
 									
-									
-									
-									<form id="UploadFiles">
-									<div class="form-group">
-									<h3>Allegare:</h3>
-									
-									
-									<p>Domanda di iscrizione firmata</p>
-									<ol>
-									Allegare il file con l'opportuno nome: Iscrizione<%=user.getSurname()%>_Firmata.pdf
-									</ol>
-									
-									<input id="UPI" class="form-control" type="file" name="myFile" required><br>
-									
-									<p>Un documento di riconoscimento</p>
-									<ol>
-									Allegare il file con l'opportuno nome: Documento<%=user.getSurname()%><%=user.getName()%>.pdf
-									</ol>
-									<input id="UPD" class="form-control" type="file" name="myFile" required><br>
-  										<button type="submit" class="btn btn-primary btn-submit">Invia domanda</button>
-  										
-									</div>
-									</form>
 								</div>
 
 							</div>
@@ -269,8 +268,45 @@
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
+	
+			<script>
+			$( document ).ready(function() {	
+				$(".dropzoneUploader").dropzone({
+					  maxFiles: 2,
+					  acceptedFiles: ".pdf",
+					  accept: function(file, done){
+					    done();
+					  },
+					  init: function() {		
+					      this.on("maxfilesexceeded", function(file, errorMessage){
+					    	  this.removeFile(file);
+					    	  showAlert(1, errorMessage);		    	  
+					      });
+	                      
+					      this.on("error", function(file, errorMessage) {
+					    	  this.removeFile(file);
+					    	  showAlert(1, errorMessage);
+	                      });
+	                    
+						  this.on("success", function(file, response) {
+							  var msg = jQuery.parseJSON(response);
+						  	  if(!msg.result){
+						  		showAlert(1, msg.error);
+						  	  }	            		    
+						  	  else{
+						  		file.previewElement.querySelector("[data-dz-name]").innerHTML = msg.content;
+						  	  }
+						  });
+					  }		  						
+				});					
+			});
+		</script>
+
 	<script	src="<%= request.getContextPath() %>/js/pages/scripts_FormCS.js"></script>
-	<script	src="<%= request.getContextPath() %>/js/pages/scripts_UploadFiles.js"></script>
+	
+	<script src="<%= request.getContextPath() %>/js/filesystem_dropzone.js"></script>
+	
+	<script	src="<%= request.getContextPath() %>/js/pages/scripts_UploadFiles.js"></script> 
 
 </body>
 </html>

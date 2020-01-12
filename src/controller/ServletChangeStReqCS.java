@@ -46,8 +46,8 @@ public class ServletChangeStReqCS extends HttpServlet {
 		String content = "";
 		String redirect = "";
 		
-		int id = Integer.parseInt(request.getParameter("id"));
-		int state_prev = Integer.parseInt(request.getParameter("state"));
+		int id = Integer.parseInt(request.getParameter("idreq"));
+		int state_prev = Integer.parseInt(request.getParameter("stato"));
 		int op = Integer.parseInt(request.getParameter("op"));
 		RequestCSDAO rDAO = new RequestCSDAO();
 		int state = 3;

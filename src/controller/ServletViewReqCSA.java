@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
+import model.Allegati;
+import model.AllegatiDAO;
+import model.GestisceCS;
+import model.GestisceCSDAO;
 import model.RequestCS;
 import model.RequestCSDAO;
 import model.RequestOUDAO;
@@ -43,7 +47,7 @@ public class ServletViewReqCSA extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Integer result = 0;
 	    String error = "";
@@ -54,8 +58,13 @@ public class ServletViewReqCSA extends HttpServlet {
 	    ArrayList<String> listaCognomi = new ArrayList<String>();
 	    ArrayList<Stato> listaStati = new ArrayList<Stato>();
 	    ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+	    ArrayList<Allegati> allegati = new ArrayList<Allegati>();
+	    GestisceCS gCS = new GestisceCS();
+	    
 	    RequestCSDAO rDAO = new RequestCSDAO();
 	    StatoDAO sDAO = new StatoDAO();
+	    GestisceCSDAO gcsDAO= new GestisceCSDAO();
+	    AllegatiDAO allegatoDAO= new AllegatiDAO();
 	    if (Integer.parseInt(request.getParameter("flag")) == 1) {
 			try {
 				listaRichieste = rDAO.doRetrieveAdmin();
@@ -66,28 +75,37 @@ public class ServletViewReqCSA extends HttpServlet {
 						listaNomi.add(r.getNome());
 						listaCognomi.add(r.getCognome());
 						listaStati.add(sDAO.doRetrieveById(r.getStato()));
-
+						gCS = gcsDAO.doRetrieveByReq(r.getId());
+						allegati = allegatoDAO.doRetrievebyReq(gCS.getEmail(), gCS.getId());
+						
 						content += "<tr>";
-						content += "<td align='center' class = 'id'><p  id='idR'>"+r.getId()+ "</p></td>";
+						content += "<td align='center' class = 'id' data-idreq = '"+r.getId()+"' ><p  id='idR'>"+r.getId()+ "</p></td>";
 						content += "<td align='center'><button class='changeName' id='nome'>" + r.getNome() + "</button>";
 						content += "<td align='center'><button  class ='changeSurname' id='cognome'>" + r.getCognome() + "</button>";
-						content += "<td align='center'><a href=\"#\">Documento</a></td>";
+						content += "<td align='center'>";
+						content	+= "\"<a href='" + request.getContextPath() + "/DownloaderSL?filename="  
+								+ allegati.get(0).getFilename() + "&idRequest=" + allegati.get(0).getIdReq() + "&email="+gCS.getEmail()+"'>" 
+								+ allegati.get(0).getFilename() + "</a> - ";
+						content	+= "\"<a href='" + request.getContextPath() + "/DownloaderSL?filename="  
+								+ allegati.get(1).getFilename() + "&idRequest=" + allegati.get(1).getIdReq() + "&email="+gCS.getEmail()+"'>" 
+								+ allegati.get(1).getFilename() + "</a>";
+						content += "</td>";
 						
 						if(r.getStato()==3) {
 							content += "<td align='center'><p class=\"list-group-item-warning\">In attesa</p></td>";
 						}else if(r.getStato()==4) {
 							content += "<td align='center'><p class=\"list-group-item-success\">Approvata, revisione in consiglio</p></td>";
 						}else if(r.getStato()==5) {
-							content += "<td align='center'><p class=\"list-group-item-danger\">Approvata, revisione in consiglio</p></td>";
+							content += "<td align='center'><p class=\"list-group-item-danger\">Rifiutata, revisione in consiglio</p></td>";
 						}
 						
 						content += "<td align='center'>"+ 
-									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Conferma\" id=\"checkConferma\">" + 
+									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Conferma\" data-idreq = '"+r.getId()+"' data-stato = '"+r.getStato()+"' id=\"checkConferma\">" + 
 										"<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>" + 
-									"</button>" + 
+									"a</button>" + 
 								"</td>";
 						content += "<td align='center'>"+ 
-									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Rifiuta\" id=\"checkRifiuta\">" + 
+									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Rifiuta\" data-idreq = '"+r.getId()+"' data-stato = '"+r.getStato()+"'  id=\"checkRifiuta\">" + 
 										"<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>" + 
 									"</button>" + 
 								"</td>";

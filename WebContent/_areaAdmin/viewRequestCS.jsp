@@ -57,7 +57,7 @@
 										
 									</tbody>
 								</table>
-								<div class="d-flex justify-content-center"><button class="btn btn-primary btn-action generateExcel" style="width: auto !important; height: 35px !important;" id="btnConfermaRichieste">Conferma</button></div>
+								<div class="d-flex justify-content-center"><button class="btn btn-primary btn-action generateExcel" style="width: auto !important; height: 35px !important;" id="generateExcelAccepted">Genera Excel Accettati</button><button class="btn btn-primary btn-action generateExcel" style="width: auto !important; height: 35px !important;" id="generateExcelRefused">Genera Excel Rifiutati</button></div>
 							</div>
 						</div>
 					</div>
