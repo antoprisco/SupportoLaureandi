@@ -209,7 +209,7 @@ public class RequestCSDAO {
 
 		ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
 
-		String selectSQL = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME + "WHERE FK_STATE=2";
+		String selectSQL = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE = 2";
 
 		try {
 			preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
