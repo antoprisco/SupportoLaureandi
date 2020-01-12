@@ -77,16 +77,17 @@ public class ServletFormOU extends HttpServlet {
 		SkillDAO sDAO = new SkillDAO();
 		Integer id = 0;
 		
-		if (request.getParameter("cognome").length() == 0 
-		     || request.getParameter("cognome").length() > 20 
-		     || request.getParameter("cognome").matches(".*\\d+.*")) {
-		     throw new IllegalArgumentException("Formato non corretto");
-		}
+		
 		if (request.getParameter("nome").length() == 0 
 		     || request.getParameter("nome").length() > 20 
 		     || request.getParameter("nome").matches(".*\\d+.*")) { 
 		     throw new IllegalArgumentException("Formato non corretto");
 		}
+		if (request.getParameter("cognome").length() == 0 
+			     || request.getParameter("cognome").length() > 20 
+			     || request.getParameter("cognome").matches(".*\\d+.*")) {
+			     throw new IllegalArgumentException("Formato non corretto");
+			}
 
 		String email = request.getParameter("email");		
 		String prefix = "";
