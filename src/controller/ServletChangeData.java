@@ -51,7 +51,8 @@ public class ServletChangeData extends HttpServlet {
 		
 		if(Integer.parseInt(request.getParameter("flag")) == 1) {
 			String nome = request.getParameter("newName");
-			if (nome.length() == 0 || nome.length() > 20 || nome.matches(".*\\d+.*")) { 
+			if (nome.length() == 0 || nome.length() > 20 || nome.matches(".*\\d+.*")) {
+					error = "Formato nome non corretto";
 			        throw new IllegalArgumentException("Formato non corretto");
 			      }
 			Integer id = Integer.parseInt(request.getParameter("id"));
@@ -66,6 +67,7 @@ public class ServletChangeData extends HttpServlet {
 		} else if(Integer.parseInt(request.getParameter("flag")) == 2) {
 			String cognome = request.getParameter("newSurname");
 			if (cognome.length() == 0 || cognome.length() > 20  || cognome.matches(".*\\d+.*")) { 
+					error = "Formato cognome non corretto";
 			        throw new IllegalArgumentException("Formato non corretto");
 			      }
 			

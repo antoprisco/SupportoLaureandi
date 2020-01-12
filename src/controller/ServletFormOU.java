@@ -97,11 +97,13 @@ public class ServletFormOU extends HttpServlet {
 	           || !email.endsWith("@studenti.unisa.it") 
 	           || prefix.length() < 3 
 	           || prefix.indexOf(".") == -1) {
+	    	  error = "Formato email non corretto";
 	        throw new IllegalArgumentException("Formato non corretto");
 	      }
 		
 		String cell = request.getParameter("telefono");
 		if (cell.length() == 0 || cell.length() > 15) {
+			error = "Formato telefono non corretto";
 			throw new IllegalArgumentException("Formato non corretto");
 		}
 		

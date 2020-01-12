@@ -193,7 +193,7 @@ public class RequestCSDAO {
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
     String selectSql = "SELECT DISTINCT id, nome, cognome FROM " 
-        + RequestCSDAO.TABLE_NAME + "WHERE FK_STATE=2";
+        + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE = 2";
     try {
       preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();

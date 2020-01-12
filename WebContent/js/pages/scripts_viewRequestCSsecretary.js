@@ -104,7 +104,7 @@ $(document)
 												},
 												error : function(msg) {
 													showAlert(1,
-															"Impossibile Recuperare i dati.");
+															"Formato cognome non corretto");
 												}
 											});
 
@@ -201,7 +201,7 @@ $(document)
 												},
 												error : function(msg) {
 													showAlert(1,
-															"Impossibile Recuperare i dati.");
+															"Formato nome non corretto");
 												}
 											});
 
