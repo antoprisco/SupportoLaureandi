@@ -93,7 +93,7 @@ public class ServletGeneraExcel extends HttpServlet {
 				                new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
 
 				            try {
-								listaRichieste = rDAO.doRetrieveAdmin();
+								listaRichieste = rDAO.doRetrieveRifiutate();
 								
 
 								if (!listaRichieste.isEmpty() ) { 
