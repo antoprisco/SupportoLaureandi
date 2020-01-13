@@ -100,57 +100,79 @@ $(document).ready(
 						skill = $("#nomeSkill").val();
 						l=skill.length;
 						$("#nomeSkill").val('');
-						if(skill!= undefined && l > 3 && l < 15){
-						content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td>" +
-								"<fieldset id="+skill+">" +
-								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
-								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
-								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"alto\"></td> " +
-								"</fieldset> </tr>";
-						$("#skill_table").append(content);
-						showAlert(0,skill+" inserito")
-						} else{
-						showAlert(1, "Il formato della skill inserita non è corretto")
-						}
+						var contatore= 1;
 						
-						
-					//	$("tr.skills").each(function() {
-						 
-							/*tr=$(this);
-						  value=tr.first('td').data("skill");
-						  checked = tr.find("input[type='radio']:checked");		
-						  if (checked.length > 0)
-							  value+=checked.val();
-						  else{
-							  value+="Nessun valore";
-						  	  showAlert(1,value);
-								}*/
-							  
-						  
-						  
-					//	});
-
+							
+							$("tr.skills").each(function() {
+								content="";
+								  tr=$(this);
+								  var SkillEsistente=tr.first(skill).text().trim();
+								  console.log(skill,contatore);
+								  if(SkillEsistente!=skill  && skill!= undefined && l > 3 && l < 15){
+									  contatore= contatore *1;
+									  
+								  }else{
+									   contatore = contatore *0;
+									  showAlert(1, "La skill è già presente o il formato non è corretto")
+									  
+								  }
+								  
+									  
+							}); 
+							
+							if (contatore == 1){
+								 console.log(skill,contatore);
+								 content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td>" +
+								  "<fieldset id="+skill+">" +
+								  "<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
+								  "<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
+								  "<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"alto\"></td> " +
+								  "</fieldset> </tr>";
+								 $("#skill_table").append(content);
+							  	  showAlert(0,skill+" inserito");
+							 }
+							
+				
 
 					   
 					});
 					
 					$("#aggiungiSoftSkill").click(function() {
+						content="";
 						softskill = $("#nomeSoftSkill").val();
 						lss= softskill.length;
 						$("#nomeSoftSkill").val('');
-						if(softskill!= undefined && lss > 3 && lss <= 25){
-						content="<tr class=\"softskills\"><td class=\"pl-2\" data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
-						$("#softskill_table").append(content);
-						showAlert(0,softskill+" inserito");
-						}else{
-						showAlert(1, "Il formato della soft-skill inserita non è corretto")
+						var contatoress= 1;
+						
+						
+						$("#softskill_table").find('tr').each(function(){
+							tr=$(this);
+							var SoftSkillEsistente=tr.first(softskill).text().trim();
+							
+							if(SoftSkillEsistente!=softskill && softskill!= undefined && lss > 3 && lss <= 25 )
+								contatoress= contatoress *1;
+							else{
+								contatoress=contatoress*0;
+								showAlert(1, "La Soft-Skill è già presente o il formato non è corretto")
+							}
+						});
+						
+						if(contatoress==1){
+							content="<tr class=\"softskills\"><td class=\"pl-2\" data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
+							$("#softskill_table").append(content);
+							showAlert(0,softskill+" inserito");
+							
 						}
 						
-						$("softskill_table").each(function(){
+						
+						
+						
+						
+						/*$("softskill_table").each(function(){
 							tr=$(this);
 							value=tr.first('td').text().trim();
 						showAlert(0,softskill+" inserito");
-						});
+						});*/
 					});
 
 				});
