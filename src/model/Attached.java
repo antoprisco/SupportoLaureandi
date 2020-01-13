@@ -11,7 +11,8 @@ public class Attached {
   /**
    * Empty Constructor.
    */
-  public Attached() {}
+  public Attached() {
+  }
 
   /**
    * Constructor.
