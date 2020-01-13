@@ -40,14 +40,12 @@ $(document).ready(
 										});
 										
 										console.log(JSON.stringify(skills),JSON.stringify(softSkills),JSON.stringify(lingue));
-										
+
 										if (nome != undefined
 												&& cognome != undefined
 												&& datanascita != undefined
 												&& email != undefined
-												&& telefono != undefined 
-												&& skills.length>0) {
-											
+												&& telefono != undefined) {
 
 											$(".preloader").show();
 											$.ajax({

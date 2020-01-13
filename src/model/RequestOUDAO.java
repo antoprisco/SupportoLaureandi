@@ -21,10 +21,10 @@ public class RequestOUDAO {
 
 		Connection con = (Connection) new DbConnection().getInstance().getConn();
 		PreparedStatement ps = null;
-
+		
 		String sql = "INSERT INTO " + RequestOUDAO.TABLE_NAME + "(fk_id_skill, fk_email, date_of_birth, cell_number) VALUES (?,?,?,?)";
 		boolean flag = true;
-
+		
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, r.getIdSkill());
 		ps.setString(2, r.getEmail());

@@ -1,3 +1,31 @@
+$(document)
+					.on(
+							"click",
+							".toAdmin",
+							function() {
+								var idr =parseInt($(this).data("idr"));
+	
+								$.ajax({
+									url : absolutePath + "/ServletInoltra",
+									type : "POST",
+									dataType : 'JSON',
+									async : false,
+									data : {
+										"id" : idr
+									},
+									success : function(msg) {
+										if (!msg.result) {
+											showAlert(1, msg.error);
+										} else {
+											$("#bodySecretaryBody").html(msg.content);
+										}
+									},
+									error : function(msg) {
+										showAlert(1, "Impossibile inoltrare la richiesta");
+									}
+								});
+								
+							});
 
 
 function callChangData() {
