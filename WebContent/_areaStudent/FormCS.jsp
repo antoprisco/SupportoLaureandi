@@ -24,6 +24,44 @@
     margin-bottom: 10px;
     height: 100px;
 }
+
+tbody {
+    overflow: scroll;
+    width:100%;
+    display: block;
+    height: 200px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: lightgrey;
+    border-width: thin;
+    margin-bottom: 20px;
+    
+}
+td {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgrey;
+}
+
+.cfu {
+    text-align: center;
+    width: 10%;
+}
+.Nome {
+    width: 400px;
+}
+.sem {
+    text-align: center;
+    width: 20%;
+}
+th {
+    text-align: center;
+    background-color: orange;
+    color: white;
+    font-weight: initial
+}
+
 </style>
 </head>
 
@@ -55,6 +93,7 @@
 										<h2 class="text-center">Richiesta</h2>
 										<p class="text-center">Compila tutti i campi per
 											effettuare la richiesta</p>
+											
 											<%
 							UserInterface user = (UserInterface) request.getSession().getAttribute("user");
 
@@ -82,10 +121,12 @@
 											<input class="form-control" type="text" value="" id="provincia" required>
 										</div>
 
-									<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
+									    <div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 											<label for="dataNascita" >Data di nascita</label> 
 											<input class="form-control" type="date" value="" id="dataNascita">
 										</div>
+										
+										
 				<!-- DATI RESIDENZA --> 
 										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
 												<label for="residenza">Residenza</label> 
@@ -93,7 +134,7 @@
 										</div>
 										
 										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
-											<label for="provinciaR" >Provincia</label> 
+											<label for="provinciaR" >Provincia di residenza</label> 
 											<input class="form-control" type="text" value="" id="provinciaR" required>
 										</div>
 										
@@ -162,21 +203,24 @@
 											<input class="form-control" type="text" value="" id="universita" required>
 										</div>
 										
-										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
+										<div class="col-lg-5 col-tb-5 col-sm-5 col-xs-5 form-cs">
 											<label for="matricola">Matricola</label> 
-											<input	class="form-control" type="number" value="512103683" id="matricola" required>
+											<input	class="form-control" type="number" value="" id="matricola" required>
 										</div>
-										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
-											<label for="voto">con voto</label> 
-											<input	class="form-control" type="number" value="" id="voto" required>/110
+										<div class="col-lg-4 col-tb-4 col-sm-4 col-xs-4 form-cs">
+											<label for="voto">con voto </label> 
+											<input	class="form-control" type="number" value="" id="voto"  placeholder="voto su 110" required>
 										</div>
 										
-										<div class="col-lg-6 col-tb-6 col-sm-6 col-xs-6 form-cs">
+										
+										<div class="col-lg-3 col-tb-3 col-sm-3 col-xs-3 form-cs">
 											<label for="lode">Lode</label>
+											<br>
 											<input type="radio"  class="lode" name="lode" value="si">Si
 											<input type="radio"  class="lode" name="lode" value="no">No
 										</div>
 										<br>
+										
 										<div class="form-group">
 											<label for="immatricolazione">Anno di immatricolazione:</label> 
 												<select class="form-control"
@@ -197,11 +241,12 @@
 										
 						
 										<center><h2>Seleziona corsi</h2></center>
-										<table id="Corsi">
+										
+										<center><table id="Corsi"></center>
 										<tr>
-											<th>ESAME</th>
-											<th>CFU</th>
-											<th>SEMESTRE</th>
+											<th class= "Nome">ESAME</th>
+											<th class= "cfu">CFU</th>
+											<th class="sem">SEMESTRE</th>
 											<th></th>
 										</tr>
 										
@@ -214,9 +259,9 @@
 											c=lista.get(i);
 											%>
 												<tr class="esami">
-												<td data-esame="<%=c.getNome() %>"><%=c.getNome()%></td>
-												<td><%=c.getCfu()%></td>
-												<td><%=c.getSemestre()%></td>
+												<td class="Nome" data-esame="<%=c.getNome() %>"><%=c.getNome()%></td>
+												<td class="cfu" ><%=c.getCfu()%></td>
+												<td class= "sem" ><%=c.getSemestre()%></td>
 												<td><input type="checkbox"  name="<%=c.getNome() %>" value="<%=c.getId()%>" ></td>
 												</tr>
 											<%

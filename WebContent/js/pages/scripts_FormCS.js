@@ -34,16 +34,24 @@ $(document)
 										var year = $("#immatricolazione").val();
 										var scelta =[];
 										
-										
+										var flag=0;
 										
 										$("tr.esami").each(function() {
 											  tr=$(this);
 											  var nomeEsame=tr.first('td').text().trim();
 											  var idEsame= tr.find("input[type='checkbox']:checked").val()
+											  if(idEsame!=undefined){
 											  scelta.push({esame: nomeEsame,value:idEsame});
+											  }
+											  else{
+												  flag=1;
+												  
+											  }
 										});
 										
-										
+										if (flag==1){
+											showAlert(1,"Seleziona almeno un corso per effettuare la richiesta");
+										}
 										
 										console.log(JSON.stringify(scelta));
 										
@@ -140,8 +148,10 @@ $(document)
 
 											$(".preloader").hide();
 										} else {
+											if(flag!=1){
 											showAlert(1,
 													"Errore prelevamento campi.");
+											}
 										}
 
 										return false;

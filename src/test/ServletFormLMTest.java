@@ -1,14 +1,13 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import controller.ServletCercaLM;
+
 import controller.ServletFormLM;
 import interfacce.UserInterface;
-import model.Student;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
+import model.Student;
 
 import org.json.simple.JSONObject;
 import org.junit.Before;
@@ -35,10 +34,23 @@ public class ServletFormLMTest extends Mockito {
   }
   
   @Test
-  public void test1() throws ServletException, IOException {
-	UserInterface utente = new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
-	session.setAttribute("user", utente);
-	 request.addParameter("flag", "6");
+  public void testRequestOk() throws ServletException, IOException {
+    UserInterface utente = 
+        new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "6");
+    request.addParameter("curriculum", "cloud");
+    request.addParameter("anno", "2021");
+    servlet.doPost(request, response);
+    assertEquals("json", response.getContentType());
+  }
+  
+  @Test
+  public void testRequestFail() throws ServletException, IOException {
+    UserInterface utente = 
+        new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
     request.addParameter("anno", "2020");
     servlet.doPost(request, response);
@@ -46,21 +58,23 @@ public class ServletFormLMTest extends Mockito {
   }
   
   @Test
-  public void test2() throws ServletException, IOException {
-	UserInterface utente = new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
-	session.setAttribute("user", utente);
-	 request.addParameter("flag", "6");
+  public void testCurriculumFail() throws ServletException, IOException {
+    UserInterface utente = 
+         new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "6");
     request.addParameter("curriculum", "");
-    request.addParameter("anno", "2020");
+    request.addParameter("anno", "2021");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
   
   @Test
-  public void test3() throws ServletException, IOException {
-	UserInterface utente = new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
-	session.setAttribute("user", utente);
-	 request.addParameter("flag", "6");
+  public void testAnnoFail() throws ServletException, IOException {
+    UserInterface utente = 
+          new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
     request.addParameter("anno", "");
     servlet.doPost(request, response);
@@ -69,24 +83,26 @@ public class ServletFormLMTest extends Mockito {
   
   
   @Test
-  public void test4() throws ServletException, IOException {
-	UserInterface utente = new Student("s.sergiotto@studenti.unisa.it", "sergio", "nicola", 'M', "pippotto", 0);
-	session.setAttribute("user", utente);
-	 request.addParameter("flag", "6");
+  public void testUtenteFail() throws ServletException, IOException {
+    UserInterface utente = 
+          new Student("s.sergiotto@studenti.unisa.it", "sergio", "nicola", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
-    request.addParameter("anno", "2020");
+    request.addParameter("anno", "2021");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
   
   
   @Test
-  public void test5() throws ServletException, IOException {
-	UserInterface utente = new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
-	session.setAttribute("user", utente);
-	 request.addParameter("flag", "7");
+  public void testFlagFail() throws ServletException, IOException {
+    UserInterface utente = 
+          new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    session.setAttribute("user", utente);
+    request.addParameter("flag", "7");
     request.addParameter("curriculum", "cloud");
-    request.addParameter("anno", "2020");
+    request.addParameter("anno", "2021");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }

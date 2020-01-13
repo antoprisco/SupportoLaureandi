@@ -1,0 +1,71 @@
+﻿Manuale di
+installazione
+SL Supporto Laureandi
+
+
+Avvio Applicazione Web
+
+Requisiti di sistema:
+· Web Browser
+· Non ci sono particolari requisiti hardware o sistemi operativi consigliati
+
+Avvio applicazione in locale
+
+Requisiti di sistema:
+· Server Apache Tomcat 9.0
+· Database MySQL
+· Microsoft Excel
+· Lettore file PDF
+
+
+Prima di installare
+
+Scaricamento del Server Tomcat e importazione della applicazione
+Scaricare il server dal seguente link:
+
+https://tomcat.apache.org/download-90.cg
+
+Dopo aver scaricato ed installato il server bisognerà inserire all’interno della cartella delle webapp del server i file della applicazione.
+
+Scaricamento del database MySQL e preparazione della base dati
+
+Scaricare il database dal seguente link:
+
+https://dev.mysql.com/downloads/mysql/ 
+
+Dopo aver scaricato ed installato il database avviare MySQL Workbench e creare un nuovo schema chiamandolo “supportolaureandi”. 
+Successivamente cliccare su “Data Import/Restore” situato a sinistra. Dalla pagina che ne segue, spuntare la voce “Import from Self-Contained File” e selezionare il file sql “DB_OK.sql”. 
+In corrispondenza della voce Default Target Schema, selezionare lo schema precedentemente creato e poi fare click su Start Import.
+
+Installazione
+
+Dopo aver inserito i file della applicazione nella cartella delle webapp del server, per completare l’installazione in locale basterà modificare il path presente alla riga 84 del file 
+UploaderCS.java con il proprio path. Per concludere l’installazione e avviare l’applicazione basterà semplicemente avviare il server Tomcat ed aprire il browser 
+all’indirizzo: http://localhost:8080/EnglishValidation/
+
+
+
+
+6.1 Credenziali per il primo accesso – Admin
+
+E-mail
+Password
+fferrucci@unisa.it
+password
+
+
+
+6.2 Credenziali per il primo accesso – Segreteria
+
+E-mail
+Password
+segreteria@unisa.it
+password
+
+
+6.3 Credenziali per il primo accesso – Studente
+Lo studente dovrà effettuare la registrazione per poter accedere al sistema.
+
+
+
+	

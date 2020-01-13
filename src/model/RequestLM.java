@@ -4,87 +4,92 @@ import java.time.Year;
 import java.util.ArrayList;
 
 public class RequestLM {
-	private int id;
-	private int year;
-	private String email;
-	private String curr;
-	private int count;
-	
-	
-	public int getCount() {
-		return count;
-	}
+  private int id;
+  private int year;
+  private String email;
+  private String curr;
+  private int count;
+  
+  public int getCount() {
+    return count;
+  } 
 
-	public void setCount(int count) {
-		this.count = count;
-	}
+  public void setCount(int count) {
+    this.count = count;
+  }
+  /**
+   * Costruttore richieste Laurea Magistrale.
+   */
+  
+  public RequestLM(int id,String curr, int year, String email) {
+    this.id = id;
+    this.year = year;
+    this.email = email;
+    this.curr = curr;
+  }
 
-	public RequestLM(int id,String curr, int year, String email) {
-		this.id=id;
-		this.year=year;
-		this.email=email;
-		this.curr=curr;
-	
-	}
-	
-	public RequestLM(String curr, int count) {
-		this.curr=curr;
-		this.count=count;
-	}
-
-
-	public RequestLM() {
-		this.id=0;
-		this.year=0;
-		this.email="";
-		this.curr="";
-	}
-	public RequestLM(String curr, int year, String email) {
-		this.id=+1;
-		this.year=year;
-		this.email=email;
-		this.curr=curr;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-
-	public int getYear() {
-		return year;
-	}
+  public RequestLM(String curr, int count) {
+    this.curr = curr;
+    this.count = count;
+  }
+  /**
+   * Costruttore richieste Laurea Magistrale.
+   */
+  
+  public RequestLM() {
+    this.id = 0;
+    this.year = 0;
+    this.email = "";
+    this.curr = "";
+  }
+  /**
+   * Costruttore richieste Laurea Magistrale.
+   */
+  
+  public RequestLM(String curr, int year, String email) {
+    this.id = +1;
+    this.year = year;
+    this.email = email;
+    this.curr = curr;
+  }
+  
+  public int getId() {
+    return id;
+  }
 
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
 
-	public String getEmail() {
-		return email;
-	}
+
+  public int getYear() {
+    return year;
+  }
 
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setYear(int year) {
+    this.year = year;
+  }
 
 
-	public String getCurr() {
-		return curr;
-	}
+  public String getEmail() {
+    return email;
+  }
 
 
-	public void setCurr(String curr) {
-		this.curr = curr;
-	}
-	
-	
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+
+  public String getCurr() {
+    return curr;
+  }
+
+
+  public void setCurr(String curr) {
+    this.curr = curr;
+  }
 }

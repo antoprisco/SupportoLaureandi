@@ -11,7 +11,9 @@ public class Secretary implements UserInterface {
   private String password;
   private int userType;
 
-  public Secretary() {}
+  public Secretary() {
+  
+  }
 
   /**
    * email name surname sex password userType Return object Secretary.

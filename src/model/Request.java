@@ -22,7 +22,8 @@ public class Request {
   UserInterface user;
   static SimpleDateFormat sdf = new SimpleDateFormat("yyyy - MM - dd");
 
-  public Request() {}
+  public Request() {
+  }
 
   /**
    * idRequest requestCfu level releaseDate expireDate validatedCfu serial year attached state ente

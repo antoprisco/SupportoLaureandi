@@ -10,7 +10,9 @@ public class Student implements UserInterface {
   private String password;
   private int userType;
 
-  public Student() {}
+  public Student() {
+
+  }
 
   /**
    * email name surname sex password userType 

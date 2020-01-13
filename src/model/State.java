@@ -11,7 +11,8 @@ public class State {
   /**
    * Empty Constructor.
    */
-  public State() {}
+  public State() {
+  }
   
   /**
    * Constructor.

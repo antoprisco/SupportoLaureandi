@@ -37,7 +37,7 @@ public class ServletCercaLMTest extends Mockito {
   @Test
   public void test2() throws ServletException, IOException { //Anno non presente nel DB
     request.addParameter("flag", "7");
-    request.addParameter("anno", "2020");
+    request.addParameter("anno", "2019");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }

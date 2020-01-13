@@ -167,7 +167,8 @@ public class ServletStudent extends HttpServlet {
         String graduation = request.getParameter("graduation");
         */
         int serial = Integer.parseInt(request.getParameter("serial"));
-        int length = (int)(Math.log10(serial)+1);						//calcola la lunghezza della matricola
+        //calcola la lunghezza della matricola
+        int length = (int)(Math.log10(serial) + 1);
         if (length >= 10 || length < 9) {
           throw new IllegalArgumentException("Valore non corretto");
         }
@@ -382,11 +383,11 @@ public class ServletStudent extends HttpServlet {
                 }              
               } else {
                 content += "<tr>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "<td class=\"text-center\"" + ">Nessuna Richiesta Presente</td>"
-                		+ "<td class=\"text-center\"" + "></td>"
-                		+ "</tr>";
+                    + "<td class=\"text-center\"" + "></td>"
+                    + "<td class=\"text-center\"" + "></td>"
+                    + "<td class=\"text-center\"" + ">Nessuna Richiesta Presente</td>"
+                    + "<td class=\"text-center\"" + "></td>"
+                    + "</tr>";
               }
             }
           } catch (Exception e) {
