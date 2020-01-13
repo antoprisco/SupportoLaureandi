@@ -36,7 +36,8 @@ public class Admin implements UserInterface {
   /**
    * Empty Constructor.
    */
-  public Admin() {}
+  public Admin() {
+  }
 
   /**
    * Get the email address of the Admin.

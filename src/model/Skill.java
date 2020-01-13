@@ -1,68 +1,80 @@
 package model;
 
 public class Skill {
-	private int id;
-	private String nome;
-	private int tipo;
-	private String lvl;
-	
-	public Skill(int id, String nome, int tipo, String livello) {
-		this.id=id;
-		this.nome=nome;
-		this.tipo=tipo;
-		this.lvl=livello;
-		
-	}
+  private int id;
+  private String nome;
+  private int tipo;
+  private String lvl;
 
-	public Skill() {
-		this.nome="";
-		this.tipo=-1;
-		this.lvl="";
-	}
-	
-	public Skill(String nome, int tipo, String livello) {
-		this.nome = nome;
-		this.tipo = tipo;
-		this.lvl = livello;
-	}
-	
-	public Skill(String nome, int tipo) {
-		this.nome = nome;
-		this.tipo = tipo; 
-	}
+  /**
+   * Costruttore per Skill.
+   */
+  
+  public Skill(int id, String nome, int tipo, String livello) {
+    this.id = id;
+    this.nome = nome;
+    this.tipo = tipo;
+    this.lvl = livello;
 
-	public int getId() {
-		return id;
-	}
+  }
+  /**
+   * Costruttore per Skill.
+   */
+  
+  public Skill() {
+    this.nome = "";
+    this.tipo = -1;
+    this.lvl = "";
+  }
+  /**
+   * Costruttore per Skill.
+   */
+  
+  public Skill(String nome, int tipo, String livello) {
+    this.nome = nome;
+    this.tipo = tipo;
+    this.lvl = livello;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  /**
+   * Costruttore per Skill.
+   */
+  
+  public Skill(String nome, int tipo) {
+    this.nome = nome;
+    this.tipo = tipo; 
+  }
 
-	public String getNome() {
-		return nome;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public int getTipo() {
-		return tipo;
-	}
+  public String getNome() {
+    return nome;
+  }
 
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-	public String getLvl() {
-		return lvl;
-	}
+  public int getTipo() {
+    return tipo;
+  }
 
-	public void setLvl(String lvl) {
-		this.lvl = lvl;
-	}
-	
-	
-	
+  public void setTipo(int tipo) {
+    this.tipo = tipo;
+  }
+
+  public String getLvl() {
+    return lvl;
+  }
+
+  public void setLvl(String lvl) {
+    this.lvl = lvl;
+  }
+  
 }

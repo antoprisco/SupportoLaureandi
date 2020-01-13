@@ -9,7 +9,7 @@ public class Allegati {
    * Costruttore allegati.
    */
 
-  public Allegati (String filename, String email, int idReq) {
+  public Allegati(String filename, String email, int idReq) {
     this.filename = filename;
     this.email = email;
     this.idReq = idReq;

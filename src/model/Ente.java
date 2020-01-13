@@ -27,7 +27,8 @@ public class Ente {
   /**
    * Empty Constructor.
    */
-  public Ente() {}
+  public Ente() {
+  }
   
   /**
    * Get the identifier number of the "Ente".
