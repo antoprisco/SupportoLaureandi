@@ -98,15 +98,23 @@ $(document).ready(
 									});
 					$("#aggiungiSkill").click(function() {
 						skill = $("#nomeSkill").val();
+						l=skill.length;
 						$("#nomeSkill").val('');
-						if(skill!='' && skill!="undefined"){
-						content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td><fieldset id="+skill+">" +
-						"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
-							"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
-								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"alto\"></td> </fieldset> </tr>";
-						$("#skill_table").append(content);}
+						if(skill!= undefined && l > 3 && l < 15){
+						content="<tr class=\"skills pl-2\"><td data-skill=\"" + skill + "\">" + skill + "</td>" +
+								"<fieldset id="+skill+">" +
+								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"basso\"></td>" + 
+								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"medio\"></td>" +
+								"<td><input type=\"radio\" class=\"pl-2\" name="+skill+" value=\"alto\"></td> " +
+								"</fieldset> </tr>";
+						$("#skill_table").append(content);
+						showAlert(0,skill+" inserito")
+						} else{
+						showAlert(1, "Il formato della skill inserita non è corretto")
+						}
 						
-						$("tr.skills").each(function() {
+						
+					//	$("tr.skills").each(function() {
 						 
 							/*tr=$(this);
 						  value=tr.first('td').data("skill");
@@ -119,8 +127,8 @@ $(document).ready(
 								}*/
 							  
 						  
-						  showAlert(0,skill+" inserito")
-						});
+						  
+					//	});
 
 
 					   
@@ -128,10 +136,15 @@ $(document).ready(
 					
 					$("#aggiungiSoftSkill").click(function() {
 						softskill = $("#nomeSoftSkill").val();
+						lss= softskill.length;
 						$("#nomeSoftSkill").val('');
-						if(softskill!='' && softskill!="undefined"){
+						if(softskill!= undefined && lss > 3 && lss <= 25){
 						content="<tr class=\"softskills\"><td class=\"pl-2\" data-softskill=\""+softskill+"\">"+softskill+"</td></tr>";
-						$("#softskill_table").append(content);}
+						$("#softskill_table").append(content);
+						showAlert(0,softskill+" inserito");
+						}else{
+						showAlert(1, "Il formato della soft-skill inserita non è corretto")
+						}
 						
 						$("softskill_table").each(function(){
 							tr=$(this);

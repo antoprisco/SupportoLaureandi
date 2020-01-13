@@ -93,6 +93,7 @@ th {
 										<h2 class="text-center">Richiesta</h2>
 										<p class="text-center">Compila tutti i campi per
 											effettuare la richiesta</p>
+											
 											<%
 							UserInterface user = (UserInterface) request.getSession().getAttribute("user");
 

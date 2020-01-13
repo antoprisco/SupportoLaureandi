@@ -243,6 +243,7 @@ public class ServletFormCS extends HttpServlet {
             String dip = "Dipartimento di Informatica";
             Image foto = Image.getInstance(
                 "C://Users//Simone//SupportoLaureandi//WebContent//imagesEV//logo.png");
+            
             String Text1 = "Io sottoscritto/a ai sensi dell’art. 46 del D.P.R. 28 Dicembre 2000, "
                 + "n. 445 e consapevole che, ai sensi dell’art. 76 dello stesso " 
                 + "D.P.R. 445/2000 “chiunque rilascia dichiarazioni mendaci, forma atti falsi "
@@ -353,7 +354,6 @@ public class ServletFormCS extends HttpServlet {
             document.add(spazio);
             document.add(pdf);
             document.add(pf);
-            document.add(new Paragraph(new Date().toString()));
 
             document.close();
             file.close();

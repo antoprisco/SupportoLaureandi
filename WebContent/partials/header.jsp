@@ -51,7 +51,9 @@
 	 logoRedirect = request.getContextPath()+"/_areaStudent/Open.jsp";
   
 
-    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") || pageName.equals("uploadAttached.jsp") || pageName.equals("Open.jsp") || pageName.equals("Open.jsp") || pageName.equals("viewRequestCS.jsp")|| pageName.equals("viewFormOU.jsp")|| pageName.equals("FormCS.jsp") ) { //se stiamo in viewRequest
+    if (pageName.equals("viewRequest.jsp") || pageName.equals("FormLM.jsp") || pageName.equals("firstForm.jsp") 
+    		|| pageName.equals("uploadAttached.jsp") || pageName.equals("Open.jsp") || pageName.equals("Open.jsp") 
+    		|| pageName.equals("viewRequestCS.jsp")|| pageName.equals("viewFormOU.jsp")|| pageName.equals("FormCS.jsp")){ //se stiamo in viewRequest
       //3 in 1
       menu += "<li><div class=\"dropdown\"><a class=\"nav-element\">Certificazione lingua inglese</a><div class=\"dropContent\">";   
           
@@ -82,12 +84,14 @@
       hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
            + "/viewRequest.jsp\">Richieste</a></li>";
           
-    hiddenMenu +="<li><a href=\"" + request.getContextPath() + "/" + pageFolder
-    		  + "/FormLM.jsp\">Laurea Magistrale</li>";
-   hiddenMenu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+      hiddenMenu +="<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+    		     + "/FormLM.jsp\">Laurea Magistrale</li>";
+   	  hiddenMenu +=  "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
      			 + "/viewFormOU.jsp\">Orientamento in uscita</li>";
-     	hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
-    			  + "/gfdgd.sjp\">Iscrizione a corsi singoli</li>";
+      hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+     			 + "/FormCS.jsp\">Iscrizione a corsi singoli</li>";
+      hiddenMenu += "<li><a href=\"" + request.getContextPath() + "/" + pageFolder
+    		     + "/viewRequestCS.jsp\">Richieste in corso</li>";
    	   hiddenMenu +=
           "<li><a href=\"" + request.getContextPath() + "/index.jsp\">Disconnetti</a></li>";  
          
