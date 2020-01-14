@@ -14,7 +14,7 @@ public class DbConnectionTest {
   @Test
   void testgetDatabaseName() {
     DbConnection db = new DbConnection();
-    assertEquals("englishvalidation", db.getDatabaseName());
+    assertEquals("supportolaureandi", db.getDatabaseName());
   }
 
   @Test
@@ -26,7 +26,7 @@ public class DbConnectionTest {
   @Test
   void testgetPassword() {
     DbConnection db = new DbConnection();
-    assertEquals("", db.getPassword());
+    assertEquals("ciaociao123", db.getPassword());
   }
 
   @Test

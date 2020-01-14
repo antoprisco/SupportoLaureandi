@@ -21,6 +21,30 @@
 
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+button#cerca{
+	background-color: white;
+    background-image: url(https://img.icons8.com/android/24/000000/search.png);
+    color: white;
+    border-radius: 20px;
+    padding: 12px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 10px;
+    display: table-caption;
+}
+input#cognome {
+    border-style: inset;
+    border-radius: 20px;
+    float: left;
+    text-align: center;
+    /* align-content: start; */
+}
+
+
+</style>
+
 </head>
 <body onLoad="showData()">
 	<div class="page-wrapper">
@@ -41,6 +65,11 @@
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="content">
 							<div class="news-block-seven pl-5 pr-5">
+							
+							<div id="insieme">
+						 	<input type="text" id="cognome" placeholder="Inserisci un cognome"></input>
+							<button  id='cerca'></button> 
+							</div>
 								<table id="bodySecretaryTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr>

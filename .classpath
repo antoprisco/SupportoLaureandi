@@ -77,16 +77,13 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/guava-25.0-jre.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/okhttp-3.11.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/okio-1.14.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JRE System Library [jdk-13.0.1]">
-		<attributes>
-			<attribute name="module" value="true"/>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
