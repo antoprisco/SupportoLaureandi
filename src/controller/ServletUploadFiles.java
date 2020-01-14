@@ -82,12 +82,16 @@ public class ServletUploadFiles extends HttpServlet {
                 listaAllegati = ad.doRetrievebyReq(user.getEmail(),r.getId());
                 if (listaAllegati.isEmpty() || listaAllegati.size() < 2) {
                   ad.doSave(a);
+                  System.out.println(r.getId());
+                  rd.doUpdate(2, r.getId());
+                  System.out.println("dopo= " + r.getId());
                   result = 1;
                 } else {
                   error = "documenti già inseriti";
                 }
               }
-              rd.doUpdate(r.getStato() + 1, r.getId());
+              
+              
             } else {
               error = "Spiacenti, non abbiamo trovato alcuna richiesta "
                  + "che attenda l'upload dei file "; 

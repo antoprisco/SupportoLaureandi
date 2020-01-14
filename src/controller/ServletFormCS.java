@@ -10,9 +10,11 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import interfacce.UserInterface;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -72,6 +74,8 @@ public class ServletFormCS extends HttpServlet {
     String error = "";
     String content = "";
     String redirect = "";
+    File nome_file = null;
+   
     UserInterface user = (UserInterface) request.getSession().getAttribute("user");
     String idUser = user.getEmail();
     if (Integer.parseInt(request.getParameter("flag")) == 8) {
@@ -196,21 +200,26 @@ public class ServletFormCS extends HttpServlet {
 
       //controlla se ci sono altre richieste in sospeso
       RequestCS rcs = new RequestCS();
-      RequestCS rcs1 = new RequestCS(request.getParameter("nome"), 
-           request.getParameter("cognome"),1);
+      RequestCS rcs1 = new RequestCS(user.getName(), 
+           user.getSurname(),1);
       RequestCSDAO rcD = new RequestCSDAO();
       GestisceCS g = new GestisceCS();
       GestisceCSDAO gd = new GestisceCSDAO();
 
       try {
         ArrayList<RequestCS> list = rcD.doRetrieveByNC(user.getName(), user.getSurname());
-        RequestCS list6 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 6);
-        RequestCS list7 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 7);
+        ArrayList<RequestCS> list1 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 1);
+        ArrayList<RequestCS> list2 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 2);
+        ArrayList<RequestCS> list3 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 3);
+        ArrayList<RequestCS> list4 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 4);
+        ArrayList<RequestCS> list5 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 5);
+        //ArrayList<RequestCS> list6 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 6);
 
         /*Nel caso in cui non vi siano richieste con il nome dell'utente 
          * oppure ci sono ma sono completate si può effettuare la richiesta
          */
-        if (list6 != null || list7 != null || list.isEmpty()) {
+        if (list1.isEmpty()  && list2.isEmpty() && list3.isEmpty() && list4.isEmpty() && list5.isEmpty() || list.isEmpty()) {
+          
           //vengono presi tutti i parametri per creare il PDF
           String SceltaNome = null;
           String SceltaId = null;
@@ -233,8 +242,8 @@ public class ServletFormCS extends HttpServlet {
           //CREAZIONE PDF CON DATI DEL FORM
           try {
             Date d = new Date();
-            File nome_file = new File ("IscrizioneCS_" + request.getParameter("cognome") 
-                + d.getHours() + "" + d.getMinutes() + "" + d.getSeconds() + ".pdf");
+            nome_file = new File ("IscrizioneCS_" + user.getSurname()+ 
+                + d.getHours() + "" + d.getMinutes() + ".pdf");
             OutputStream file = new FileOutputStream(nome_file);
             Document document = new Document();
             PdfWriter.getInstance(document, file);
@@ -357,31 +366,35 @@ public class ServletFormCS extends HttpServlet {
 
             document.close();
             file.close();
+
+            
+            
+            
           } catch (Exception e) { 
             e.printStackTrace();
           }
 
           //Salvataggio nel database
           rcD.doSave(rcs1);
-          rcs1 = rcD.doRetrieveByNCS(request.getParameter("nome"), 
+          rcs1 = rcD.doRetrieveByNCStato(request.getParameter("nome"), 
              request.getParameter("cognome"),1);
           g = new GestisceCS(request.getParameter("email"),rcs1.getId());
           gd.doSave(g);
           result = 1;
-        } else if (!list.isEmpty()) {
+        } else /*if (!list.isEmpty()) */{
           /*Nel caso in cui ci sono richieste con il nome dell'utente 
             *e lo stato della richiesta è in corso
              */
-          for (int i = 0; i<list.size(); i++) {
+         /* for (int i = 0; i<list.size(); i++) {
             rcs = list.get(i);
             if (rcs.getStato() == 1 
                 || rcs.getStato() == 2 
                 || rcs.getStato() == 3 
                 || rcs.getStato() == 4 
-                || rcs.getStato() == 5) {
+                || rcs.getStato() == 5) {*/
               error = "Spiacenti, vi sono altre domande in corso";
-            }
-          }
+            //}
+          //}
         }
       } catch (SQLException e) {
         e.printStackTrace();
@@ -392,10 +405,18 @@ public class ServletFormCS extends HttpServlet {
     res.put("error", error);
     res.put("content", content);
     res.put("redirect", redirect);
+    //res.put("nome_file",nome_file);
     PrintWriter out = response.getWriter();
+   // OutputStream outs= response.getOutputStream();
     out.println(res);
     response.setContentType("json");
     System.err.println(res.toString());
+    
+    
+  //  DownloaderPDF dp= new DownloaderPDF();
+    //dp.doPost(request, response);
+    
+    
   }
 
 }
