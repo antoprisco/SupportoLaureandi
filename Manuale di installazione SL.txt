@@ -1,5 +1,4 @@
-﻿Manuale di
-installazione
+﻿Manuale di installazione
 SL Supporto Laureandi
 
 
@@ -47,24 +46,20 @@ all’indirizzo: http://localhost:8080/EnglishValidation/
 
 
 
-6.1 Credenziali per il primo accesso – Admin
+Credenziali per il primo accesso – Admin
 
-E-mail
-Password
-fferrucci@unisa.it
-password
+E-mail : fferrucci@unisa.it
+Password : password
 
 
 
-6.2 Credenziali per il primo accesso – Segreteria
+Credenziali per il primo accesso – Segreteria
 
-E-mail
-Password
-segreteria@unisa.it
-password
+E-mail : segreteria@unisa.it
+Password : password
 
 
-6.3 Credenziali per il primo accesso – Studente
+Credenziali per il primo accesso – Studente
 Lo studente dovrà effettuare la registrazione per poter accedere al sistema.
 
 
