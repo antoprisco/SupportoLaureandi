@@ -23,7 +23,7 @@ public class DbConnection {
     this.conn = null;
     this.databaseName = "supportolaureandi";
     this.userName = "root";
-    this.password = "password";//INSERITE LA VOSTRA PASSWORD
+    this.password = "hotbyrd1";//INSERITE LA VOSTRA PASSWORD
     this.hostPort = 3306;
     this.hostName = "localhost";
 

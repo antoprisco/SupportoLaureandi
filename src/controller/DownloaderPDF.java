@@ -21,7 +21,6 @@ import org.json.simple.JSONObject;
 
 import interfacce.UserInterface;
 
-
 /**
  * Servlet implementation class Downloader.
  */
@@ -44,48 +43,49 @@ public class DownloaderPDF extends HttpServlet {
   /**
    * method doGet.
    * 
-   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+   *      response)
    */
-  public void doGet(HttpServletRequest request, HttpServletResponse response)
+  public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
-    if (Integer.parseInt(request.getParameter("flag")) == 1 ) {
+    if (Integer.parseInt(request.getParameter("flag")) == 1) {
       UserInterface user = (UserInterface) request.getSession().getAttribute("user");
-    OutputStream outputStream = null;
-    InputStream in = null;
+      OutputStream outputStream = null;
+      InputStream in = null;
 
-    //int idRequest = Integer.parseInt(request.getParameter("idRequest"));
-    Date d = new Date();
-   // String email = request.getParameter("email");
-   // String cognome = request.getParameter("cognome");
-    String basePath = "C:\\Users\\Simone\\Desktop\\eclipse\\";
-    String filename="IscrizioneCS_" + user.getSurname()
-    + d.getHours() + "" + d.getMinutes() +".pdf";
-    
+      // int idRequest = Integer.parseInt(request.getParameter("idRequest"));
+      Date d = new Date();
+      // String email = request.getParameter("email");
+      // String cognome = request.getParameter("cognome");
+      String basePath = "C:\\Users\\Simone\\Desktop\\eclipse\\";
+      String filename = "IscrizioneCS_" + user.getSurname() + d.getHours() + "" 
+      + d.getMinutes() + ".pdf";
 
-    try {
-      in = new FileInputStream(basePath + filename);
-      byte[] buffer = new byte[1024];
-      int bytesRead = 0;
-      response.setHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
-      outputStream = response.getOutputStream();
-      while (0 < (bytesRead = in.read(buffer))) {
-        outputStream.write(buffer, 0, bytesRead);
+      try {
+        in = new FileInputStream(basePath + filename);
+        byte[] buffer = new byte[1024];
+        int bytesRead = 0;
+        response.setHeader("Content-Disposition", "attachment;filename=\"" + filename + "\"");
+        outputStream = response.getOutputStream();
+        while (0 < (bytesRead = in.read(buffer))) {
+          outputStream.write(buffer, 0, bytesRead);
+        }
+      } finally {
+        if (null != in) {
+          in.close();
+        }
       }
-    } finally {
-      if (null != in) {
-        in.close();
-      }
-    }
     }
   }
 
   /**
    * method doPost.
    * 
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+   *      response)
    */
-  @SuppressWarnings({"unchecked", "unused", "rawtypes"})
-  public void doPost(HttpServletRequest request, HttpServletResponse response)
+  @SuppressWarnings({ "unchecked", "unused", "rawtypes" })
+  public void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     doGet(request, response);
   }

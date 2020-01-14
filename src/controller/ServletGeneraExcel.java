@@ -1,19 +1,16 @@
 package controller;
 
 import interfacce.UserInterface;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.RequestCS;
 import model.RequestCSDAO;
 import model.SystemAttribute;
@@ -59,7 +56,7 @@ public class ServletGeneraExcel extends HttpServlet {
     int flag = Integer.parseInt(request.getParameter("flag"));
 
     UserInterface user = (UserInterface) request.getSession().getAttribute("user");
-    RequestCSDAO rDAO = new RequestCSDAO();
+    RequestCSDAO rdao = new RequestCSDAO();
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
 
     if (flag == 5 || flag == 6) { // Genera Excel
@@ -77,7 +74,7 @@ public class ServletGeneraExcel extends HttpServlet {
                 new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
 
             try {
-              listaRichieste = rDAO.doRetrieveAccettate();
+              listaRichieste = rdao.doRetrieveAccettate();
 
               if (!listaRichieste.isEmpty()) {
                 content += "ID\tNome\tCognome\n";
@@ -100,7 +97,7 @@ public class ServletGeneraExcel extends HttpServlet {
                 new SystemAttribute().getValueByKey("request-working-educational-advice-1"));
 
             try {
-              listaRichieste = rDAO.doRetrieveRifiutate();
+              listaRichieste = rdao.doRetrieveRifiutate();
 
               if (!listaRichieste.isEmpty()) {
                 content += "ID\tNome\tCognome\n";

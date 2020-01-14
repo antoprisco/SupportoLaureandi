@@ -1,20 +1,14 @@
 package controller;
 
-
-import com.google.common.collect.Table;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import interfacce.UserInterface;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -218,11 +212,12 @@ public class ServletFormCS extends HttpServlet {
         /*Nel caso in cui non vi siano richieste con il nome dell'utente 
          * oppure ci sono ma sono completate si può effettuare la richiesta
          */
-        if (list1.isEmpty()  && list2.isEmpty() && list3.isEmpty() && list4.isEmpty() && list5.isEmpty() || list.isEmpty()) {
+        if (list1.isEmpty()  && list2.isEmpty() && list3.isEmpty() 
+            && list4.isEmpty() && list5.isEmpty() || list.isEmpty()) {
           
           //vengono presi tutti i parametri per creare il PDF
-          String SceltaNome = null;
-          String SceltaId = null;
+          String sceltaNome = null;
+          String sceltaId = null;
           Corsi c = new Corsi();
           CorsiDAO cd = new CorsiDAO();
           ArrayList<Corsi> listaCorsi = new ArrayList<Corsi>();
@@ -242,7 +237,7 @@ public class ServletFormCS extends HttpServlet {
           //CREAZIONE PDF CON DATI DEL FORM
           try {
             Date d = new Date();
-            nome_file = new File ("IscrizioneCS_" + user.getSurname()+ 
+            nome_file = new File("IscrizioneCS_" + user.getSurname() 
                 + d.getHours() + "" + d.getMinutes() + ".pdf");
             OutputStream file = new FileOutputStream(nome_file);
             Document document = new Document();
@@ -253,13 +248,13 @@ public class ServletFormCS extends HttpServlet {
             Image foto = Image.getInstance(
                 "C://Users//Simone//SupportoLaureandi//WebContent//imagesEV//logo.png");
             
-            String Text1 = "Io sottoscritto/a ai sensi dell’art. 46 del D.P.R. 28 Dicembre 2000, "
+            String text1 = "Io sottoscritto/a ai sensi dell’art. 46 del D.P.R. 28 Dicembre 2000, "
                 + "n. 445 e consapevole che, ai sensi dell’art. 76 dello stesso " 
                 + "D.P.R. 445/2000 “chiunque rilascia dichiarazioni mendaci, forma atti falsi "
                 + "o ne fa uso nei casi previsti dal presente testo unico è " 
                 + "punito dal codice penale e dalle leggi speciali in materia” ";
-            String Text2 = "DICHIARO SOTTO LA MIA RESPONSABILITÀ I SEGUENTI DATI";
-            String Text3 ="Il mio NOME è " + request.getParameter("nome") 
+            String text2 = "DICHIARO SOTTO LA MIA RESPONSABILITÀ I SEGUENTI DATI";
+            String text3 = "Il mio NOME è " + request.getParameter("nome") 
                 + "\t il mio COGNOME è " + request.getParameter("cognome")
                 + "\r\n" 
                 + "sono NATO/A a " + request.getParameter("luogoNascita") + "\t prov. " 
@@ -297,16 +292,16 @@ public class ServletFormCS extends HttpServlet {
                 + "\r\n con il voto di " + request.getParameter("voto") + "su 110" 
                 + "\t lode: " + request.getParameter("lode") + "";
 
-            String Text4 = "CHIEDO L'ISCRIZIONE AI SEGUENTI CORSI SINGOLI:";
-            String Text5 = "Anno di iscrizione: " + request.getParameter("year") + "";
+            String text4 = "CHIEDO L'ISCRIZIONE AI SEGUENTI CORSI SINGOLI:";
+            String text5 = "Anno di iscrizione: " + request.getParameter("year") + "";
             
             Paragraph puni = new Paragraph(uni);
             Paragraph pdip = new Paragraph(dip);
-            Paragraph p1 = new Paragraph(Text1);
-            Paragraph p2 = new Paragraph(Text2);
-            Paragraph p3 = new Paragraph(Text3);
-            Paragraph p4 = new Paragraph(Text4);
-            Paragraph p5 = new Paragraph(Text5);
+            Paragraph p1 = new Paragraph(text1);
+            Paragraph p2 = new Paragraph(text2);
+            Paragraph p3 = new Paragraph(text3);
+            Paragraph p4 = new Paragraph(text4);
+            Paragraph p5 = new Paragraph(text5);
 
             p1.setAlignment(Element.ALIGN_JUSTIFIED);
             p2.setAlignment(Element.ALIGN_CENTER);
@@ -330,14 +325,15 @@ public class ServletFormCS extends HttpServlet {
             //INSERIMENTO CORSI SCELTI NEL PDF
             for (int i = 0; i < scelta1.size(); i++) {
               JSONObject j = (JSONObject) scelta1.get(i);
-              SceltaNome = (String)j.get("esame");
-              SceltaId = (String) j.get("value");
-              if (SceltaId != null) {
+              sceltaNome = (String)j.get("esame");
+              sceltaId = (String) j.get("value");
+              if (sceltaId != null) {
                 try {
-                  c = cd.doRetrieveByID(Integer.parseInt(SceltaId));
+                  c = cd.doRetrieveByID(Integer.parseInt(sceltaId));
 
-                  String Text6 = c.getSemestre() + "° Semestre: " + c.getNome() + " (" + c.getCfu() + "cfu)\r\n";
-                  Paragraph p6 = new Paragraph(Text6);
+                  String text6 = c.getSemestre() + "° Semestre: " + c.getNome() 
+                      + " (" + c.getCfu() + "cfu)\r\n";
+                  Paragraph p6 = new Paragraph(text6);
                   document.add(p6);
 
                 } catch (NumberFormatException e) {
@@ -351,10 +347,10 @@ public class ServletFormCS extends HttpServlet {
             }
             String acapo = "\r\n";
             String dataFirma = "Data____________________";
-            String Firma = "Firma_______________________";
+            String firma = "Firma_______________________";
             Paragraph spazio = new Paragraph(acapo);
             Paragraph pdf = new Paragraph(dataFirma);
-            Paragraph pf = new Paragraph(Firma);
+            Paragraph pf = new Paragraph(firma);
             pdf.setAlignment(Element.ALIGN_BOTTOM);
             pf.setAlignment(Element.ALIGN_LEFT);
             pf.setAlignment(Element.ALIGN_RIGHT);
@@ -381,19 +377,19 @@ public class ServletFormCS extends HttpServlet {
           g = new GestisceCS(request.getParameter("email"),rcs1.getId());
           gd.doSave(g);
           result = 1;
-        } else /*if (!list.isEmpty()) */{
-          /*Nel caso in cui ci sono richieste con il nome dell'utente 
+        } else /*if (!list.isEmpty()) */ {
+              /*Nel caso in cui ci sono richieste con il nome dell'utente 
             *e lo stato della richiesta è in corso
              */
-         /* for (int i = 0; i<list.size(); i++) {
+              /* for (int i = 0; i<list.size(); i++) {
             rcs = list.get(i);
             if (rcs.getStato() == 1 
                 || rcs.getStato() == 2 
                 || rcs.getStato() == 3 
                 || rcs.getStato() == 4 
                 || rcs.getStato() == 5) {*/
-              error = "Spiacenti, vi sono altre domande in corso";
-            //}
+          error = "Spiacenti, vi sono altre domande in corso";
+          //}
           //}
         }
       } catch (SQLException e) {
@@ -407,13 +403,13 @@ public class ServletFormCS extends HttpServlet {
     res.put("redirect", redirect);
     //res.put("nome_file",nome_file);
     PrintWriter out = response.getWriter();
-   // OutputStream outs= response.getOutputStream();
+    // OutputStream outs= response.getOutputStream();
     out.println(res);
     response.setContentType("json");
     System.err.println(res.toString());
     
     
-  //  DownloaderPDF dp= new DownloaderPDF();
+    //  DownloaderPDF dp= new DownloaderPDF();
     //dp.doPost(request, response);
     
     

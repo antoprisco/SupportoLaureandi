@@ -1,7 +1,5 @@
 package testIntegrazione;
 
-
-
 import static org.junit.Assert.assertEquals;
 
 import java.sql.Connection;
@@ -18,26 +16,28 @@ import model.RequestOU;
 import model.RequestOUDAO;
 import model.Student;
 
-class RequestOUTest{
+class RequestOUTest {
 
-	private RequestOU requestOU;
-	private RequestOUDAO requestDAO;
-	
-	@Test
-	void testRequestOUdoSave() throws SQLException{
-		
-		requestOU.setEmail("email");
-		requestOU.setCellNumber("");
-		requestOU.setDateOfBirth("");
-		requestOU.setIdSkill(0);
-		
-		requestDAO = new RequestOUDAO();
-		assertEquals(true, (requestDAO.doSave(requestOU)));
-	}
-	
-	@Test
-	void testRequestOUdoRetreiveById() throws SQLException{
-		
+  private RequestOU requestOU;
+  private int flag;
+  private RequestOUDAO requestDAO;
+
+  @Test
+  void testRequestOUdoSave() throws SQLException {
+
+    requestOU.setEmail("email");
+    requestOU.setCellNumber("");
+    requestOU.setDateOfBirth("");
+    flag = 1;
+    requestOU.setIdSkill(0);
+
+    requestDAO = new RequestOUDAO();
+    assertEquals(true, (requestDAO.doSave(requestOU, flag)));
+  }
+
+  @Test
+  void testRequestOUdoRetreiveById() throws SQLException {
+
 //		requestOU.setEmail("email");
 //		requestOU.setCellNumber("");
 //		requestOU.setDateOfBirth("");
@@ -54,16 +54,14 @@ class RequestOUTest{
 //		ps.setString(3, requestOU.getDateOfBirth());
 //		ps.setString(4, requestOU.getCellNumber());
 //		ps.executeUpdate();
-		
-		
-		requestDAO = new RequestOUDAO();
-		assertEquals(true, (!(requestDAO.doRetrieveByID(1).isEmpty())));
-	}
-	
-	
-	@Test
-	void testRequestOUdoRetreiveByEmail() throws SQLException{
-		
+
+    requestDAO = new RequestOUDAO();
+    assertEquals(true, (!(requestDAO.doRetrieveByID(1).isEmpty())));
+  }
+
+  @Test
+  void testRequestOUdoRetreiveByEmail() throws SQLException {
+
 //		requestOU.setEmail("email");
 //		requestOU.setCellNumber("");
 //		requestOU.setDateOfBirth("");
@@ -80,21 +78,19 @@ class RequestOUTest{
 //		ps.setString(3, requestOU.getDateOfBirth());
 //		ps.setString(4, requestOU.getCellNumber());
 //		ps.executeUpdate();
-		
-		
-		requestDAO = new RequestOUDAO();
-		assertEquals(true, (!(requestDAO.doRetrieveByEmail("email").isEmpty())));
-	}
-	
-	@Test
-	void testRequestOUdoRetreiveAll() throws SQLException{
-		
+
+    requestDAO = new RequestOUDAO();
+    assertEquals(true, (!(requestDAO.doRetrieveByEmail("email").isEmpty())));
+  }
+
+  @Test
+  void testRequestOUdoRetreiveAll() throws SQLException {
+
 //		requestOU.setEmail("email");
 //		requestOU.setCellNumber("");
 //		requestOU.setDateOfBirth("");
 //		requestOU.setIdSkill(0);
 
-		
 //		Connection con = (Connection) new DbConnection().getInstance().getConn();
 //		PreparedStatement ps = null;
 //
@@ -105,19 +101,18 @@ class RequestOUTest{
 //		ps.setString(3, requestOU.getDateOfBirth());
 //		ps.setString(4, requestOU.getCellNumber());
 //		ps.executeUpdate();
-		
-		
-		requestDAO = new RequestOUDAO();
-		assertEquals(true, (!(requestDAO.doRetrieveAll().isEmpty())));
-	}
-	
-	@AfterClass
-    public static void doYourOneTimeTeardown() throws SQLException {
-		Connection con = (Connection) new DbConnection().getInstance().getConn();
-		PreparedStatement ps = null;
-		
-		String sql = "DELETE FROM request_ou WHERE id=0";
-		ps = con.prepareStatement(sql);
-		ps.executeUpdate();
-    }    
+
+    requestDAO = new RequestOUDAO();
+    assertEquals(true, (!(requestDAO.doRetrieveAll().isEmpty())));
+  }
+
+  @AfterClass
+  public static void doYourOneTimeTeardown() throws SQLException {
+    Connection con = (Connection) new DbConnection().getInstance().getConn();
+    PreparedStatement ps = null;
+
+    String sql = "DELETE FROM request_ou WHERE id=0";
+    ps = con.prepareStatement(sql);
+    ps.executeUpdate();
+  }
 }

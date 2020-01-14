@@ -15,15 +15,16 @@ $(document).ready(
 										var lingue = [];
 										
 										
-										
 										$("tr.skills").each(function() {
 											  tr=$(this);
 											  var nomeSkill=tr.first('td').text().trim();
-											  var checked = tr.find("input[type='radio']:checked");
-											  if (checked.length > 0)
-												  livelloSkill=checked.val();
-											 
-											  skills.push({skill: nomeSkill,value:livelloSkill});
+											  if(nomeSkill != undefined) {
+												  var checked = tr.find("input[type='radio']:checked");
+												  if (checked.length > 0) {
+													  livelloSkill=checked.val();
+												  	  skills.push({skill: nomeSkill,value:livelloSkill});
+												  } 
+											  }	  
 										});
 										
 										$("#softskill_table").find('tr').each(function(){
@@ -39,8 +40,7 @@ $(document).ready(
 											  lingue.push({lang: nameLanguage,value:valueLanguage});
 										});
 										
-										console.log(JSON.stringify(skills),JSON.stringify(softSkills),JSON.stringify(lingue));
-
+										
 										if (nome != undefined
 												&& cognome != undefined
 												&& datanascita != undefined
@@ -106,7 +106,7 @@ $(document).ready(
 								  tr=$(this);
 								  var SkillEsistente=tr.first(skill).text().trim();
 								  console.log(skill,contatore);
-								  if(SkillEsistente!=skill  && skill!= undefined && l > 3 && l < 15){
+								  if(SkillEsistente!=skill  && skill!= undefined && l >= 1){
 									  contatore= contatore *1;
 									  
 								  }else{

@@ -107,23 +107,28 @@ tr:nth-child(even) {
 										</tr>
 										
 										
-										
+										<tr class="skills">			
+										<td data-skill="java">Java</td>
+										<td><input type="radio" name="java-radio" value="basso"></td>
+										<td><input type="radio" name="java-radio" value="medio"></td>
+										<td><input type="radio" name="java-radio" value="alto"></td>
+									
 										<%Skill s= new Skill();
 													SkillDAO sd= new SkillDAO();
 													ArrayList<Skill> list= new ArrayList<Skill>();
 													for(Skill sk: list){
 														%>
-														<tr class="skills">
 														<td data-skill="<%=sk.getNome()%>"><%=sk.getNome()%></td>
 														<fieldset id="<%=sk.getNome()%>">
 														<td><input type="radio" name="<%=sk.getNome()%>" value="basso"></td>
 														<td><input type="radio" name="<%=sk.getNome()%>" value="medio"></td>
 														<td><input type="radio" name="<%=sk.getNome()%>" value="alto"></td>
 														</fieldset>
-														</tr>
 														<%
 													}
 													%>
+										</tr>
+											
 										</table></div>
 										<div class="form-group pr-5 pl-5">
 											<label class="mt-1" for="nomeSkill">Indica le tue competenze informatiche e il livello</label>
