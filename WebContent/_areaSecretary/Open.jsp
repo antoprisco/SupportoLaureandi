@@ -43,7 +43,7 @@ if(!ck.isAllowed()){
 							
 							<div id="open">Salve <%=user.getName()+","%> <br> questo portale ti consente di monitorare e gestire servizi durante il percorso di laurea e per il post-laurea.<br>
 							<b>Servizi pre-laurea:</b><li>Convalida dell'esame di inglese</li>
-							<b>Servizi post-laurea:</b><li>Laurea Magistrale</li><li>Orientamento in uscita</li><li>Iscrizione corsi singoli</li>
+							<b>Servizi post-laurea:</b><li>Preferenza di iscrizione ad una Laurea Magistrale</li><li>Orientamento in uscita</li><li>Iscrizione corsi singoli</li>
 							</div>
 							
 							
