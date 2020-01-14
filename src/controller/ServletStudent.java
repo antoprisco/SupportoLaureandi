@@ -135,7 +135,7 @@ public class ServletStudent extends HttpServlet {
               stmt.setString(5, password);
               stmt.setInt(6, userType);
               if (stmt.executeUpdate() > 0) {
-                redirect = request.getContextPath() + "/_areaStudent/viewRequest.jsp";
+                redirect = request.getContextPath() + "/_areaStudent/Open.jsp";
                 user = new Student(email, name, surname, sex, password, userType);
                 request.getSession().setAttribute("user", user);
                 content = "Registrazione effettuata correttamente.";
@@ -235,7 +235,7 @@ public class ServletStudent extends HttpServlet {
               stmt.setString(11, certificateSerial);
               if (stmt.executeUpdate() > 0) {
                 content = "Richiesta parziale presentata con successo.";
-                redirect = request.getContextPath() + "/_areaStudent/uploadAttached.jsp";
+                redirect = request.getContextPath() + "/_areaStudent/Open.jsp";
 
                 Integer idRequest = 0;
 
