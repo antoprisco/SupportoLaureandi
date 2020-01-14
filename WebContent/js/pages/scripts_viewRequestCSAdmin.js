@@ -50,7 +50,6 @@ function callChangData() {
 }
 
 function showData() {
-	console.log("ciaooo");
 	$(".preloader").show();
 
 	$.ajax({

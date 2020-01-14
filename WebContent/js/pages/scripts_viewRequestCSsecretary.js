@@ -22,6 +22,10 @@ $(document)
 																function() {
 																	showData();
 																}, 2000);
+											setTimeout(
+													function() {
+														showHistory();
+													}, 1000);
 										}
 
 									},
@@ -60,6 +64,11 @@ function callChangData() {
 		}
 	});
 	$(".preloader").show();
+}
+
+function start() {
+	showData();
+	showHistory();
 }
 
 function showData() {
@@ -105,7 +114,7 @@ function showHistory() {
 			if (!msg.result) {
 				showAlert(1, msg.error);
 			} else {
-				$("#secretaryHistory").html(msg.content);
+				$("#bodySecretaryHistory").html(msg.content);
 			}
 		},
 		error : function(msg) {

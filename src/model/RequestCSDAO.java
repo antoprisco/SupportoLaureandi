@@ -220,17 +220,25 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
+  
+  
   /**
    * Query per recuperare tutte le richieste lato segreteria.
    */
 
-
-  public synchronized ArrayList<RequestCS> doRetrieveAllSecretary() throws SQLException {
+  public synchronized ArrayList<RequestCS> doRetrieveAllSecretary(int flag) throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
+    
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    String selectSql = "SELECT DISTINCT id, nome, cognome FROM " 
-        + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE = 2";
+    
+    String selectSql;
+	if (flag == 1) {
+		selectSql = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE = 2";
+	} else {
+		selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE > 2";
+ 	}
+	
     try {
       preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
@@ -239,6 +247,9 @@ public class RequestCSDAO {
         r.setId(rs.getInt(1));
         r.setNome(rs.getString("nome"));
         r.setCognome(rs.getString("cognome"));
+        if(flag == 2 ) {
+        	r.setStato(rs.getInt("fk_state"));
+        }
         listaRichieste.add(r);
       }
     } finally {
