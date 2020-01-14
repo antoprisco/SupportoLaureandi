@@ -54,7 +54,7 @@
 										
 									</form>
 									<div class="form-group">
-									<button class="btn btn-primary btn-submit" id="rec" onclick="myFunction()">Recupera Password</button>
+									<button class="btn btn-primary btn-submit" id="rec" onclick="myFunction()">Resetta Password</button>
 									</div>
 								</div>
 
@@ -75,7 +75,22 @@ function myFunction() {
   var email = $("#email").val();
   var setP = prompt("Inserisci la tua email per ricevere la password", ""+email+"");
   if (setP != null) {
-  	alert("Email inviata con successo all'email: "+setP);
+		$.ajax({
+			url : absolutePath + "/ServletResetEmail",
+			type : "POST",
+			dataType : 'JSON',
+			async : false,
+			data : {
+				"email" : setP
+			},
+			success : function(msg) {
+				alert(msg.content);
+			},
+			error : function(msg) {
+				showAlert(1, "errore interno");
+			}
+		});
+  	
   }
 }
 </script>
