@@ -22,7 +22,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body onLoad="showData()">
+<body onLoad="showData()" onLoad="showHistory()">
 	<div class="page-wrapper">
 
 		<!-- Preloader -->
