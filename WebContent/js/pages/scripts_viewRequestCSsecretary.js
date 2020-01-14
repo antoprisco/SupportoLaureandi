@@ -4,7 +4,7 @@ $(document)
 							".toAdmin",
 							function() {
 								var idr =parseInt($(this).data("idr"));
-	
+								$(".preloader").show();
 								$.ajax({
 									url : absolutePath + "/ServletInoltra",
 									type : "POST",
@@ -18,13 +18,18 @@ $(document)
 											showAlert(1, msg.error);
 										} else {
 											$("#bodySecretaryBody").html(msg.content);
+											setTimeout(
+																function() {
+																	showData();
+																}, 2000);
 										}
+
 									},
 									error : function(msg) {
 										showAlert(1, "Impossibile inoltrare la richiesta");
 									}
 								});
-								
+								$(".preloader").hide();
 							});
 
 
@@ -32,7 +37,7 @@ function callChangData() {
 	
 	var name = $("#nome").val();
 	var id = $("#idR").data();
-
+	$(".preloader").show();
 	$.ajax({
 		url : absolutePath + "/ServletChangeData",
 		type : "POST",
@@ -54,6 +59,7 @@ function callChangData() {
 			showAlert(1, "Impossibile cambiare i dati.");
 		}
 	});
+	$(".preloader").show();
 }
 
 function showData() {
