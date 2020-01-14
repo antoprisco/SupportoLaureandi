@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
+import model.GestisceCS;
+import model.GestisceCSDAO;
 import model.RequestCSDAO;
 
 /**
@@ -50,17 +52,35 @@ public class ServletChangeStReqCS extends HttpServlet {
 		int state_prev = Integer.parseInt(request.getParameter("stato"));
 		int op = Integer.parseInt(request.getParameter("op"));
 		RequestCSDAO rDAO = new RequestCSDAO();
+	    GestisceCSDAO gcsdao= new GestisceCSDAO();
+	    GestisceCS GCS = new GestisceCS();
+	    String email= "";
+	    try {
+	    	GCS = gcsdao.doRetrieveByReq(id);
+	    	email= GCS.getEmail();
+	    } catch (Exception e) {
+			error = "Errore";
+			result = 0;
+			e.printStackTrace();
+		}
+
 		int state = 3;
 		if(state_prev==3) {
-			if(op==1)
+			if(op==1) {
+				Mailer.send("sl.unisa2020@gmail.com","supportolaureandi2020",email,"Aggiornamento stato richiesta","Gentile studente,\nla informiamo che lo stato della sua richiesta è : accettata e in valutazione da parte del Consiglio Didattico.\n\n\n  Supporto Laureandi"); 
 				state=4;
-			else 
+			}else { 
+				Mailer.send("sl.unisa2020@gmail.com","supportolaureandi2020",email,"Aggiornamento stato richiesta","Gentile studente,\nla informiamo che lo stato della sua richiesta è : rifiutata e in valutazione da parte del Consiglio Didattico.\n\n\n  Supporto Laureandi");  
 				state = 5;
+			}
 		} else if (state_prev==4 || state_prev==5) {
-			if(op==1)
+			if(op==1) {
+				Mailer.send("sl.unisa2020@gmail.com","supportolaureandi2020",email,"Aggiornamento stato richiesta","Gentile studente,\nla informiamo che lo stato della sua richiesta è : accettata e completata.\n\n\n  Supporto Laureandi"); 
 				state= 6;
-			else 
+			}else { 
+				Mailer.send("sl.unisa2020@gmail.com","supportolaureandi2020",email,"Aggiornamento stato richiesta","Gentile studente,\nla informiamo che lo stato della sua richiesta è : rifiutata e completata.\n\n\n  Supporto Laureandi"); 
 				state = 7;
+			}
 		} 
 		
 		try {
