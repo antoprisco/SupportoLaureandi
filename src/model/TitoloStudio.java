@@ -23,6 +23,10 @@ public class TitoloStudio {
     this.lode = lode;
   }
 
+  public TitoloStudio() {
+	  
+  }
+  
   public String getLaurea() {
     return laurea;
   }

@@ -16,6 +16,10 @@ public class Residenza {
     this.cap = cap;
   }
 
+  public Residenza() {
+	  
+  }
+  
   public String getResidenza() {
     return residenza;
   }
