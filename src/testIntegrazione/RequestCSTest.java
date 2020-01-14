@@ -17,11 +17,10 @@ public class RequestCSTest {
 		RequestCS request = new RequestCS();
 		RequestCSDAO requestDAO = new RequestCSDAO();
 		
-		request.setNome("Pippo");
-		request.setCognome("Rossi");
-		request.setStato(2);
+		assertEquals(true, (requestDAO.doRetrieveAllSecretary(1)));
+		
 	
-		assertEquals(true, (!(requestDAO.doRetrieveAllSecretary().isEmpty())));
+		
 	}
 	
 	@Test
@@ -57,7 +56,7 @@ public class RequestCSTest {
 		request.setCognome("Rossi");
 		request.setStato(0);
 	
-		RequestCS flag = requestDAO.doRetrieveByNCS(request.getNome(), request.getCognome(), request.getStato());
+		RequestCS flag = requestDAO.doRetrieveByNCStato(request.getNome(), request.getCognome(), request.getStato());
 		assertEquals(true, flag);
 	}
 
