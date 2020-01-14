@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class TitoloStudio {
   private String laurea;
   private String universita;
@@ -23,6 +21,10 @@ public class TitoloStudio {
     this.lode = lode;
   }
 
+  public TitoloStudio() {
+
+  }
+  
   public String getLaurea() {
     return laurea;
   }

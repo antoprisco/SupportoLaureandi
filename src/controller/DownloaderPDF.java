@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +19,14 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.simple.JSONObject;
 
+import interfacce.UserInterface;
+
 
 /**
  * Servlet implementation class Downloader.
  */
-@WebServlet("/DownloaderSL")
-public class DownloaderSL extends HttpServlet {
+@WebServlet("/DownloaderPDF")
+public class DownloaderPDF extends HttpServlet {
   private static final long serialVersionUID = 1L;
   @SuppressWarnings("unused")
   private File file;
@@ -32,7 +36,7 @@ public class DownloaderSL extends HttpServlet {
    * 
    * @see HttpServlet#HttpServlet()
    */
-  public DownloaderSL() {
+  public DownloaderPDF() {
     super();
     // TODO Auto-generated constructor stub
   }
@@ -44,15 +48,19 @@ public class DownloaderSL extends HttpServlet {
    */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    if (Integer.parseInt(request.getParameter("flag")) == 1 ) {
+      UserInterface user = (UserInterface) request.getSession().getAttribute("user");
     OutputStream outputStream = null;
     InputStream in = null;
 
-    int idRequest = Integer.parseInt(request.getParameter("idRequest"));
-    String filename = request.getParameter("filename");
-    String email = request.getParameter("email");
-    String basePath = "\\GitHub\\SupportoLaureandi\\UploadsCS\\"+email+"\\";
-    //String basePath = request.getServletContext().getRealPath("\\UploadCS\\"+email);
-    // questo metodo stampa C:\Users\DDA79LJ\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\EnglishValidation\UploadCS\ + l'email 
+    //int idRequest = Integer.parseInt(request.getParameter("idRequest"));
+    Date d = new Date();
+   // String email = request.getParameter("email");
+   // String cognome = request.getParameter("cognome");
+    String basePath = "C:\\Users\\Simone\\Desktop\\eclipse\\";
+    String filename="IscrizioneCS_" + user.getSurname()
+    + d.getHours() + "" + d.getMinutes() +".pdf";
+    
 
     try {
       in = new FileInputStream(basePath + filename);
@@ -67,6 +75,7 @@ public class DownloaderSL extends HttpServlet {
       if (null != in) {
         in.close();
       }
+    }
     }
   }
 

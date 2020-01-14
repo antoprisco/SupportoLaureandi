@@ -51,7 +51,11 @@
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary btn-submit">Accedi</button>
 										</div>
+										
 									</form>
+									<div class="form-group">
+									<button class="btn btn-primary btn-submit" id="rec" onclick="myFunction()">Recupera Password</button>
+									</div>
 								</div>
 
 							</div>
@@ -66,6 +70,15 @@
 
 	<jsp:include page="/partials/includes.jsp" />
 	<script src="<%= request.getContextPath() %>/js/pages/scripts_login.js"></script>
+<script>
+function myFunction() {
+  var email = $("#email").val();
+  var setP = prompt("Inserisci la tua email per ricevere la password", ""+email+"");
+  if (setP != null) {
+  	alert("Email inviata con successo all'email: "+setP);
+  }
+}
+</script>
 
 </body>
 </html>

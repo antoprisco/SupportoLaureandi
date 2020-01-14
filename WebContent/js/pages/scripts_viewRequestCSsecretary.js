@@ -4,7 +4,7 @@ $(document)
 							".toAdmin",
 							function() {
 								var idr =parseInt($(this).data("idr"));
-	
+								$(".preloader").show();
 								$.ajax({
 									url : absolutePath + "/ServletInoltra",
 									type : "POST",
@@ -18,13 +18,22 @@ $(document)
 											showAlert(1, msg.error);
 										} else {
 											$("#bodySecretaryBody").html(msg.content);
+											setTimeout(
+																function() {
+																	showData();
+																}, 2000);
+											setTimeout(
+													function() {
+														showHistory();
+													}, 1000);
 										}
+
 									},
 									error : function(msg) {
 										showAlert(1, "Impossibile inoltrare la richiesta");
 									}
 								});
-								
+								$(".preloader").hide();
 							});
 
 
@@ -32,7 +41,7 @@ function callChangData() {
 	
 	var name = $("#nome").val();
 	var id = $("#idR").data();
-
+	$(".preloader").show();
 	$.ajax({
 		url : absolutePath + "/ServletChangeData",
 		type : "POST",
@@ -54,6 +63,12 @@ function callChangData() {
 			showAlert(1, "Impossibile cambiare i dati.");
 		}
 	});
+	$(".preloader").show();
+}
+
+function start() {
+	showData();
+	showHistory();
 }
 
 function showData() {
@@ -83,6 +98,32 @@ function showData() {
 	$(".preloader").hide();
 }
 
+function showHistory() {
+
+	$(".preloader").show();
+
+	$.ajax({
+		url : absolutePath + "/ServletViewReqCS",
+		type : "POST",
+		dataType : 'JSON',
+		async : false,
+		data : {
+			"flag" : 2
+		},
+		success : function(msg) {
+			if (!msg.result) {
+				showAlert(1, msg.error);
+			} else {
+				$("#bodySecretaryHistory").html(msg.content);
+			}
+		},
+		error : function(msg) {
+			showAlert(1, "Impossibile Recuperare i dati.");
+		}
+	});
+
+	$(".preloader").hide();
+}
 $(document)
 		.ready(
 				function() {
