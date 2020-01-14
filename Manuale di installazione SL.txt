@@ -14,8 +14,9 @@ Avvio applicazione in locale
 Requisiti di sistema:
 · Server Apache Tomcat 9.0
 · Database MySQL
-· Microsoft Excel
+· Programma per la gestione di fogli elettronici (Microsoft Excel, Open Office....)
 · Lettore file PDF
+· Web Browser
 
 
 Prima di installare
