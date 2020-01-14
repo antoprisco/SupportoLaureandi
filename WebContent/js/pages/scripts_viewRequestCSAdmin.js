@@ -462,5 +462,77 @@ $(document)
 						$(".preloader").hide();
 						showData();
 					});
-								
+			////////////////////////		
+			
+			$(document).on(
+					"click",
+					"#cerca",
+					function showData() {
+						var cognome= $("#cognome").val();
+						if(cognome!=""){
+						
+				$(".preloader").show();
+
+				$.ajax({
+					url : absolutePath + "/ServletViewReqCSA",
+					type : "POST",
+					dataType : 'JSON',
+					async : false,
+					data : {
+						"cognome": cognome ,
+						"flag" : 2
+					},
+					success : function(msg) {
+						if (!msg.result) {
+							showAlert(1, msg.error);
+						} else {
+							$("#bodyTableCSAdminBody").html(msg.content);
+						}
+					},
+					error : function(msg) {
+						showAlert(1, "Impossibile Recuperare i dati.");
+					}
+				});
+
+				$(".preloader").hide();
+			 
+			}else{
+				$(".preloader").show();
+
+				$.ajax({
+					url : absolutePath + "/ServletViewReqCSA",
+					type : "POST",
+					dataType : 'JSON',
+					async : false,
+					data : {
+						"flag" : 1
+					},
+					success : function(msg) {
+						if (!msg.result) {
+							showAlert(1, msg.error);
+						} else {
+							$("#bodyTableCSAdminBody").html(msg.content);
+						}
+					},
+					error : function(msg) {
+						showAlert(1, "Impossibile Recuperare i dati.");
+					}
+				});
+
+				$(".preloader").hide();
+			}
+			}
+					)
+			
+			
+			
+			
+		
+			
+			//////////////////////////////
+			
+			
+			
+			
+			
 						});				

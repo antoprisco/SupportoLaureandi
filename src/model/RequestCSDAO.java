@@ -77,6 +77,41 @@ public class RequestCSDAO {
     }
     return listbean;
   }
+  /**
+   * Query per recuperare le richieste in base al cognome.
+   */
+
+  public synchronized ArrayList<RequestCS> doRetrievebyC(String cognome) throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
+    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " 
+         + TABLE_NAME + " WHERE cognome=? AND fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC  ";
+    try {
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement.setString(1, cognome);
+      ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        RequestCS r = new RequestCS();
+        r.setId(rs.getInt(1));
+        r.setNome(rs.getString("nome"));
+        r.setCognome(rs.getString("cognome"));
+        r.setStato(rs.getInt("fk_state"));
+        listaRichieste.add(r);
+      }
+    } finally {
+      try {
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+      } finally {
+        if (conn != null) {
+          conn.commit();
+        }
+      }
+    }
+    return listaRichieste;
+  }
   
   /**
    * Query per recuperare le richieste in base al nome, cognome e stato.
