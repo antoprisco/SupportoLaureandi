@@ -106,7 +106,7 @@ $(document).ready(
 								  tr=$(this);
 								  var SkillEsistente=tr.first(skill).text().trim();
 								  console.log(skill,contatore);
-								  if(SkillEsistente!=skill  && skill!= undefined && l >= 1){
+								  if(SkillEsistente!=skill  && skill!= undefined && l >= 1 && l <= 20){
 									  contatore= contatore *1;
 									  
 								  }else{
@@ -147,7 +147,7 @@ $(document).ready(
 							tr=$(this);
 							var SoftSkillEsistente=tr.first(softskill).text().trim();
 							
-							if(SoftSkillEsistente!=softskill && softskill!= undefined && lss > 3 && lss <= 25 )
+							if(SoftSkillEsistente!=softskill && softskill!= undefined && lss >= 3 && lss <= 25 )
 								contatoress= contatoress *1;
 							else{
 								contatoress=contatoress*0;

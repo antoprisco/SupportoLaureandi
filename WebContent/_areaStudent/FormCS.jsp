@@ -89,12 +89,34 @@ th {
 								<div
 									class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstForm-container">
 									<div class="panel">
+									
+									<%
+									UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+									RequestCSDAO rd= new RequestCSDAO();
+									ArrayList<RequestCS> listacs1= new ArrayList<RequestCS>();
+									ArrayList<RequestCS> listacs2= new ArrayList<RequestCS>();
+									ArrayList<RequestCS> listacs3= new ArrayList<RequestCS>();
+									ArrayList<RequestCS> listacs4= new ArrayList<RequestCS>();
+									ArrayList<RequestCS> listacs5= new ArrayList<RequestCS>();
+									ArrayList<RequestCS> listacs= new ArrayList<RequestCS>();
+									listacs1=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 1);
+									listacs2=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 2);
+									listacs3=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 3);
+									listacs4=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 4);
+									listacs5=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 5);
+									listacs=rd.doRetrieveByNC(user.getName(), user.getSurname()); 
+									if(listacs.isEmpty() || listacs1.isEmpty() && listacs2.isEmpty() && listacs3.isEmpty() && listacs4.isEmpty() && listacs5.isEmpty()){
+									  
+									
+									
+									%>
+									
 										<h2 class="text-center">Richiesta</h2>
 										<p class="text-center">Compila tutti i campi per
 											effettuare la richiesta</p>
 											
 											<%
-							UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+							
 
 						%>
 									</div>
@@ -278,9 +300,20 @@ th {
 										<div class="form-group">
 											<button id="genera" type="submit" class="btn btn-primary btn-submit">Genera PDF</button>
 										</div>
+										<%
+										}else{
+										 %>
+										 <div class="form-group">
+										 <center><h2>Spiacenti ha ancora una richiesta in corso, attendere il suo completamento.</h2></center>
+										 </div>
+										 <% 
+										}
+										%>
 
 										<div class="clearfix"></div>
-										
+									<%
+									if(!listacs1.isEmpty() ){
+									%>	
 									<center><h2>Carica allegati</h2></center>
 										
 										<div action='<%= request.getContextPath() + "/UploaderCS" %>'
@@ -295,6 +328,13 @@ th {
 											<button type="submit" class="btn btn-primary btn-submit"
 												id='aggiungiAllegati'>Concludi</button>
 										</div>
+										<%
+										}else{
+										  %>
+											 
+											 <% 
+										}
+										%>
 									
 								</div>
 

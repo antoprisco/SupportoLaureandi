@@ -55,14 +55,21 @@ tr:nth-child(even) {
 							<div class="news-block-seven">
 
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstForm-container">
+								<%
+								UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+								RequestOUDAO rd= new RequestOUDAO();
+								ArrayList<RequestOU> listaREff= new ArrayList<RequestOU>();
+								listaREff=rd.doRetrieveByEmail(user.getEmail());
+								if(listaREff.isEmpty()){
+
+						%>
+								
+								
 									<div class="panel">
 										<h1 class="text-center">Orientamento in uscita</h1>
 										<p class="text-center">Compila tutti i campi</p>
 									</div>
-						<%
-							UserInterface user = (UserInterface) request.getSession().getAttribute("user");
-
-						%>
+						
 
 									<form id="FormOU">
 
@@ -218,6 +225,13 @@ tr:nth-child(even) {
 												<div class="form-group mt-5">
 														<button type="submit" class="btn btn-primary btn-submit">Invia</button>
 												</div>
+												<%}else{
+								  %>
+								  <div class="form-group">
+										 <center><h2>Spiacenti ha già effettuato una richiesta.</h2></center>
+										 </div>
+								  <%
+								} %>
 
 					<div class="clearfix"></div>
 
