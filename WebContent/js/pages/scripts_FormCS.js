@@ -142,7 +142,7 @@ $(document)
 														},
 														error : function(msg) {
 															showAlert(1,
-																	"Impossibile Recuperare i dati.");
+																	"I dati inseriti non possono essere accettati");
 														}
 													});
 
@@ -188,7 +188,7 @@ function showData() {
 			}
 		},
 		error : function(msg) {
-			showAlert(1, "Impossibile Recuperare i dati.");
+			showAlert(1, "I dati inseriti non possono essere accettati");
 		}
 	});
 
