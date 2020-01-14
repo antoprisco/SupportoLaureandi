@@ -106,32 +106,7 @@ tr:nth-child(even) {
 												<th class="pl-2">Alto</th>
 										</tr>
 										
-										<tr class="skills">
-														<td data-skill="java"> Java </td>
-														<fieldset id="java">
-														<td><input type="radio" name="java" value="basso"></td>
-														<td><input type="radio" name="java" value="medio"></td>
-														<td><input type="radio" name="java" value="alto"></td>
-														</fieldset>
-														</tr>
 										
-										<tr class="skills">
-														<td data-skill="mysql"> MySQL </td>
-														<fieldset id="mysql">
-														<td><input type="radio" name="mysql" value="basso"></td>
-														<td><input type="radio" name="mysql" value="medio"></td>
-														<td><input type="radio" name="mysql" value="alto"></td>
-														</fieldset>
-														</tr>
-														
-										<tr class="skills">
-														<td data-skill="cpp"> C++ </td>
-														<fieldset id="cpp">
-														<td><input type="radio" name="cpp" value="basso"></td>
-														<td><input type="radio" name="cpp" value="medio"></td>
-														<td><input type="radio" name="cpp" value="alto"></td>
-														</fieldset>
-														</tr>
 										
 										<%Skill s= new Skill();
 													SkillDAO sd= new SkillDAO();

@@ -34,16 +34,31 @@ $(document)
 										var year = $("#immatricolazione").val();
 										var scelta =[];
 										
-										
+										var flag=0;
+										var primocheck=undefined;
 										
 										$("tr.esami").each(function() {
 											  tr=$(this);
 											  var nomeEsame=tr.first('td').text().trim();
-											  var idEsame= tr.find("input[type='checkbox']:checked").val()
-											  scelta.push({esame: nomeEsame,value:idEsame});
+											  var idEsame= tr.find("input[type='checkbox']:checked").val();
+											  
+											  $("input[type='checkbox']:checked").each(function(){
+												   primocheck=tr.find("input[type='checkbox']:checked").val();
+												   if(primocheck!=undefined){
+													   scelta.push({esame: nomeEsame,value:idEsame});
+												   }
+												   else{
+													   flag=1;
+												   }
+											  })
+											  
+											
 										});
-										
-										
+										/*
+										if (flag==1){
+											showAlert(1,"Seleziona almeno un corso per effettuare la richiesta");
+											flag=2;
+										}*/
 										
 										console.log(JSON.stringify(scelta));
 										
@@ -125,11 +140,18 @@ $(document)
 																		0,
 																		msg.content);
 																
+																
 
 																setTimeout(
 																		function() {
 																			window.location.href = msg.redirect;
 																		}, 2000);
+																
+																$(".preloader").show();
+																window.location.href = absolutePath
+																		+	"/DownloaderPDF?flag=1";
+																$(".preloader").hide();
+																//showData();
 															}
 														},
 														error : function(msg) {
@@ -140,8 +162,10 @@ $(document)
 
 											$(".preloader").hide();
 										} else {
+											if(flag!=1){
 											showAlert(1,
 													"Errore prelevamento campi.");
+											}
 										}
 
 										return false;
@@ -152,6 +176,7 @@ $(document)
 							
 							);//FINE ON
 					
+				
 					
 
 				});

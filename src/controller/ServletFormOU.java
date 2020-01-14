@@ -45,17 +45,20 @@ public class ServletFormOU extends HttpServlet {
 	}
 
 	/**
+	 * Constructor.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+         doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		Integer result = 0;
 		String error = "";
 		String content = "";
@@ -116,7 +119,6 @@ public class ServletFormOU extends HttpServlet {
 		String skills = request.getParameter("skills");
 		String softskills = request.getParameter("softSkills");
 		String lingue = request.getParameter("lingue");
-
 		
 		// Creo oggetti JSON
 		JSONParser parser = new JSONParser();
@@ -132,13 +134,6 @@ public class ServletFormOU extends HttpServlet {
 		} catch (org.json.simple.parser.ParseException e2) {
 			e2.printStackTrace();
 		}
-
-
-		//----------------- Salvataggio skills nel db ---------------
-		
-		
-		
-		//------------------------------------------------------------
 		
 		
 		//----------------- Salvataggio richieste nel db -------------

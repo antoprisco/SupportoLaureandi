@@ -82,7 +82,44 @@ public class RequestCSDAO {
    * Query per recuperare le richieste in base al nome, cognome e stato.
    */
 
-  public synchronized RequestCS doRetrieveByNCS(String nome, String cognome, int stato) 
+  public synchronized ArrayList<RequestCS> doRetrieveByNCS(String nome, String cognome, int stato) 
+      throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    ArrayList<RequestCS> beanlist = new ArrayList<RequestCS>();
+    String selectSql = "select * from " + RequestCSDAO.TABLE_NAME 
+        + " where nome = ? and cognome=? and fk_state=?";
+    try {
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement.setString(1, nome);
+      preparedStatement.setString(2, cognome);
+      preparedStatement.setInt(3, stato);
+      ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        RequestCS bean = new RequestCS();
+        bean.setId(rs.getInt("id"));
+        bean.setNome(rs.getString("nome"));
+        bean.setCognome(rs.getString("cognome"));
+        bean.setStato(rs.getInt("fk_state"));
+        beanlist.add(bean);
+      }
+    } finally {
+      try {
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+      } finally {
+        if (conn != null) {
+          conn.commit();
+        }
+      }
+    }
+    return beanlist;
+  }
+  /**
+   * query per recuperare un'unica richiesta in basa al nome, cognome e stato
+   */
+  public synchronized RequestCS doRetrieveByNCStato(String nome, String cognome, int stato) 
       throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
@@ -232,6 +269,7 @@ public class RequestCSDAO {
           preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setInt(1, stato);
       preparedStatement.setInt(2, id);
+      preparedStatement.executeUpdate();
     } finally {
       try {
         if (preparedStatement != null) {

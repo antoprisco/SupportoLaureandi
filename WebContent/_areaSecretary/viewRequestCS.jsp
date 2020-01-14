@@ -22,7 +22,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body onLoad="showData()">
+<body onLoad="showData()" onLoad="showHistory()">
 	<div class="page-wrapper">
 
 		<!-- Preloader -->
@@ -41,12 +41,14 @@
 					<div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="content">
 							<div class="news-block-seven">
+								<h1>RICHIESTE DA ELABORARE</h1>
 								<table id="bodySecretaryTable" class="display data-results table table-striped table-hover table-bordered">
 									<thead>
 										<tr>
 											<th class="text-center">ID</th>
 											<th class="text-center">Nome</th>
 											<th class="text-center">Cognome</th>
+											<th class="text-center">Allegati</th>
 											<th class="text-center">Inoltra</th>
 										</tr>
 									</thead>
@@ -54,7 +56,21 @@
 
 									</tbody>
 								</table>
-								
+								<hr>
+								<h1>STORICO RICHIESTE</h1>
+								<table id="secretaryHistory" class="display data-results table table-striped table-hover table-bordered">
+									<thead>
+										<tr>
+											<th class="text-center">ID</th>
+											<th class="text-center">Nome</th>
+											<th class="text-center">Cognome</th>
+											<th class="text-center">Allegati</th>
+											<th class="text-center">Stato</th>
+										</tr>
+									<tbody id="bodySecretaryBody">
+
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

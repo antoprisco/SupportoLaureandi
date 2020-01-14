@@ -22,7 +22,6 @@
     border-radius: 5px;
     text-align: center;
     margin-bottom: 10px;
-    height: 100px;
 }
 
 tbody {
@@ -277,7 +276,7 @@ th {
 									
 
 										<div class="form-group">
-											<button  type="submit" class="btn btn-primary btn-submit">Genera PDF</button>
+											<button id="genera" type="submit" class="btn btn-primary btn-submit">Genera PDF</button>
 										</div>
 
 										<div class="clearfix"></div>
@@ -313,6 +312,8 @@ th {
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
+	
+
 	
 			<script>
 			$( document ).ready(function() {	

@@ -102,7 +102,7 @@ public class ServletViewReqCSA extends HttpServlet {
 						content += "<td align='center'>"+ 
 									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Conferma\" data-idreq = '"+r.getId()+"' data-stato = '"+r.getStato()+"' id=\"checkConferma\">" + 
 										"<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>" + 
-									"a</button>" + 
+									"</button>" + 
 								"</td>";
 						content += "<td align='center'>"+ 
 									"<button type=\"button\" class=\"btn btn-default\" aria-label=\"Rifiuta\" data-idreq = '"+r.getId()+"' data-stato = '"+r.getStato()+"'  id=\"checkRifiuta\">" + 
