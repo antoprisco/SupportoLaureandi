@@ -54,10 +54,10 @@ public class ServletFormLM extends HttpServlet {
     String idUser = user.getEmail();
     if (Integer.parseInt(request.getParameter("flag")) == 6) {
       if (!(request.getParameter("curriculum").length() > 0)) {
-        throw new IllegalArgumentException("Curriculum non selezionato");
+    //    throw new IllegalArgumentException("Curriculum non selezionato");
       }
       if (!(request.getParameter("anno").length() > 0)) {
-        throw new IllegalArgumentException("Anno non selezionato");
+   //     throw new IllegalArgumentException("Anno non selezionato");
       }
       RequestLM r = new RequestLM(request.getParameter("curriculum"),
           Integer.parseInt(request.getParameter("anno")),idUser); 
