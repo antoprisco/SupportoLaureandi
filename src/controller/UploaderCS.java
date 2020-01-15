@@ -24,7 +24,7 @@ import org.json.simple.JSONObject;
 
 
 /**
- * Servlet implementation class Uploader.
+ * Consente di caricare gli allegati al formCS
  */
 @WebServlet("/UploaderCS")
 public class UploaderCS extends HttpServlet {

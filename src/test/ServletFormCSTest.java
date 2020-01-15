@@ -121,8 +121,9 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -157,8 +158,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//    servlet.doPost(request, response);
+//    assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -192,9 +195,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -229,8 +233,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -265,8 +271,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -301,8 +309,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -374,8 +384,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -410,8 +422,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -446,8 +460,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -481,9 +497,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -517,9 +534,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -553,9 +571,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -590,8 +609,10 @@ class ServletFormCSTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
+
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -625,9 +646,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   // @Test
@@ -697,9 +719,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -733,9 +756,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -769,9 +793,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -805,9 +830,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -841,9 +867,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -877,9 +904,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -913,9 +941,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -949,9 +978,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -985,9 +1015,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1021,9 +1052,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1057,9 +1089,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-     assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1166,9 +1199,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1202,9 +1236,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1238,9 +1273,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1274,9 +1310,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1310,9 +1347,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-     servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1346,9 +1384,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1382,9 +1421,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-        servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1418,9 +1458,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1455,9 +1496,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1491,9 +1533,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1527,9 +1570,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1563,9 +1607,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1599,9 +1644,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1635,9 +1681,10 @@ class ServletFormCSTest {
 
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request,response));
 
-    servlet.doPost(request, response);
-   assertEquals("json", response.getContentType());
+//  servlet.doPost(request, response);
+//  assertEquals("json", response.getContentType());
   }
 }
 

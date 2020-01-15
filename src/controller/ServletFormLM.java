@@ -14,7 +14,7 @@ import model.RequestlmDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletFormLM.
+ * Consente di selezionare una preferenza per la magistrale
  */
 @WebServlet("/ServletFormLM")
 public class ServletFormLM extends HttpServlet {

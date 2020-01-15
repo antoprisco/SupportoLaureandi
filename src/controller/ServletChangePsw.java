@@ -18,7 +18,7 @@ import model.UserBean;
 import model.UserBeanDAO;
 
 /**
- * Servlet implementation class ServletChangePsw.
+ * Consente di modificare la password
  */
 @WebServlet("/ServletChangePsw")
 public class ServletChangePsw extends HttpServlet {
@@ -52,7 +52,7 @@ public class ServletChangePsw extends HttpServlet {
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
    *      response)
    */
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // TODO Auto-generated method stub
 

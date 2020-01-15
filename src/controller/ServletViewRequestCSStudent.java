@@ -17,7 +17,7 @@ import model.StatoDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletViewRequestCSStudent.
+ * Consente di visualizzare allo studente le richieste effettuate
  */
 @WebServlet("/ServletViewRequestCSStudent")
 public class ServletViewRequestCSStudent extends HttpServlet {

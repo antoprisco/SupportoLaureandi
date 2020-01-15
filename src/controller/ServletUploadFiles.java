@@ -17,7 +17,7 @@ import model.RequestCSDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletUploadFiles.
+ * Consente di controllare se gli allegati inseriti sono corretti.
  */
 @WebServlet("/ServletUploadFiles")
 public class ServletUploadFiles extends HttpServlet {

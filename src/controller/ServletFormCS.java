@@ -32,7 +32,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
- * Servlet implementation class ServletFormCS.
+ * Consente allo studente di effettuare una richiesta Cs e di generare il pdf con le relative informazioni
  */
 @WebServlet("/ServletFormCS")
 public class ServletFormCS extends HttpServlet {

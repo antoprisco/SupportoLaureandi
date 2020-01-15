@@ -22,7 +22,7 @@ import org.json.simple.JSONObject;
 import interfacce.UserInterface;
 
 /**
- * Servlet implementation class Downloader.
+ * Consente di scaricare il download del pdf generato per il formCS
  */
 @WebServlet("/DownloaderPDF")
 public class DownloaderPDF extends HttpServlet {

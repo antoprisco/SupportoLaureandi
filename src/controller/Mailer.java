@@ -4,6 +4,9 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+/**
+ * Contente di inviare e-mail all'utente.
+ */
 public class Mailer {
   
   /**

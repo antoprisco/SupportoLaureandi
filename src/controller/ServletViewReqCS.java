@@ -19,7 +19,7 @@ import model.StatoDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletViewReqCS.
+ * Consente all segreteria di visualizzare le richieste degli studenti
  */
 @WebServlet("/ServletViewReqCS")
 public class ServletViewReqCS extends HttpServlet {

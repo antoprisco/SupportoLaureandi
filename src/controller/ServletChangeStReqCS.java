@@ -13,7 +13,7 @@ import model.RequestCSDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletInoltra.
+ * Contente di cambiare lo stato di una richiesta CS
  */
 @WebServlet("/ServletChangeStReqCS")
 public class ServletChangeStReqCS extends HttpServlet {
@@ -46,7 +46,7 @@ public class ServletChangeStReqCS extends HttpServlet {
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
    *      response)
    */
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     Integer result = 0;

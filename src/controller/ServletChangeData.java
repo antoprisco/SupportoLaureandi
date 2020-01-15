@@ -12,7 +12,7 @@ import model.RequestCSDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletChangeData.
+ * Consente alla segreteria e all'admin di modificare i dati inseriti in caso di errore.
  */
 @WebServlet("/ServletChangeData")
 public class ServletChangeData extends HttpServlet {

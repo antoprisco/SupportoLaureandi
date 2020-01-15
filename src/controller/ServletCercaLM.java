@@ -14,7 +14,7 @@ import model.RequestlmDAO;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class ServletCercaLM.
+ * Consente alla segreteria e all'admin di visualizzare il grafico per le statistiche della magistrale
  */
 @WebServlet("/ServletCercaLM")
 public class ServletCercaLM extends HttpServlet {

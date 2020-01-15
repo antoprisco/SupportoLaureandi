@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class Downloader.
+ * Consente di effettuare il download dei file inviati dallo studente.
  */
 @WebServlet("/DownloaderSL")
 public class DownloaderSL extends HttpServlet {
