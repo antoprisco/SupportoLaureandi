@@ -44,9 +44,9 @@ public class DownloaderSL extends HttpServlet {
     int idRequest = Integer.parseInt(request.getParameter("idRequest"));
     String filename = request.getParameter("filename");
     String email = request.getParameter("email");
-    String basePath = "\\GitHub\\SupportoLaureandi\\UploadsCS\\"+email+"\\";
-    //String basePath = request.getServletContext().getRealPath("\\UploadCS\\"+email);
-    // questo metodo stampa C:\Users\DDA79LJ\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\EnglishValidation\UploadCS\ + l'email 
+    //Modificare il path 
+    String basePath = "C:\\Users\\Simone\\SupportoLaureandi\\UploadsCS"
+    +"\\"+email+"\\";
 
     try {
       in = new FileInputStream(basePath + filename);

@@ -83,6 +83,7 @@ public class ServletViewRequestCSStudent extends HttpServlet {
             content += "</tr>";
           }
         }else {
+          result=1;
           content += "<tr><td>Non ci sono richieste</td><td></td><td>"
               + "</td><td></td>";
         }

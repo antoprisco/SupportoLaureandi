@@ -38,9 +38,17 @@ Successivamente cliccare su “Data Import/Restore” situato a sinistra. Dalla 
 In corrispondenza della voce Default Target Schema, selezionare lo schema precedentemente creato e poi fare click su Start Import.
 
 Installazione
+Lanciare eclipse, e seguire la seguente procedura: >File >Import > Project from folder or archive > Directory > cercare: SupportoLaureandi-Master > seleziona cartella > finish.
 
-Dopo aver inserito i file della applicazione nella cartella delle webapp del server, per completare l’installazione in locale basterà modificare il path presente alla riga 84 del file 
-UploaderCS.java con il proprio path. Per concludere l’installazione e avviare l’applicazione basterà semplicemente avviare il server Tomcat ed aprire il browser 
+
+Per completare l’installazione in locale basterà modificare le seguenti linee di codice:
+-Alla riga 26 del file DbConnection.java con la password del proprio database
+-Alla riga 84/86 del file UploaderCS.java con il proprio path (nel quale si trova la cartella UploadsCS)
+-Alla riga 58/59 del file DownloaderPDF.java con il proprio path.(nel quale si trova eclipse) 
+-Alla riga 47/48 del file DownloaderSL.java con il proprio path. 
+
+
+Per concludere l’installazione e avviare l’applicazione basterà semplicemente aggiugere il server Tomcat, assegnargli il progetto ed avviarlo ed aprire il browser 
 all’indirizzo: http://localhost:8080/EnglishValidation/
 
 

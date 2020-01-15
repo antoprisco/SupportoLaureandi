@@ -53,11 +53,11 @@ public class DownloaderPDF extends HttpServlet {
       OutputStream outputStream = null;
       InputStream in = null;
 
-      // int idRequest = Integer.parseInt(request.getParameter("idRequest"));
       Date d = new Date();
-      // String email = request.getParameter("email");
-      // String cognome = request.getParameter("cognome");
-      String basePath = "C:\\Users\\Simone\\Desktop\\eclipse\\";
+      
+      //Modificare il path per il giusto download del pdf generato
+      String basePath = "C:\\Users\\Simone\\Desktop\\eclipse"
+      +"\\";
       String filename = "IscrizioneCS_" + user.getSurname() + d.getHours() + "" 
       + d.getMinutes() + ".pdf";
 

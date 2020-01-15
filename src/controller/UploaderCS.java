@@ -80,6 +80,8 @@ public class UploaderCS extends HttpServlet {
           r = list.get(j);
           if (r.getStato() == 1) {
             listaAllegati = ad.doRetrievebyReq(user.getEmail(),r.getId());
+            
+            //Modificare il path di filePath
             if (listaAllegati.isEmpty() || listaAllegati.size() < 2) {
               filePath = "C:\\Users\\Simone\\SupportoLaureandi\\UploadsCS\\" 
                 + user.getEmail() + "\\";
