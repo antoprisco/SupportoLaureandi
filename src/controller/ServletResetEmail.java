@@ -74,7 +74,7 @@ public class ServletResetEmail extends HttpServlet {
       if (x == 1) {
         Mailer.send("sl.unisa2020@gmail.com", "supportolaureandi2020",
             email, "Reset Password Supporto Laureandi",
-            "Ciao la tua nuova password ï¿½ : " + newpass + "\n\n\n Il Team di Supporto Laureandi");
+            "Ciao la tua nuova password è : " + newpass + "\n\n\n Il Team di Supporto Laureandi");
         content = "Inviata nuova password con successo all'email : " + email;
 
       } else {

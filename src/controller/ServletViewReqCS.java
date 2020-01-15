@@ -116,7 +116,10 @@ public class ServletViewReqCS extends HttpServlet {
 
           }
         } else {
-          content += "Nessuna richiesta da elaborare";
+          
+            content += "<tr><td>Non ci sono richieste</td><td></td><td>"
+                + "</td><td></td><td></td>";
+          
         }
       } catch (Exception e) {
         error = "Errore nel database";

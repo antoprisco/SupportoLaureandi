@@ -41,14 +41,24 @@ if(!ck.isAllowed()){
 							
 							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); %>
 							
-							<div id="open"><h2>Pagina di login</h2>questo portale ti consente di monitorare 
-							e gestire servizi durante il percorso di laurea e per il post-laurea.<br>
-								<div class="row mt-5">
+							<div id="open">
+							<h2>Salve <%=user.getName()%> <%=user.getSurname() %></h2>
+									<p><%=user.getEmail() %></p>
+									<h4>Questo portale ti consente di monitorare e gestire servizi durante il percorso di laurea e per il post-laurea.</h4>
+								<div id="tableView" class="row mt-5">
+									
 									<div class="col md-1"></div>
 									<div class="col md-5"><b>Servizi pre-laurea:</b><li>Convalida della certificazione di esame Inglese</li></div>
 									<div class="col md-5"><b>Servizi post-laurea:</b><li>Preferenza di iscrizione ad una Laurea Magistrale</li><li>Iscrizione alla iniziativa di Orientamento in uscita</li><li>Iscrizione a singoli corsi magistrali</li></div>
 									<div class="col md-1"></div>
 								</div>
+								<br>
+								
+								<div class="form-group">
+									<button class="btn btn-primary btn-submit" id="cambiaP" onclick="myFunction()">Vuoi modificare la tua password?</button>
+									</div>
+								
+								
 							</div>
 							
 							
@@ -63,8 +73,32 @@ if(!ck.isAllowed()){
 	<!--End pagewrapper-->
 
 	<jsp:include page="/partials/includes.jsp" />
-	<script
-		src="<%= request.getContextPath() %>/js/pages/scripts_ReqFormLM.js"></script>
+	<script src="<%= request.getContextPath() %>/js/pages/scripts_ReqFormLM.js"></script>
+				
+<script>
+function myFunction() {
+  var setP = prompt("Inserisci la nuova password", "");
+  if (setP != null) {
+	  console.log(setP);
+		$.ajax({
+			url : absolutePath + "/ServletChangePsw",
+			type : "POST",
+			dataType : 'JSON',
+			async : false,
+			data : {
+				"password" : setP
+			},
+			success : function(msg) {
+				alert(msg.content);
+			},
+			error : function(msg) {
+				showAlert(1, "errore interno");
+			}
+		});
+  	
+  }
+}
+</script>
 	
 	
 </body>

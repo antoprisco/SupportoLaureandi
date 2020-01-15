@@ -82,6 +82,9 @@ public class ServletViewRequestCSStudent extends HttpServlet {
             content += "<td>" + s.getDescr() + "</td>";
             content += "</tr>";
           }
+        }else {
+          content += "<tr><td>Non ci sono richieste</td><td></td><td>"
+              + "</td><td></td>";
         }
       } catch (SQLException e) {
         error = "errore database";
