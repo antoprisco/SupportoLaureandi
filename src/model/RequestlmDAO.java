@@ -23,7 +23,7 @@ public class RequestlmDAO {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     Integer idRequest = 0;
-    String insertSQL = "insert into " + RequestlmDAO.TABLE_NAME
+    String insertSql = "insert into " + RequestlmDAO.TABLE_NAME
         + " (curriculum, anno, fk_user) values (?, ?, ?)";
 
     try {
@@ -39,7 +39,7 @@ public class RequestlmDAO {
               } else {
                 error = "Impossibile presentare la richiesta.";
               }*/
-      preparedStatement = connection.prepareStatement(insertSQL,
+      preparedStatement = connection.prepareStatement(insertSql,
         + preparedStatement.RETURN_GENERATED_KEYS);
       
       preparedStatement.setString(1, r.getCurr());
@@ -77,12 +77,12 @@ public class RequestlmDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
 
-    String selectSQL = "select curriculum, COUNT(*) as count FROM ";
-    selectSQL += RequestlmDAO.TABLE_NAME + " where anno = ? group by curriculum";
+    String selectSql = "select curriculum, COUNT(*) as count FROM ";
+    selectSql += RequestlmDAO.TABLE_NAME + " where anno = ? group by curriculum";
 
     try {
       //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL);
+      preparedStatement = conn.prepareStatement(selectSql);
       preparedStatement.setInt(1, anno);
 
       ResultSet rs = preparedStatement.executeQuery();
@@ -117,12 +117,12 @@ public class RequestlmDAO {
     boolean x = true;
     ArrayList<RequestLM> listbean = new ArrayList<RequestLM>();
 
-    String selectSQL = "select * from " + RequestlmDAO.TABLE_NAME 
+    String selectSql = "select * from " + RequestlmDAO.TABLE_NAME 
         + " where fk_user = ?";
 
     try {
       //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, email);
 
       ResultSet rs = preparedStatement.executeQuery();
@@ -151,19 +151,19 @@ public class RequestlmDAO {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     Integer idRequest = 0;
-    String insertSQL = "UPDATE " + RequestlmDAO.TABLE_NAME
+    String insertSql = "UPDATE " + RequestlmDAO.TABLE_NAME
         + " set curriculum = ? ,  anno = ? WHERE fk_user = ? ";
     System.err.println("STRINGA SQLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
-    System.err.println(insertSQL);
-    System.err.println(insertSQL);
-    System.err.println(insertSQL);
-    System.err.println(insertSQL);
+    System.err.println(insertSql);
+    System.err.println(insertSql);
+    System.err.println(insertSql);
+    System.err.println(insertSql);
 
     int x;
 
     try {
 
-      preparedStatement = connection.prepareStatement(insertSQL,
+      preparedStatement = connection.prepareStatement(insertSql,
         + preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, r.getCurr());
       preparedStatement.setInt(2, r.getYear());

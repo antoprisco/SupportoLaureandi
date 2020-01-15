@@ -18,10 +18,10 @@ public class StatoDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     Stato bean = new Stato();
-    String selectSQL = "select * from " + StatoDAO.TABLE_NAME + " where id_state = ?";
+    String selectSql = "select * from " + StatoDAO.TABLE_NAME + " where id_state = ?";
     try {
       //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setInt(1, id);
       ResultSet rs = preparedStatement.executeQuery();
 

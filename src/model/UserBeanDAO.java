@@ -7,25 +7,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
 public class UserBeanDAO {
 
-
   static final String TABLE_NAME = "user";
+
   /**
    * Query per selezionare tutti gli utenti.
    */
-  
+
   public synchronized UserBean doRetrieveByEmail(String email) throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     UserBean bean = new UserBean();
-    String selectSQL = "select * from "
-        + UserBeanDAO.TABLE_NAME + " where email = ?";
+    String selectSql = "select * from " + UserBeanDAO.TABLE_NAME + " where email = ?";
     try {
-      //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      // connection = DbConnection.getInstance().getConn();
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, email);
       ResultSet rs = preparedStatement.executeQuery();
 
@@ -50,31 +47,34 @@ public class UserBeanDAO {
     }
     return bean;
   }
-  
-  public synchronized int doSetPassword(String email,String password) throws SQLException {
-	    Connection conn = new DbConnection().getInstance().getConn();
-	    PreparedStatement preparedStatement = null;
-	    int res = 0;
-	    String update = "update "
-	        + UserBeanDAO.TABLE_NAME + " set password = ? where email = ? ";
-	    try {
-	      //connection = DbConnection.getInstance().getConn();
-	      preparedStatement = conn.prepareStatement(update,preparedStatement.RETURN_GENERATED_KEYS);
-	      preparedStatement.setString(1, password);
-	      preparedStatement.setString(2, email);
-	      res = preparedStatement.executeUpdate();
 
-	    } finally {
-	      try {
-	        if (preparedStatement != null) {
-	          preparedStatement.close();
-	        }
-	      } finally {
-	        if (conn != null) {
-	          conn.commit();
-	        }
-	      }
-	    }
-	    return res;
-	  }
+  /**
+   * Query per settare la password.
+   */
+  public synchronized int doSetPassword(String email, String password) 
+      throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    int res = 0;
+    String update = "update " + UserBeanDAO.TABLE_NAME + " set password = ? where email = ? ";
+    try {
+      // connection = DbConnection.getInstance().getConn();
+      preparedStatement = conn.prepareStatement(update, preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement.setString(1, password);
+      preparedStatement.setString(2, email);
+      res = preparedStatement.executeUpdate();
+
+    } finally {
+      try {
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+      } finally {
+        if (conn != null) {
+          conn.commit();
+        }
+      }
+    }
+    return res;
+  }
 }

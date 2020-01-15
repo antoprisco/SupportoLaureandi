@@ -24,10 +24,10 @@ public class SkillDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<Skill> listbean = new ArrayList<Skill>();
-    String selectSQL = "select * from " + SkillDAO.TABLE_NAME + " where id_skill = ?";
+    String selectSql = "select * from " + SkillDAO.TABLE_NAME + " where id_skill = ?";
     try {
       //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setInt(1, id);
       ResultSet rs = preparedStatement.executeQuery();
 
@@ -63,10 +63,10 @@ public class SkillDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<Skill> listBean = new ArrayList<Skill>();
-    String selectSQL = "SELECT * FROM " + TABLE_NAME + "";
+    String selectSql = "SELECT * FROM " + TABLE_NAME + "";
     try {
       //connection = DbConnection.getInstance().getConn();
-      preparedStatement = conn.prepareStatement(selectSQL,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
 
       while (rs.next()) {

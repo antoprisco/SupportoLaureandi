@@ -18,13 +18,15 @@ import model.UserBean;
 import model.UserBeanDAO;
 
 /**
- * Servlet implementation class ServletChangePsw
+ * Servlet implementation class ServletChangePsw.
  */
 @WebServlet("/ServletChangePsw")
 public class ServletChangePsw extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constructor.
+   * 
    * @see HttpServlet#HttpServlet()
    */
   public ServletChangePsw() {
@@ -33,6 +35,8 @@ public class ServletChangePsw extends HttpServlet {
   }
 
   /**
+   * Method doGet().
+   * 
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
    *      response)
    */
@@ -43,6 +47,8 @@ public class ServletChangePsw extends HttpServlet {
   }
 
   /**
+   * Method doPost().
+   * 
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
    *      response)
    */

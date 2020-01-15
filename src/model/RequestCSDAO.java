@@ -7,12 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
 public class RequestCSDAO {
 
   static final String TABLE_NAME = "requestCS";
-  
+
   /**
    * Query per inserire richieste.
    */
@@ -45,14 +43,14 @@ public class RequestCSDAO {
    * Query per recuperare le richieste in base al nome e al cognome.
    */
 
-  public synchronized ArrayList<RequestCS> doRetrieveByNC(String nome, String cognome) 
-       throws SQLException {
+  public synchronized ArrayList<RequestCS> doRetrieveByNC(String nome, String cognome)
+      throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listbean = new ArrayList<RequestCS>();
     String selectSql = "select * from " + RequestCSDAO.TABLE_NAME + " where nome = ? and cognome=?";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, nome);
       preparedStatement.setString(2, cognome);
       ResultSet rs = preparedStatement.executeQuery();
@@ -77,6 +75,7 @@ public class RequestCSDAO {
     }
     return listbean;
   }
+
   /**
    * Query per recuperare le richieste in base al cognome.
    */
@@ -85,10 +84,10 @@ public class RequestCSDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " 
-         + TABLE_NAME + " WHERE cognome=? AND fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC  ";
+    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME
+        + " WHERE cognome=? AND fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC  ";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, cognome);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
@@ -112,20 +111,20 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
-  
+
   /**
    * Query per recuperare le richieste in base al nome, cognome e stato.
    */
 
-  public synchronized ArrayList<RequestCS> doRetrieveByNCS(String nome, String cognome, int stato) 
+  public synchronized ArrayList<RequestCS> doRetrieveByNCS(String nome, String cognome, int stato)
       throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> beanlist = new ArrayList<RequestCS>();
-    String selectSql = "select * from " + RequestCSDAO.TABLE_NAME 
+    String selectSql = "select * from " + RequestCSDAO.TABLE_NAME
         + " where nome = ? and cognome=? and fk_state=?";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, nome);
       preparedStatement.setString(2, cognome);
       preparedStatement.setInt(3, stato);
@@ -151,18 +150,19 @@ public class RequestCSDAO {
     }
     return beanlist;
   }
+
   /**
-   * query per recuperare un'unica richiesta in basa al nome, cognome e stato
+   * query per recuperare un'unica richiesta in basa al nome, cognome e stato.
    */
-  public synchronized RequestCS doRetrieveByNCStato(String nome, String cognome, int stato) 
+  public synchronized RequestCS doRetrieveByNCStato(String nome, String cognome, int stato)
       throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     RequestCS bean = new RequestCS();
-    String selectSql = "select * from " + RequestCSDAO.TABLE_NAME 
+    String selectSql = "select * from " + RequestCSDAO.TABLE_NAME
         + " where nome = ? and cognome=? and fk_state=?";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setString(1, nome);
       preparedStatement.setString(2, cognome);
       preparedStatement.setInt(3, stato);
@@ -186,7 +186,7 @@ public class RequestCSDAO {
     }
     return bean;
   }
-  
+
   /**
    * Query per recuperare tutte le richieste.
    */
@@ -197,7 +197,7 @@ public class RequestCSDAO {
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
     String selectSql = "SELECT DISTINCT id, nome, cognome FROM " + TABLE_NAME + "";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
         RequestCS r = new RequestCS();
@@ -206,7 +206,7 @@ public class RequestCSDAO {
         r.setCognome(rs.getString("cognome"));
         listaRichieste.add(r);
       }
-  
+
     } finally {
       try {
         if (preparedStatement != null) {
@@ -220,7 +220,7 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
-  
+
   /**
    * Query per recuperare tutte le richieste lato Admin.
    */
@@ -229,10 +229,10 @@ public class RequestCSDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " 
-         + TABLE_NAME + " WHERE fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC";
+    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME
+        + " WHERE fk_state BETWEEN 3 AND 5 ORDER BY fk_State DESC";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
         RequestCS r = new RequestCS();
@@ -255,8 +255,7 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
-  
-  
+
   /**
    * Query per recuperare tutte le richieste lato segreteria.
    */
@@ -264,26 +263,28 @@ public class RequestCSDAO {
   public synchronized ArrayList<RequestCS> doRetrieveAllSecretary(int flag) throws SQLException {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
-    
+
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    
+
     String selectSql;
-	if (flag == 1) {
-		selectSql = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE = 2";
-	} else {
-		selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + RequestCSDAO.TABLE_NAME + " WHERE FK_STATE > 2";
- 	}
-	
+    if (flag == 1) {
+      selectSql = "SELECT DISTINCT id, nome, cognome FROM " + RequestCSDAO.TABLE_NAME
+          + " WHERE FK_STATE = 2";
+    } else {
+      selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + RequestCSDAO.TABLE_NAME
+          + " WHERE FK_STATE > 2";
+    }
+
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
         RequestCS r = new RequestCS();
         r.setId(rs.getInt(1));
         r.setNome(rs.getString("nome"));
         r.setCognome(rs.getString("cognome"));
-        if(flag == 2 ) {
-        	r.setStato(rs.getInt("fk_state"));
+        if (flag == 2) {
+          r.setStato(rs.getInt("fk_state"));
         }
         listaRichieste.add(r);
       }
@@ -300,18 +301,17 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
-  
+
   /**
    * Query per aggiornare lo stato della richiesta.
    */
-  
+
   public synchronized void doUpdate(int stato, int id) throws SQLException {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
-    String UpdateSql = "UPDATE " + RequestCSDAO.TABLE_NAME
-        + " set fk_state = ?  WHERE id = ? ";
+    String updateSql = "UPDATE " + RequestCSDAO.TABLE_NAME + " set fk_state = ?  WHERE id = ? ";
     try {
-      preparedStatement = connection.prepareStatement(UpdateSql,
+      preparedStatement = connection.prepareStatement(updateSql,
           preparedStatement.RETURN_GENERATED_KEYS);
       preparedStatement.setInt(1, stato);
       preparedStatement.setInt(2, id);
@@ -328,11 +328,11 @@ public class RequestCSDAO {
       }
     }
   }
-  
+
   /**
    * Query per cambiare il nome.
    */
-  
+
   public synchronized void doChangeName(String newName, int id) throws SQLException {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
@@ -354,7 +354,7 @@ public class RequestCSDAO {
       }
     }
   }
-  
+
   /**
    * Query per cambiare il congnome.
    */
@@ -384,7 +384,7 @@ public class RequestCSDAO {
   /**
    * Query per cambiare lo stato.
    */
-  
+
   public synchronized void doChangeState(int state, int id) throws SQLException {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
@@ -406,10 +406,11 @@ public class RequestCSDAO {
       }
     }
   }
+
   /**
    * Query per inoltrare la richiesta all'Admin.
    */
-  
+
   public synchronized void doInoltraToAdmin(int id) throws SQLException {
     Connection connection = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
@@ -430,6 +431,7 @@ public class RequestCSDAO {
       }
     }
   }
+
   /**
    * Query per recuperare tutte le richieste accettate.
    */
@@ -438,10 +440,10 @@ public class RequestCSDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " 
-        + TABLE_NAME + " WHERE fk_state = 4 ";
+    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME
+        + " WHERE fk_state = 4 ";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
         RequestCS r = new RequestCS();
@@ -464,7 +466,7 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
-  
+
   /**
    * Query per recuperare tutte le richieste rifiutate.
    */
@@ -473,10 +475,10 @@ public class RequestCSDAO {
     Connection conn = new DbConnection().getInstance().getConn();
     PreparedStatement preparedStatement = null;
     ArrayList<RequestCS> listaRichieste = new ArrayList<RequestCS>();
-    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " 
-        + TABLE_NAME + " WHERE fk_state = 5 ";
+    String selectSql = "SELECT DISTINCT id, nome, cognome, fk_state FROM " + TABLE_NAME
+        + " WHERE fk_state = 5 ";
     try {
-      preparedStatement = conn.prepareStatement(selectSql,preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
       ResultSet rs = preparedStatement.executeQuery();
       while (rs.next()) {
         RequestCS r = new RequestCS();

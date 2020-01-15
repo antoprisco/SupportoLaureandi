@@ -17,7 +17,7 @@ public class Residenza {
   }
 
   public Residenza() {
-	  
+
   }
   
   public String getResidenza() {
