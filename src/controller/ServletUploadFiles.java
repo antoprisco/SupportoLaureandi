@@ -65,7 +65,7 @@ public class ServletUploadFiles extends HttpServlet {
       ArrayList<Allegati> listaAllegati = new ArrayList<Allegati>();
       
       try {
-        ArrayList<RequestCS> list = rd.doRetrieveByNC(user.getName(), user.getSurname());
+        ArrayList<RequestCS> list = rd.doRetrieveByR(user.getEmail());
         if (!list.isEmpty()) {
           for (int i = 0; i < list.size(); i++) {
             r = list.get(i);
@@ -98,7 +98,7 @@ public class ServletUploadFiles extends HttpServlet {
             }
           }
         } else {
-          error = "Spiacenti, non vi è alcuna richiesta";
+          error = "Spiacenti, non vi e' alcuna richiesta";
         }
       } catch (SQLException e) {
         e.printStackTrace();

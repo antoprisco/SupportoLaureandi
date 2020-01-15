@@ -92,11 +92,15 @@ public class ServletViewReqCSA extends HttpServlet {
             content += "<td align='center' class = 'id' data-idreq = '" 
               + r.getId() + "' ><p  id='idR'>" + r.getId()
                 + "</p></td>";
-            content += "<td align='center'><button class='changeName' id='nome'>" 
-                + r.getNome() + "</button>";
-            content += "<td align='center'><button  class ='changeSurname' id='cognome'>" 
-                + r.getCognome()
-                + "</button>";
+            content += " <td align='center'> <button class='changeName' data-idr='" + r.getId() 
+              + "' data-name='"
+              + r.getNome() + "' title='Modifica Nome'>" + r.getNome();
+            content += "</td>";
+            content += " <td align='center'> <button class='changeSurname' data-idr='" 
+              + r.getId() + "'  data-surname='"
+              + r.getCognome() + "' title='Modifica Cognome'>" + r.getCognome();
+            content += "</td>";
+
             content += "<td align='center'>";
             content += "\"<a href='" + request.getContextPath() + "/DownloaderSL?filename="
                 + allegati.get(0).getFilename() + "&idRequest=" 
@@ -163,10 +167,19 @@ public class ServletViewReqCSA extends HttpServlet {
             content += "<td align='center' class = 'id' data-idreq = '" 
               + r.getId() + "' ><p  id='idR'>" + r.getId()
                 + "</p></td>";
-            content += "<td align='center'><button class='changeName' id='nome'>" 
-                + r.getNome() + "</button>";
-            content += "<td align='center'><button  class ='changeSurname' id='cognome'>" 
-                + r.getCognome() + "</button>";
+            
+
+            
+            content += " <td align='center'> <button class='changeName' data-idr='" + r.getId() 
+            + "' data-name='"
+            + r.getNome() + "' title='Modifica Nome'>" + r.getNome();
+          content += "</td>";
+          content += " <td align='center'> <button class='changeSurname' data-idr='" 
+            + r.getId() + "'  data-surname='"
+            + r.getCognome() + "' title='Modifica Cognome'>" + r.getCognome();
+          content += "</td>";
+
+            
             content += "<td align='center'>";
             content += "\"<a href='" + request.getContextPath() + "/DownloaderSL?filename="
                 + allegati.get(0).getFilename() + "&idRequest=" 

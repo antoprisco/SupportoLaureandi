@@ -55,7 +55,7 @@ if(!ck.isAllowed()){
 								<br>
 								
 								<div class="form-group">
-									<button class="btn btn-primary btn-submit" id="cambiaP" onclick="myFunction()">Vuoi modificare la tua password?</button>
+									<button class="btn btn-primary btn-submit" id="cambiaP" onclick="myFunction()">Modifica password</button>
 									</div>
 								
 								

@@ -194,19 +194,19 @@ public class ServletFormCS extends HttpServlet {
 
       //controlla se ci sono altre richieste in sospeso
       RequestCS rcs = new RequestCS();
-      RequestCS rcs1 = new RequestCS(user.getName(), 
-           user.getSurname(),1);
+      RequestCS rcs1 = new RequestCS(request.getParameter("nome"), 
+           request.getParameter("cognome"),1);
       RequestCSDAO rcD = new RequestCSDAO();
       GestisceCS g = new GestisceCS();
       GestisceCSDAO gd = new GestisceCSDAO();
 
       try {
-        ArrayList<RequestCS> list = rcD.doRetrieveByNC(user.getName(), user.getSurname());
-        ArrayList<RequestCS> list1 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 1);
-        ArrayList<RequestCS> list2 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 2);
-        ArrayList<RequestCS> list3 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 3);
-        ArrayList<RequestCS> list4 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 4);
-        ArrayList<RequestCS> list5 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 5);
+        ArrayList<RequestCS> list = rcD.doRetrieveByR(user.getEmail());
+        ArrayList<RequestCS> list1 = rcD.doRetrieveByES(user.getEmail(), 1);
+        ArrayList<RequestCS> list2 = rcD.doRetrieveByES(user.getEmail(), 2);
+        ArrayList<RequestCS> list3 = rcD.doRetrieveByES(user.getEmail(), 3);
+        ArrayList<RequestCS> list4 = rcD.doRetrieveByES(user.getEmail(), 4);
+        ArrayList<RequestCS> list5 = rcD.doRetrieveByES(user.getEmail(), 5);
         //ArrayList<RequestCS> list6 = rcD.doRetrieveByNCS(user.getName(), user.getSurname(), 6);
 
         /*Nel caso in cui non vi siano richieste con il nome dell'utente 
@@ -254,8 +254,8 @@ public class ServletFormCS extends HttpServlet {
                 + "o ne fa uso nei casi previsti dal presente testo unico è " 
                 + "punito dal codice penale e dalle leggi speciali in materia” ";
             String text2 = "DICHIARO SOTTO LA MIA RESPONSABILITÀ I SEGUENTI DATI";
-            String text3 = "Il mio NOME è " + request.getParameter("nome") 
-                + "\t il mio COGNOME è " + request.getParameter("cognome")
+            String text3 = "Il mio NOME è " + user.getName() 
+                + "\t il mio COGNOME è " + user.getSurname()
                 + "\r\n" 
                 + "sono NATO/A a " + request.getParameter("luogoNascita") + "\t prov. " 
                 + request.getParameter("provincia") + "\t il " 
@@ -370,11 +370,10 @@ public class ServletFormCS extends HttpServlet {
             e.printStackTrace();
           }
 
-          //Salvataggio nel database
+          //Salvataggio nel database della richiesta con lo stato 1
           rcD.doSave(rcs1);
-          rcs1 = rcD.doRetrieveByNCStato(request.getParameter("nome"), 
-             request.getParameter("cognome"),1);
-          g = new GestisceCS(request.getParameter("email"),rcs1.getId());
+          rcs1 = rcD.doRetrieveByNCStato(request.getParameter("nome"), request.getParameter("cognome"),1);
+          g = new GestisceCS(user.getEmail(),rcs1.getId());
           gd.doSave(g);
           result = 1;
         } else /*if (!list.isEmpty()) */ {

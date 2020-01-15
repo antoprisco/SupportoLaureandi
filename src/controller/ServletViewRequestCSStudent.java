@@ -63,7 +63,7 @@ public class ServletViewRequestCSStudent extends HttpServlet {
       RequestCSDAO rd = new RequestCSDAO();
       ArrayList<RequestCS> list = new ArrayList<RequestCS>();
       try {
-        list = rd.doRetrieveByNC(user.getName(), user.getSurname());
+        list = rd.doRetrieveByR(user.getEmail());
         if (!list.isEmpty()) {
           result = 1;
           for (RequestCS rq:list) {
