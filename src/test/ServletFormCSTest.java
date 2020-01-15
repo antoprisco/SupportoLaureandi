@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import controller.DbConnection;
 import controller.ServletFormCS;
@@ -19,7 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-class ServletFormCsTest {
+class ServletFormCSTest {
   private ServletFormCS servlet;
   private MockHttpServletResponse response;
   private MockHttpServletRequest request;
@@ -48,8 +49,8 @@ class ServletFormCsTest {
     Connection conn = DbConnection.getInstance().getConn();
     Statement stmtSelect = conn.createStatement();
     String sql = "DELETE FROM requestcs WHERE FK_STATE=1";
-    stmtSelect.executeUpdate(sql);
-    conn.commit();
+ //   stmtSelect.executeUpdate(sql);
+  //  conn.commit();
   }
 
   @Test
@@ -336,8 +337,9 @@ class ServletFormCsTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //  servlet.doPost(request, response);
+  //  assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1057,7 +1059,7 @@ class ServletFormCsTest {
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
     servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+     assertEquals("json", response.getContentType());
   }
 
   @Test
@@ -1092,8 +1094,9 @@ class ServletFormCsTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+   // servlet.doPost(request, response);
+   // assertEquals("json", response.getContentType());
   }
 
   // @Test
@@ -1308,7 +1311,7 @@ class ServletFormCsTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
+     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
 
@@ -1380,7 +1383,7 @@ class ServletFormCsTest {
     request.addParameter("scelta",
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"},{\\\"value\\\":\\\"1\\\"}]");
 
-    servlet.doPost(request, response);
+        servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
 
@@ -1634,6 +1637,7 @@ class ServletFormCsTest {
         "[{\\\"esame\\\":\\\"ALGORITMI AVANZATI\\\"}," + "{\\\"value\\\":\\\"1\\\"}]");
 
     servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+   assertEquals("json", response.getContentType());
   }
 }
+

@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import controller.ServletCercaLM;
 import controller.ServletFormLM;
@@ -38,7 +39,7 @@ public class ServletFormOUTest extends Mockito {
   @Test
   public void testOk() throws ServletException, IOException {
     UserInterface utente = 
-        new Student("a.napolii@studenti.unisa.it", "antonio", "napoli", 'M', "plutone", 0);
+        new Student("a.napoli@studenti.unisa.it", "antonio", "napoli", 'M', "plutone", 0);
     session.setAttribute("user", utente);
     request.addParameter("nome", "pasquale");
     request.addParameter("cognome", "annarumma");
@@ -53,8 +54,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+ //   assertThrows(NullPointerException.class, ()-> servlet.doPost(request, response));
+       servlet.doPost(request, response);
+       assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -75,8 +77,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+  //  assertThrows(NullPointerException.class, ()-> servlet.doPost(request, response));
+      servlet.doPost(request, response);
+      assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -97,8 +100,10 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -119,8 +124,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -141,8 +147,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //  servlet.doPost(request, response);
+    //  assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -163,8 +170,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -185,8 +193,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -207,8 +216,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    // servlet.doPost(request, response);
+   // assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -229,8 +239,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //   servlet.doPost(request, response);
+    //   assertEquals("json", response.getContentType());
   }
   
   
@@ -252,8 +263,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //  servlet.doPost(request, response);
+  //  assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -274,8 +286,9 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
   @Test
@@ -296,8 +309,11 @@ public class ServletFormOUTest extends Mockito {
     request.addParameter("lingue", "[{\"lang\":\"inglese\",\"value\":\"A1\"},"
         + "{\"lang\":\"francese\",\"value\":\"A2\"},"
         + "{\"lang\":\"tedesco\",\"value\":\"B1\"},{\"lang\":\"spagnolo\",\"value\":\"B2\"}]");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    assertThrows(IllegalArgumentException.class, ()-> servlet.doPost(request, response));
+    //servlet.doPost(request, response);
+    //assertEquals("json", response.getContentType());
   }
   
+ 
+
 }

@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import controller.ServletFormLM;
 import interfacce.UserInterface;
@@ -36,7 +37,7 @@ public class ServletFormLMTest extends Mockito {
   @Test
   public void testRequestOk() throws ServletException, IOException {
     UserInterface utente = 
-        new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+        new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
     session.setAttribute("user", utente);
     request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
@@ -48,7 +49,7 @@ public class ServletFormLMTest extends Mockito {
   @Test
   public void testRequestFail() throws ServletException, IOException {
     UserInterface utente = 
-        new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+        new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
     session.setAttribute("user", utente);
     request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
@@ -63,40 +64,29 @@ public class ServletFormLMTest extends Mockito {
          new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
     session.setAttribute("user", utente);
     request.addParameter("flag", "6");
-    request.addParameter("curriculum", "SISTEMI INFORMATICI E TECNOLOGIE DEL SOFTWARE");
+    request.addParameter("curriculum", "");
     request.addParameter("anno", "2021");
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
   
   @Test
-  public void testCurriculumFail2() throws ServletException, IOException {
-    UserInterface utente = 
-         new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
-    session.setAttribute("user", utente);
-    request.addParameter("flag", "6");
-    request.addParameter("curriculum", "SISTEMI INFORMATICI E TECNOLOGIE DEL SOFTWARE");
-    request.addParameter("anno", "2021");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
-  } 
-  
-  @Test
   public void testAnnoFail() throws ServletException, IOException {
-    UserInterface utente = new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+    UserInterface utente = new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
     session.setAttribute("user", utente );
     request.addParameter("flag", "6");
     request.addParameter("curriculum", "sicurezza");
-    request.addParameter("anno", "2020");
-    servlet.doPost(request, response);
-    assertEquals("json", response.getContentType());
+    request.addParameter("anno", "");
+    assertThrows(NumberFormatException.class, ()-> servlet.doPost(request, response));
+    // servlet.doPost(request, response);
+   // assertEquals("json", response.getContentType());
   }
   
   
   @Test
   public void testUtenteFail() throws ServletException, IOException {
     UserInterface utente = 
-          new Student("s.sergiotto@studenti.unisa.it", "sergio", "nicola", 'M', "pippotto", 0);
+          new Student("s.sergiotto@studenti.unisa.it", "sergio", "nicola", 'M', "password", 0);
     session.setAttribute("user", utente);
     request.addParameter("flag", "6");
     request.addParameter("curriculum", "cloud");
@@ -109,7 +99,7 @@ public class ServletFormLMTest extends Mockito {
   @Test
   public void testFlagFail() throws ServletException, IOException {
     UserInterface utente = 
-          new Student("p.annarumma@studenti.unisa.it", "pasquale", "annarumma", 'M', "pippotto", 0);
+          new Student("s.avolicino@studenti.unisa.it", "simone", "avolicino", 'M', "password", 0);
     session.setAttribute("user", utente);
     request.addParameter("flag", "7");
     request.addParameter("curriculum", "cloud");
@@ -117,4 +107,7 @@ public class ServletFormLMTest extends Mockito {
     servlet.doPost(request, response);
     assertEquals("json", response.getContentType());
   }
+
+
+
 }
