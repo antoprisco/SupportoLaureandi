@@ -41,16 +41,19 @@ $(document)
 											  tr=$(this);
 											  var nomeEsame=tr.first('td').text().trim();
 											  var idEsame= tr.find("input[type='checkbox']:checked").val();
+											  console.log(idEsame)
 											  
-											  $("input[type='checkbox']:checked").each(function(){
+											/*  $("input[type='checkbox']:checked").each(function(){
 												   primocheck=tr.find("input[type='checkbox']:checked").val();
-												   if(primocheck!=undefined){
+												   if(primocheck!=undefined){*/
+											  
 													   scelta.push({esame: nomeEsame,value:idEsame});
-												   }
+											 
+												 /* }
 												   else{
 													   flag=1;
-												   }
-											  })
+												   }*/
+											  //})
 											  
 											
 										});
@@ -88,6 +91,7 @@ $(document)
 												&& lode != undefined
 												&& year != undefined
 												&& scelta.length > 0
+												&& scelta !=undefined
 										) {
 											$(".preloader").show();
 
