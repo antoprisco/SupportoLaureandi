@@ -99,12 +99,12 @@ th {
 									ArrayList<RequestCS> listacs4= new ArrayList<RequestCS>();
 									ArrayList<RequestCS> listacs5= new ArrayList<RequestCS>();
 									ArrayList<RequestCS> listacs= new ArrayList<RequestCS>();
-									listacs1=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 1);
-									listacs2=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 2);
-									listacs3=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 3);
-									listacs4=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 4);
-									listacs5=rd.doRetrieveByNCS(user.getName(), user.getSurname(), 5);
-									listacs=rd.doRetrieveByNC(user.getName(), user.getSurname()); 
+									listacs1=rd.doRetrieveByES(user.getEmail(),  1);
+									listacs2=rd.doRetrieveByES(user.getEmail(),  2);
+									listacs3=rd.doRetrieveByES(user.getEmail(), 3);
+									listacs4=rd.doRetrieveByES(user.getEmail(), 4);
+									listacs5=rd.doRetrieveByES(user.getEmail(),  5);
+									listacs=rd.doRetrieveByR(user.getEmail()); 
 									if(listacs.isEmpty() || listacs1.isEmpty() && listacs2.isEmpty() && listacs3.isEmpty() && listacs4.isEmpty() && listacs5.isEmpty()){
 									  
 									

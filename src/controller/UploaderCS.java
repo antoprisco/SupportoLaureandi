@@ -74,7 +74,7 @@ public class UploaderCS extends HttpServlet {
     AllegatiDAO ad = new AllegatiDAO();
     ArrayList<Allegati> listaAllegati = new ArrayList<Allegati>();
     try {
-      ArrayList<RequestCS> list = rd.doRetrieveByNC(user.getName(), user.getSurname());
+      ArrayList<RequestCS> list = rd.doRetrieveByR(user.getEmail());
       if (!list.isEmpty()) {
         for (int j = 0; j < list.size(); j++) {
           r = list.get(j);
@@ -144,7 +144,7 @@ public class UploaderCS extends HttpServlet {
           }
         }
       } else {
-        error = "Spiacenti, non vi è alcuna richiesta";
+        error = "Spiacenti, non vi e' alcuna richiesta";
       }
     } catch (SQLException e) {
       e.printStackTrace();

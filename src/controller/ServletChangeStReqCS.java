@@ -75,14 +75,14 @@ public class ServletChangeStReqCS extends HttpServlet {
       if (op == 1) {
         Mailer.send("sl.unisa2020@gmail.com", "supportolaureandi2020", email,
             "Aggiornamento stato richiesta",
-            "Gentile studente,\nla informiamo che lo stato della sua richiesta ï¿½ : "
+            "Gentile studente,\nla informiamo che lo stato della sua richiesta è : "
             + "accettata e in valutazione da parte del Consiglio Didattico.\n\n\n  "
             + "Supporto Laureandi");
         state = 4;
       } else {
         Mailer.send("sl.unisa2020@gmail.com", "supportolaureandi2020", email,
             "Aggiornamento stato richiesta",
-            "Gentile studente,\nla informiamo che lo stato della sua richiesta ï¿½ : "
+            "Gentile studente,\nla informiamo che lo stato della sua richiesta è : "
             + "rifiutata e in valutazione da parte del Consiglio Didattico.\n\n\n  "
             + "Supporto Laureandi");
         state = 5;
@@ -91,13 +91,13 @@ public class ServletChangeStReqCS extends HttpServlet {
       if (op == 1) {
         Mailer.send("sl.unisa2020@gmail.com", "supportolaureandi2020", email,
             "Aggiornamento stato richiesta",
-            "Gentile studente,\nla informiamo che lo stato della sua richiesta ï¿½ : "
+            "Gentile studente,\nla informiamo che lo stato della sua richiesta è: "
             + "accettata e completata.\n\n\n  Supporto Laureandi");
         state = 6;
       } else {
         Mailer.send("sl.unisa2020@gmail.com", "supportolaureandi2020", email,
             "Aggiornamento stato richiesta",
-            "Gentile studente,\nla informiamo che lo stato della sua richiesta ï¿½ : "
+            "Gentile studente,\nla informiamo che lo stato della sua richiesta è : "
             + "rifiutata e completata.\n\n\n  Supporto Laureandi");
         state = 7;
       }

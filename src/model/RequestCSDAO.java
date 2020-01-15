@@ -501,4 +501,82 @@ public class RequestCSDAO {
     }
     return listaRichieste;
   }
+  
+
+  /**
+   * Query per recuperare le richieste in base all'email.
+   */
+
+  public synchronized ArrayList<RequestCS> doRetrieveByR(String email)
+      throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    ArrayList<RequestCS> beanlist = new ArrayList<RequestCS>();
+    //String selectSql = "select * from " + RequestCSDAO.TABLE_NAME     + " where nome = ? and cognome=? and fk_state=?";
+    String selectSql ="SELECT * FROM " + RequestCSDAO.TABLE_NAME + ","+ GestisceCSDAO.TABLE_NAME + " where requestcs.ID=gestiscecs.FK_REQCS and gestiscecs.FK_USER=?";
+    try {
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement.setString(1, email);
+      ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        RequestCS bean = new RequestCS();
+        bean.setId(rs.getInt("id"));
+        bean.setNome(rs.getString("nome"));
+        bean.setCognome(rs.getString("cognome"));
+        bean.setStato(rs.getInt("fk_state"));
+        beanlist.add(bean);
+      }
+    } finally {
+      try {
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+      } finally {
+        if (conn != null) {
+          conn.commit();
+        }
+      }
+    }
+    return beanlist;
+  }
+  
+  /**
+   * Query per recuperare le richieste in base all'email e allo stato.
+   */
+
+  public synchronized ArrayList<RequestCS> doRetrieveByES(String email, int stato)
+      throws SQLException {
+    Connection conn = new DbConnection().getInstance().getConn();
+    PreparedStatement preparedStatement = null;
+    ArrayList<RequestCS> beanlist = new ArrayList<RequestCS>();
+    //String selectSql = "select * from " + RequestCSDAO.TABLE_NAME     + " where nome = ? and cognome=? and fk_state=?";
+    String selectSql ="SELECT * FROM " + RequestCSDAO.TABLE_NAME + ","+ GestisceCSDAO.TABLE_NAME + " where requestcs.ID=gestiscecs.FK_REQCS and gestiscecs.FK_USER=? and requestcs.FK_STATE=?";
+    try {
+      preparedStatement = conn.prepareStatement(selectSql, preparedStatement.RETURN_GENERATED_KEYS);
+      preparedStatement.setString(1, email);
+      preparedStatement.setInt(2, stato);
+      ResultSet rs = preparedStatement.executeQuery();
+      while (rs.next()) {
+        RequestCS bean = new RequestCS();
+        bean.setId(rs.getInt("id"));
+        bean.setNome(rs.getString("nome"));
+        bean.setCognome(rs.getString("cognome"));
+        bean.setStato(rs.getInt("fk_state"));
+        beanlist.add(bean);
+      }
+    } finally {
+      try {
+        if (preparedStatement != null) {
+          preparedStatement.close();
+        }
+      } finally {
+        if (conn != null) {
+          conn.commit();
+        }
+      }
+    }
+    return beanlist;
+  }
+
+  
 }
