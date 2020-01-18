@@ -92,6 +92,7 @@ th {
 									
 									<%
 									UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+									if(user!=null){
 									RequestCSDAO rd= new RequestCSDAO();
 									ArrayList<RequestCS> listacs1= new ArrayList<RequestCS>();
 									ArrayList<RequestCS> listacs2= new ArrayList<RequestCS>();
@@ -334,6 +335,7 @@ th {
 											 
 											 <% 
 										}
+									}
 										%>
 									
 								</div>

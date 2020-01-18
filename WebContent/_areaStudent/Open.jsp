@@ -40,7 +40,9 @@ if(!ck.isAllowed()){
 						
 							<div   class="news-block-seven">
 							
-							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); %>
+							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); 
+							if(user!=null){
+							%>
 							
 							
 							<div id="open">
@@ -48,7 +50,7 @@ if(!ck.isAllowed()){
 									<p><%=user.getEmail() %></p>
 									<h4>Questo portale ti consente di monitorare e gestire servizi durante il percorso di laurea e per il post-laurea.</h4>
 								<div id="tableView" class="row mt-5">
-									
+									<%} %>
 									<div class="col md-1"></div>
 									<div class="col md-5"><b>Servizi pre-laurea:</b><li>Convalida della certificazione di esame Inglese</li></div>
 									<div class="col md-5"><b>Servizi post-laurea:</b><li>Preferenza di iscrizione ad una Laurea Magistrale</li><li>Iscrizione alla iniziativa di Orientamento in uscita</li><li>Iscrizione a singoli corsi magistrali</li></div>

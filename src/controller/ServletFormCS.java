@@ -32,7 +32,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
- * Consente allo studente di effettuare una richiesta Cs e di generare il pdf con le relative informazioni
+ * Consente allo studente di effettuare una richiesta Cs 
+ * e di generare il pdf con le relative informazioni.
+ * 
  */
 @WebServlet("/ServletFormCS")
 public class ServletFormCS extends HttpServlet {
@@ -131,7 +133,7 @@ public class ServletFormCS extends HttpServlet {
       }
       String email = request.getParameter("email");
       /*
-       * l'email ï¿½ valida se la sua lunghezza ï¿½ diversa da 0, se non ï¿½ presente
+       * l'email Ã¯Â¿Â½ valida se la sua lunghezza Ã¯Â¿Â½ diversa da 0, se non Ã¯Â¿Â½ presente
        * nel DB e se rispetta il formato se finisce con @studenti.unisa.it
        */
       String prefix = "";
@@ -171,7 +173,7 @@ public class ServletFormCS extends HttpServlet {
         throw new IllegalArgumentException("Formato non corretto");
       }
       if (request.getParameter("universita").length() == 0
-          || request.getParameter("universita").length() > 30
+          || request.getParameter("universita").length() > 50
           || request.getParameter("universita").matches(".*\\d+.*")) {
         throw new IllegalArgumentException("Formato non corretto");
       }
@@ -210,7 +212,7 @@ public class ServletFormCS extends HttpServlet {
 
         /*
          * Nel caso in cui non vi siano richieste con il nome dell'utente oppure ci sono
-         * ma sono completate si può effettuare la richiesta
+         * ma sono completate si puÃ² effettuare la richiesta
          */
         if (list1.isEmpty() && list2.isEmpty() && list3.isEmpty() && list4.isEmpty()
             && list5.isEmpty() || list.isEmpty()) {
@@ -243,18 +245,18 @@ public class ServletFormCS extends HttpServlet {
             Document document = new Document();
             PdfWriter.getInstance(document, file);
             document.open();
-            String uni = "Università degli Studi di Salerno";
+            String uni = "UniversitÃ  degli Studi di Salerno";
             String dip = "Dipartimento di Informatica";
 
             Image foto = Image.getInstance("https://www.unisa.it/rescue/img/logo_standard.png");
 
-            String text1 = "Io sottoscritto/a ai sensi dell’art. 46 del D.P.R. 28 Dicembre 2000, "
-                + "n. 445 e consapevole che, ai sensi dell’art. 76 dello stesso "
-                + "D.P.R. 445/2000 “chiunque rilascia dichiarazioni mendaci, forma atti falsi "
-                + "o ne fa uso nei casi previsti dal presente testo unico è "
-                + "punito dal codice penale e dalle leggi speciali in materia” ";
-            String text2 = "DICHIARO SOTTO LA MIA RESPONSABILITÀ I SEGUENTI DATI";
-            String text3 = "Il mio NOME è " + user.getName() + "\t il mio COGNOME è "
+            String text1 = "Io sottoscritto/a ai sensi dellâ€™art. 46 del D.P.R. 28 Dicembre 2000, "
+                + "n. 445 e consapevole che, ai sensi dellâ€™art. 76 dello stesso "
+                + "D.P.R. 445/2000 â€œchiunque rilascia dichiarazioni mendaci, forma atti falsi "
+                + "o ne fa uso nei casi previsti dal presente testo unico Ã¨ "
+                + "punito dal codice penale e dalle leggi speciali in materiaâ€� ";
+            String text2 = "DICHIARO SOTTO LA MIA RESPONSABILITÃ€ I SEGUENTI DATI";
+            String text3 = "Il mio NOME Ã¨ " + user.getName() + "\t il mio COGNOME Ã¨ "
                 + user.getSurname() + "\r\n" + "sono NATO/A a "
                 + request.getParameter("luogoNascita") + "\t prov. "
                 + request.getParameter("provincia") + "\t il " + request.getParameter("dataNascita")
@@ -263,18 +265,18 @@ public class ServletFormCS extends HttpServlet {
                 + request.getParameter("indirizzo") + "\t C.A.P. " + request.getParameter("cap")
                 + "\r\n" + "telefono fisso: " + request.getParameter("telefonoF")
                 + "\t telefono cellulare: " + request.getParameter("cellulare") + "\r\n"
-                + "Il mio CODICE FISCALE è " + request.getParameter("cf") + "\r\n" + "E-mail: "
+                + "Il mio CODICE FISCALE Ã¨ " + request.getParameter("cf") + "\r\n" + "E-mail: "
                 + request.getParameter("email") + "\r\n"
-                + "Sono in possesso del seguente diploma di maturità: "
-                + request.getParameter("diploma") + "\r\n" + "conseguito nell’anno "
-                + request.getParameter("annoD") + "\t presso l’Istituto "
+                + "Sono in possesso del seguente diploma di maturitÃ : "
+                + request.getParameter("diploma") + "\r\n" + "conseguito nellâ€™anno "
+                + request.getParameter("annoD") + "\t presso lâ€™Istituto "
                 + request.getParameter("istituto") + "\r\n" + "nel comune di "
                 + request.getParameter("comune") + "\r\n"
                 + "Sono in possesso del seguente titolo di Laurea: "
                 + request.getParameter("laurea") + "\r\n" + "conseguito in data "
-                + request.getParameter("dataL") + "\t presso l’Università: "
+                + request.getParameter("dataL") + "\t presso lâ€™UniversitÃ : "
                 + request.getParameter("universita") + "\r\n"
-                + "matricola (se si è stati iscritti presso l’Università degli Studi di Salerno):"
+                + "matricola (se si Ã¨ stati iscritti presso lâ€™UniversitÃ  degli Studi di Salerno):"
                 + request.getParameter("matricola") + "\r\n con il voto di "
                 + request.getParameter("voto") + "su 110" + "\t lode: "
                 + request.getParameter("lode") + "";
@@ -299,7 +301,8 @@ public class ServletFormCS extends HttpServlet {
             puni.setAlignment(Element.ALIGN_CENTER);
             pdip.setAlignment(Element.ALIGN_CENTER);
             foto.setAlignment(Element.ALIGN_CENTER);
-
+            
+            document.add(foto);
             document.add(puni);
             document.add(pdip);
             document.add(p1);
@@ -317,7 +320,7 @@ public class ServletFormCS extends HttpServlet {
                 try {
                   c = cd.doRetrieveByID(Integer.parseInt(sceltaId));
 
-                  String text6 = c.getSemestre() + "° Semestre: " + c.getNome() + " (" + c.getCfu()
+                  String text6 = c.getSemestre() + "Â° Semestre: " + c.getNome() + " (" + c.getCfu()
                       + "cfu)\r\n";
                   System.out.println(c.getNome());
                   Paragraph p6 = new Paragraph(text6);
@@ -330,7 +333,7 @@ public class ServletFormCS extends HttpServlet {
                 }
               } else {
                 result = 0;
-                error = "Non è stata inserito nessun corso";
+                error = "Non Ã¨ stata inserito nessun corso";
               }
             }
             String acapo = "\r\n";

@@ -57,6 +57,7 @@ tr:nth-child(even) {
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstForm-container">
 								<%
 								UserInterface user = (UserInterface) request.getSession().getAttribute("user");
+								if(user!=null){
 								RequestOUDAO rd= new RequestOUDAO();
 								ArrayList<RequestOU> listaREff= new ArrayList<RequestOU>();
 								listaREff=rd.doRetrieveByEmail(user.getEmail());
@@ -231,7 +232,7 @@ tr:nth-child(even) {
 										 <center><h2>Spiacenti ha già effettuato una richiesta.</h2></center>
 										 </div>
 								  <%
-								} %>
+								} }%>
 
 					<div class="clearfix"></div>
 

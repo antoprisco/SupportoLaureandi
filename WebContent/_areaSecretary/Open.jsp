@@ -39,7 +39,8 @@ if(!ck.isAllowed()){
 						<div class="content contentSL">
 							<div class="news-block-seven">
 							
-							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); %>
+							<%UserInterface user = (UserInterface) request.getSession().getAttribute("user"); 
+							if (user!=null){%>
 							
 							<div id="open">
 							<h2><%=user.getName()%> <%=user.getSurname() %></h2>
@@ -59,7 +60,7 @@ if(!ck.isAllowed()){
 								</div>
 								
 								
-								
+								<%} %>
 								
 							</div>
 							
